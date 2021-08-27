@@ -43,6 +43,8 @@ export const Classes = styled.section`
   justify-content: space-between;
   height: 2rem;
   gap: 2rem;
+  margin-left: -2rem;
+  margin-right: 1rem;
 
   @media (max-width: 768px) {
     display: none;
@@ -75,9 +77,9 @@ export const Classes = styled.section`
 export const Search = styled.section`
   display: flex;
   align-items: center;
-  justify-content: space-between;
   height: 2rem;
-  gap: 2rem;
+  padding-left: 1rem;
+  gap: 1rem;
 
   input {
     width: 95px;
@@ -86,8 +88,16 @@ export const Search = styled.section`
     outline: none;
     background: var(--background);
     color: var(--text);
-    padding-left: 1rem;
     border-top: 1px solid var(--borders);
     border-bottom: 1px solid var(--borders);
   }
+
+  svg {
+    color: var(--primary);
+  }
+`
+
+export const Difficulty = styled.section`
+  height: 2rem;
+  width: 150px;
 `

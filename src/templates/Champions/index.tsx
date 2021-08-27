@@ -1,3 +1,4 @@
+import { Search } from "@styled-icons/boxicons-regular"
 import { CardList } from "components/Organisms/CardList"
 import { ChampionType, IChampionsProps } from "pages/champions"
 import { useState } from "react"
@@ -9,8 +10,6 @@ export function ChampionsTemplate({
 }: IChampionsProps) {
   const [champions, setChampions] = useState<ChampionType[]>(InitialChampions)
   const [category, setCategory] = useState("All")
-
-  console.log(champions)
 
   function handleFilterChampions(category: string) {
     setCategory(category)
@@ -51,12 +50,14 @@ export function ChampionsTemplate({
           seu estilo de jogo. Domine um ou domine todos eles.
         </p>
       </S.Headline>
+
       <S.Filter>
         <S.Search>
+          <Search size={20} />
           <input
             type="text"
             onChange={(e) => searchByName(e.target.value)}
-            placeholder="🔎 Pesquisa"
+            placeholder="Pesquisa"
           />
         </S.Search>
 
@@ -104,10 +105,6 @@ export function ChampionsTemplate({
             Tanque
           </button>
         </S.Classes>
-
-        <section>
-          <button>dificuldade</button>
-        </section>
       </S.Filter>
 
       <CardList champions={champions} />

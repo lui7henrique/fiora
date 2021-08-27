@@ -18,8 +18,7 @@ export function Header() {
             <Link href="/champions">
               <a
                 className={`${
-                  (asPath === "/champions" ||
-                    pathname === "/champions/[name]") &&
+                  (asPath === "/champions" || pathname === "/champions/[id]") &&
                   "active"
                 }`}
               >
