@@ -8,6 +8,6 @@ module.exports = withPWA({
     disable: !isProd
   },
   images: {
-    domains: ["raw.communitydragon.org"]
+    domains: ["raw.communitydragon.org", "ddragon.leagueoflegends.com"]
   }
 })

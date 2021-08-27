@@ -5,7 +5,6 @@ import * as S from "./styles"
 
 export function Header() {
   const { asPath, pathname } = useRouter()
-  console.log(pathname)
   return (
     <S.Container>
       <S.Content>

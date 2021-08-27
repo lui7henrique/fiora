@@ -26,10 +26,12 @@ export const GlobalStyles = createGlobalStyle`
     --icons: #41414d;
     --attention: #fd951f;
     --borders: #323238;
-    --experts: #db3a2c;
-    --react: #2ac7e3;
-    --node: #8cc84b;
-    --elixir: #a32ddf;
+
+    --damage: #db3a2c;
+    --defense: #8cc84b;
+    --magic: #a32ddf;
+    --difficulty: #2ac7e3;
+
     --react-native: #4763ff;
     --flutter: #0389ff;
     --dowhile: #ff248a;
@@ -59,6 +61,7 @@ export const GlobalStyles = createGlobalStyle`
     font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     background: var(--background);
     color: var(--text);
+    overflow-x: hidden;
   }
 
   a {

@@ -38,7 +38,7 @@ export type ChampionType = {
     num: number
     name: string
     image: string
-  }
+  }[]
   spells: {
     id: string
     name: string

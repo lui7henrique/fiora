@@ -28,7 +28,7 @@ export async function getStaticProps({ params }: any) {
     tags: data.tags,
     info: data.info,
     stats: data.stats,
-    icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${data.name}.png`,
+    icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${data.id}.png`,
     splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.name}_0.jpg`,
     splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${data.key}/${data.key}000.jpg`,
     skins: data.skins.map((skin: any) => {
