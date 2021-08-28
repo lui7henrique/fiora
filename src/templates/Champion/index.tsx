@@ -14,6 +14,8 @@ interface IChampionTemplateProps {
 export function ChampionTemplate({ champion }: IChampionTemplateProps) {
   const [section, setSection] = useState("lore")
 
+  console.log(champion)
+
   return (
     <S.Container>
       <S.BannerWrapper>
