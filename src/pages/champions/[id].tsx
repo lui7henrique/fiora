@@ -54,8 +54,6 @@ export async function getStaticProps({ params }: any) {
     }
   }
 
-  console.log(data, champion.spells[0].image)
-
   return {
     props: {
       champion
@@ -64,6 +62,7 @@ export async function getStaticProps({ params }: any) {
   }
 }
 
+// to generate static pages
 export async function getStaticPaths() {
   const res = await fetch(
     "http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/champion.json"

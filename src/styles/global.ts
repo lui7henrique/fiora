@@ -86,4 +86,13 @@ export const GlobalStyles = createGlobalStyle`
     background-color: var(--primary);
     border: 3px solid var(--primary);
   }
+
+  physicaldamage {
+    color: var(--damage);
+    font-weight: 500;
+  }
+  magicdamage {
+    color: var(--magic);
+    font-weight: 500;
+  }
 `

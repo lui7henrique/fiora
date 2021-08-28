@@ -23,10 +23,12 @@ export const Content = styled.div`
     display: flex;
     gap: 1rem;
     height: 5rem;
+
     nav {
       display: flex;
       gap: 1rem;
     }
+
     a {
       margin-top: 1.75rem;
       text-decoration: none;

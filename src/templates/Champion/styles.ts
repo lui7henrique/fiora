@@ -8,6 +8,7 @@ export const Content = styled.div`
   padding: 1rem;
   display: grid;
   grid-template-columns: 1fr 2.5fr;
+  gap: 2rem;
 
   @media (max-width: 576px) {
     grid-template-columns: 1fr;
@@ -47,6 +48,7 @@ export const Banner = styled.section<IBannerProps>`
   background-position: top center;
   filter: blur(3px);
   transition: all 0.2s ease-in-out;
+  transform: scaleX(-1);
 `
 
 export const Infos = styled.aside`
@@ -83,6 +85,7 @@ export const BasicInfos = styled.section`
   flex-direction: column;
   border-bottom: 0.5px solid var(--borders);
   padding-bottom: 1rem;
+  width: 100%;
 
   h1 {
     font-size: 3rem;
@@ -95,4 +98,51 @@ export const BasicInfos = styled.section`
     font-size: 0.8rem;
     opacity: 0.8;
   }
+`
+
+export const About = styled.main`
+  background: var(--shape);
+  border-radius: 5px;
+`
+
+export const Header = styled.header`
+  height: 3rem;
+  border-bottom: 1px solid var(--borders);
+  display: flex;
+  align-items: center;
+`
+
+export const Options = styled.section`
+  padding: 0 1rem;
+  display: flex;
+  gap: 1rem;
+  height: 3rem;
+
+  h3 {
+    margin-top: 0.5rem;
+    text-decoration: none;
+    color: var(--gray);
+    filter: brightness(0.5);
+    transition: all 0.1s ease-in-out;
+    cursor: pointer;
+    font-weight: normal;
+
+    &.active {
+      filter: brightness(1);
+      border-bottom: 2px solid var(--primary);
+    }
+    &:hover {
+      filter: brightness(1);
+      border-bottom: 2px solid var(--primary);
+    }
+  }
+`
+
+export const AboutContent = styled.div`
+  padding: 1rem;
+`
+
+export const Lore = styled.p`
+  line-height: 1.7;
+  text-align: justify;
 `
