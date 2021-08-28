@@ -1,5 +1,5 @@
 import { GetServerSideProps } from "next"
-import { api } from "services/api"
+import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
 
 export type ISummonerProps = {

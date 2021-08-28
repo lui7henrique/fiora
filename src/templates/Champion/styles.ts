@@ -3,15 +3,20 @@ import styled from "styled-components"
 export const Container = styled.div``
 
 export const Content = styled.div`
+  position: relative;
   max-width: 1180px;
-  margin: auto;
-  padding: 1rem;
-  display: grid;
-  grid-template-columns: 1fr 2.5fr;
+  margin: 0 auto;
   gap: 2rem;
+  padding: 1rem;
 
-  @media (max-width: 576px) {
-    grid-template-columns: 1fr;
+  display: flex;
+  align-items: flex-start;
+  -webkit-box-pack: justify;
+  justify-content: space-between;
+  z-index: 2;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
   }
 `
 
@@ -27,7 +32,7 @@ export const BannerWrapper = styled.figure`
   overflow: hidden;
   position: relative;
   width: 100vw;
-  height: 70vh;
+  height: 75vh;
   border-bottom: 5px solid var(--background);
 
   &:hover {
@@ -52,15 +57,38 @@ export const Banner = styled.section<IBannerProps>`
 `
 
 export const Infos = styled.aside`
+  width: 30%;
+  margin-top: -104px;
+
   display: flex;
   flex-direction: column;
   background: var(--shape);
   gap: 1rem;
 
-  margin-top: -100px;
   position: relative;
   padding: 1rem;
   border-radius: 3px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
+`
+
+export const Tags = styled.section`
+  position: absolute;
+  padding: 0 1rem;
+  top: 0;
+  left: 0;
+  display: flex;
+  gap: 1rem;
+  margin-top: -0.8rem;
+`
+
+export const Tag = styled.div`
+  background: var(--primary);
+  color: var(--white);
+  padding: 0.5rem;
+  font-size: 0.7rem;
 `
 
 export const IconWrapper = styled.figure`
@@ -88,6 +116,7 @@ export const BasicInfos = styled.section`
   width: 100%;
 
   h1 {
+    white-space: nowrap;
     font-size: 3rem;
   }
 
@@ -101,8 +130,13 @@ export const BasicInfos = styled.section`
 `
 
 export const About = styled.main`
+  width: 70%;
   background: var(--shape);
   border-radius: 5px;
+
+  @media (max-width: 768px) {
+    width: 100%;
+  }
 `
 
 export const Header = styled.header`
@@ -119,7 +153,7 @@ export const Options = styled.section`
   height: 3rem;
 
   h3 {
-    margin-top: 0.5rem;
+    margin-top: 0.7rem;
     text-decoration: none;
     color: var(--gray);
     filter: brightness(0.5);
