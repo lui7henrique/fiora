@@ -19,7 +19,8 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
       <S.BannerWrapper>
         <S.Banner
           splash_art={
-            champion.skins[champion.skins.length - 1].splash_art_cropped
+            champion.skins[champion.skins.length - 1].splash_art_cropped ??
+            champion.splash_art_full
           }
         />
       </S.BannerWrapper>

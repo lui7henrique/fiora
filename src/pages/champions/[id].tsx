@@ -21,6 +21,8 @@ export async function getStaticProps({ params }: any) {
     `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${id}.json`
   ).then((res) => res.json())
 
+  console.log(data)
+
   const champion = {
     id: data.id,
     key: data.key,
@@ -37,23 +39,25 @@ export async function getStaticProps({ params }: any) {
     splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${data.key}/${data.key}000.jpg`,
 
     skins: data.skins.map((skin: any, index: number) => {
-      return {
-        id: skin.id,
-        num: skin.num,
-        name: skin.name === "default" ? "Padrão" : skin.name,
-        splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_${skin.num}.jpg`,
-        splash_art_cropped:
-          data.id === "Seraphine"
-            ? skins[0].splashPath
-            : skins[index].splashPath,
-        icon:
-          data.id === "Seraphine" ? skins[0].tilePath : skins[index].tilePath,
-        loadscreen:
-          data.id === "Seraphine"
-            ? skins[0].loadScreenPath
-            : skins[index].loadScreenPath,
-        rarity: data.id === "Seraphine" ? skins[0].rarity : skins[index].rarity,
-        cost: data.id === "Seraphine" ? skins[0].cost : skins[index].cost
+      if (data.id !== "Seraphine") {
+        return {
+          id: skin.id,
+          num: skin.num,
+          name: skin.name === "default" ? "Padrão" : skin.name,
+          splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_${skin.num}.jpg`,
+          splash_art_cropped: skins[index].splashPath,
+          icon: skins[index].tilePath,
+          loadscreen: skins[index].loadScreenPath,
+          rarity: skins[index].rarity,
+          cost: skins[index].cost
+        }
+      } else {
+        return {
+          id: skin.id,
+          num: skin.num,
+          name: skin.name === "default" ? "Padrão" : skin.name,
+          splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.id}_${skin.num}.jpg`
+        }
       }
     }),
 
