@@ -21,8 +21,6 @@ export async function getStaticProps({ params }: any) {
     `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${id}.json`
   ).then((res) => res.json())
 
-  console.log(data)
-
   const champion = {
     id: data.id,
     key: data.key,
