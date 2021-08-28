@@ -32,7 +32,7 @@ export const BannerWrapper = styled.figure`
   overflow: hidden;
   position: relative;
   width: 100vw;
-  height: 75vh;
+  height: 70vh;
   border-bottom: 5px solid var(--background);
 
   &:hover {
@@ -53,7 +53,6 @@ export const Banner = styled.section<IBannerProps>`
   background-position: top center;
   filter: blur(3px);
   transition: all 0.2s ease-in-out;
-  transform: scaleX(-1);
 `
 
 export const Infos = styled.aside`
