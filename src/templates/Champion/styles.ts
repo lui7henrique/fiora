@@ -134,7 +134,7 @@ export const About = styled.main`
   border-radius: 5px;
 
   @media (max-width: 768px) {
-    width: 100%;
+    max-width: 100%;
   }
 `
 
