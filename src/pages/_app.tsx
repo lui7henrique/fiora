@@ -3,6 +3,8 @@ import { Header } from "components/Organisms/Header"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import { GlobalStyles } from "styles/global"
+import "swiper/swiper.min.css"
+import "swiper/components/navigation/navigation.min.css"
 
 function MyApp({ Component, pageProps }: AppProps) {
   return (

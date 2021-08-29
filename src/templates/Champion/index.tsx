@@ -1,6 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProgressBar } from "components/Atoms/ProgressBar"
 import { Skills } from "components/Organisms/Skills"
+import { Swiper } from "components/Organisms/Swiper"
 import { Tips } from "components/Organisms/Tips"
 import { useState } from "react"
 import { ChampionType } from "types/champion"
@@ -20,7 +21,7 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
         <S.Banner
           splash_art={
             champion.skins[champion.skins.length - 1].splash_art_cropped ??
-            champion.splash_art_full
+            champion.skins[champion.skins.length - 1].splash_art_full
           }
         />
       </S.BannerWrapper>
@@ -86,10 +87,16 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
                   Dicas
                 </h3>
               )}
+              <h3
+                className={`${section === "skins" && "active"} `}
+                onClick={() => setSection("skins")}
+              >
+                Skins
+              </h3>
             </S.Options>
           </S.Header>
 
-          <S.AboutContent>
+          <S.AboutContent isSkins={section === "skins"}>
             {section === "lore" && <S.Lore>{champion.lore}</S.Lore>}
             {section === "skills" && (
               <Skills skills={champion.spells} passive={champion.passive} />
@@ -99,6 +106,9 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
                 enemytips={champion.enemytips}
                 allytips={champion.allytips}
               />
+            )}
+            {section === "skins" && (
+              <Swiper skins={champion.skins} champion={champion.name} />
             )}
           </S.AboutContent>
         </S.About>

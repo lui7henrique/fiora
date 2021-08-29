@@ -129,7 +129,7 @@ export const BasicInfos = styled.section`
 `
 
 export const About = styled.main`
-  width: 70%;
+  max-width: 70%;
   background: var(--shape);
   border-radius: 5px;
 
@@ -170,9 +170,12 @@ export const Options = styled.section`
     }
   }
 `
+interface IAboutContentProps {
+  isSkins?: boolean
+}
 
-export const AboutContent = styled.div`
-  padding: 1rem;
+export const AboutContent = styled.div<IAboutContentProps>`
+  padding: ${(props) => (props.isSkins ? "0" : "1rem")};
 `
 
 export const Lore = styled.p`

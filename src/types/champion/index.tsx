@@ -37,7 +37,7 @@ export type ChampionType = {
     id: string
     num: number
     name: string
-    splash_art_full?: string
+    splash_art_full: string
     splash_art_cropped?: string
     icon?: string
     loadscreen?: string
