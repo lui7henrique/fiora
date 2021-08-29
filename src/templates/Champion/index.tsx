@@ -87,12 +87,14 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
                   Dicas
                 </h3>
               )}
-              <h3
-                className={`${section === "skins" && "active"} `}
-                onClick={() => setSection("skins")}
-              >
-                Skins
-              </h3>
+              {champion.id !== "Seraphine" && (
+                <h3
+                  className={`${section === "skins" && "active"} `}
+                  onClick={() => setSection("skins")}
+                >
+                  Skins
+                </h3>
+              )}
             </S.Options>
           </S.Header>
 

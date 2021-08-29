@@ -63,6 +63,9 @@ export function Swiper({ skins, champion }: ISwiperProps) {
                   width={1280}
                   height={720}
                 />
+                <S.Infos>
+                  <h4>{skin.name}</h4>
+                </S.Infos>
               </S.Wrapper>
             </SwiperSlide>
           )

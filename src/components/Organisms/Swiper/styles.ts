@@ -32,6 +32,7 @@ export const Expand = styled.div`
 export const Wrapper = styled.div`
   width: 100%;
   height: 100%;
+  position: relative;
 
   img {
     background: #121214;
@@ -52,5 +53,21 @@ export const Wrapper = styled.div`
         background-position: 40rem 0;
       }
     }
+  }
+`
+export const Infos = styled.section`
+  width: 100%;
+  position: absolute;
+  bottom: 0;
+
+  h4 {
+    display: inline-block;
+    background-color: rgba(63, 63, 63, 0.3);
+    backdrop-filter: blur(5px) saturate(100%) contrast(90%) brightness(150%);
+    color: var(--title);
+    -webkit-backdrop-filter: blur(4px);
+    border-radius: 5px;
+    padding: 0 1rem;
+    margin: 20px;
   }
 `
