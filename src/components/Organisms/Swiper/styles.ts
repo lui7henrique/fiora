@@ -2,21 +2,27 @@ import styled from "styled-components"
 
 export const Container = styled.section`
   .swiper-button-prev {
-    margin-left: -1rem;
+    margin-left: -2rem;
+    position: absolute;
+    top: 44%;
   }
   .swiper-button-next {
-    margin-right: -1rem;
+    margin-right: -2rem;
+    position: absolute;
+    top: 44%;
   }
   .swiper-button-prev,
   .swiper-button-next {
     color: var(--primary) !important;
     border-radius: 50%;
     background: var(--shape);
-    transform: scale(0.5);
+    transform: scale(0.4);
     padding: 42px;
     font-weight: bold;
+    box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
+      rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
+      rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
   }
-
   position: relative;
 `
 
@@ -26,7 +32,7 @@ export const Expand = styled.div`
   right: 0;
   z-index: 99;
   cursor: pointer;
-  margin: 1rem;
+  margin: 0.5rem;
 `
 
 export const Wrapper = styled.div`
