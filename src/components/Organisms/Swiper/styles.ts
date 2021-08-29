@@ -16,6 +16,17 @@ export const Container = styled.section`
     padding: 42px;
     font-weight: bold;
   }
+
+  position: relative;
+`
+
+export const Expand = styled.div`
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 99;
+  cursor: pointer;
+  margin: 1rem;
 `
 
 export const Wrapper = styled.div`

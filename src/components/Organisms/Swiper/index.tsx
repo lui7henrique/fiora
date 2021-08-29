@@ -1,4 +1,10 @@
+// import { Expand } from "@styled-icons/boxicons-regular"
 import Image from "next/image"
+import { useState } from "react"
+import {
+  MdFullscreen as Full,
+  MdFullscreenExit as ExitFull
+} from "react-icons/md"
 import SwiperCore, { Navigation } from "swiper/core"
 import { Swiper as SwiperReact, SwiperSlide } from "swiper/react"
 
@@ -22,6 +28,8 @@ interface ISwiperProps {
 SwiperCore.use([Navigation])
 
 export function Swiper({ skins, champion }: ISwiperProps) {
+  const [isFull, setIsFull] = useState(false)
+
   console.log(skins, champion)
   return (
     <S.Container>
@@ -34,12 +42,23 @@ export function Swiper({ skins, champion }: ISwiperProps) {
           flex: "1"
         }}
       >
+        <S.Expand>
+          {isFull ? (
+            <ExitFull size={20} onClick={() => setIsFull(false)} />
+          ) : (
+            <Full size={20} onClick={() => setIsFull(true)} />
+          )}
+        </S.Expand>
         {skins.map((skin) => {
           return (
             <SwiperSlide key={skin.id}>
               <S.Wrapper>
                 <Image
-                  src={skin.splash_art_cropped ?? skin.splash_art_full}
+                  src={
+                    isFull
+                      ? skin.splash_art_full
+                      : skin.splash_art_cropped ?? skin.splash_art_full
+                  }
                   alt={`${skin.name}`}
                   width={1280}
                   height={720}
