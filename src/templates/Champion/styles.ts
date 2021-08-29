@@ -132,6 +132,7 @@ export const About = styled.main`
   max-width: 70%;
   background: var(--shape);
   border-radius: 5px;
+  box-shadow: 0px -5px 0px var(--background) inset;
 
   @media (max-width: 768px) {
     max-width: 100%;
