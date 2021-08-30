@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const Container = styled.section`
+  width: 100%;
+
   .swiper-button-prev {
     margin-left: -2rem;
     position: absolute;
@@ -40,7 +42,7 @@ export const Wrapper = styled.div`
   height: 100%;
   position: relative;
 
-  img {
+  > img {
     background: #121214;
     background-image: linear-gradient(
       to right,
@@ -62,9 +64,9 @@ export const Wrapper = styled.div`
   }
 `
 export const Infos = styled.section`
-  width: 100%;
   position: absolute;
   bottom: 0;
+  left: 0;
 
   h4 {
     display: inline-block;
@@ -73,7 +75,22 @@ export const Infos = styled.section`
     color: var(--title);
     -webkit-backdrop-filter: blur(4px);
     border-radius: 5px;
-    padding: 0 1rem;
-    margin: 20px;
+    padding: 0.5rem 1rem;
+    margin: 1rem;
+  }
+`
+
+export const Price = styled.section`
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  margin: 1.2rem;
+
+  div {
+    display: flex;
+    gap: 0.5rem;
+    span {
+      font-weight: bold;
+    }
   }
 `

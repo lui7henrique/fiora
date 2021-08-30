@@ -8,6 +8,7 @@ import {
 import SwiperCore, { Navigation } from "swiper/core"
 import { Swiper as SwiperReact, SwiperSlide } from "swiper/react"
 
+import RpIcon from "../../../../public/img/rp-icon.png"
 import * as S from "./styles"
 
 interface ISwiperProps {
@@ -20,7 +21,7 @@ interface ISwiperProps {
     icon?: string
     loadscreen?: string
     rarity?: string
-    cost?: number
+    cost?: string
   }[]
   champion: string
 }
@@ -62,10 +63,19 @@ export function Swiper({ skins, champion }: ISwiperProps) {
                   alt={`${skin.name}`}
                   width={1280}
                   height={720}
+                  layout="intrinsic"
                 />
                 <S.Infos>
                   <h4>{skin.name}</h4>
                 </S.Infos>
+                <S.Price>
+                  <div>
+                    <Image src={RpIcon} alt="RP icon" width={20} height={20} />
+                    <span>
+                      {skin.cost === "special" ? "Especial" : skin.cost}
+                    </span>
+                  </div>
+                </S.Price>
               </S.Wrapper>
             </SwiperSlide>
           )

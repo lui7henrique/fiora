@@ -42,7 +42,7 @@ export type ChampionType = {
     icon?: string
     loadscreen?: string
     rarity?: string
-    cost?: number
+    cost?: string
   }[]
   spells: {
     id: string
