@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next"
+import { NextSeo } from "next-seo"
 
 import { ChampionsTemplate } from "../../templates/Champions/index"
 
@@ -34,7 +35,30 @@ export type ChampionType = {
 }
 
 export default function Champions({ champions }: IChampionsProps) {
-  return <ChampionsTemplate champions={champions} />
+  return (
+    <>
+      <NextSeo
+        title="Fiora | Campeões"
+        description="Com mais de 140 Campeões à disposição, sempre há coisas novas para aperfeiçoar. Dê uma olhada em todos eles aqui."
+        canonical="https://fiora.vercel.app"
+        openGraph={{
+          url: "https://fiora.vercel.app",
+          title: "Fiora | Campeões",
+          description:
+            "Com mais de 140 Campeões à disposição, sempre há coisas novas para aperfeiçoar. Dê uma olhada em todos eles aqui.",
+          images: [
+            {
+              url: "https://fiora.vercel.app/img/champions.png",
+              width: 1280,
+              height: 720,
+              alt: "Página de campeões"
+            }
+          ]
+        }}
+      />
+      <ChampionsTemplate champions={champions} />
+    </>
+  )
 }
 
 export const getStaticProps: GetStaticProps = async () => {

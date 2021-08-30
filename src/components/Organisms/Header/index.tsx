@@ -8,7 +8,7 @@ export function Header() {
   return (
     <S.Container>
       <S.Content>
-        <span>Nexus</span>
+        <span className="logo">Fiora</span>
         <section>
           <nav>
             <Link href="/">

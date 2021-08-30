@@ -8,6 +8,17 @@ export const Container = styled.header`
   z-index: 99;
   top: 0;
   position: fixed;
+
+  .logo {
+    font-size: 32px;
+    background: -webkit-linear-gradient(var(--primary), var(--primary-darker));
+    filter: brightness(1.3);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-transform: uppercase;
+    font-style: italic;
+    font-weight: bold;
+  }
 `
 
 export const Content = styled.div`
