@@ -64,6 +64,7 @@ export function Swiper({ skins, champion }: ISwiperProps) {
                   width={1280}
                   height={720}
                   layout="intrinsic"
+                  className="splash-art"
                 />
                 <S.Infos>
                   <h4>{skin.name}</h4>

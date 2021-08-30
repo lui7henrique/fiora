@@ -4,6 +4,7 @@ export type ChampionType = {
   name: string
   title: string
   lore: string
+  blurb: string
   allytips: string[]
   enemytips: string[]
   tags: string[]

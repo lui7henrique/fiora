@@ -42,7 +42,7 @@ export const Wrapper = styled.div`
   height: 100%;
   position: relative;
 
-  > img {
+  .splash-art {
     background: #121214;
     background-image: linear-gradient(
       to right,
