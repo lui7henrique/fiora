@@ -1,8 +1,10 @@
 import * as S from "./styles"
+
 interface ITipsProps {
   allytips: string[]
   enemytips: string[]
 }
+
 export function Tips({ allytips, enemytips }: ITipsProps) {
   return (
     <S.Container>

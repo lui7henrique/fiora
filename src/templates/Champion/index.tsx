@@ -1,5 +1,7 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProgressBar } from "components/Atoms/ProgressBar"
+import { Banner } from "components/Molecules/Banner"
+import { Profile } from "components/Molecules/Profile"
 import { Skills } from "components/Organisms/Skills"
 import { Swiper } from "components/Organisms/Swiper"
 import { Tips } from "components/Organisms/Tips"
@@ -17,26 +19,22 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
 
   return (
     <S.Container>
-      <S.BannerWrapper>
-        <S.Banner
-          splash_art={
-            champion.skins[champion.skins.length - 1].splash_art_cropped ??
-            champion.skins[champion.skins.length - 1].splash_art_full
-          }
-        />
-      </S.BannerWrapper>
+      <Banner
+        splash_art={
+          champion.skins[champion.skins.length - 1].splash_art_cropped ??
+          champion.skins[champion.skins.length - 1].splash_art_full
+        }
+      />
       <S.Content>
         <S.Infos>
           <S.Tags>
             <S.Tag>{champion.tags[0]}</S.Tag>
           </S.Tags>
-          <S.BasicInfos>
-            <S.IconWrapper>
-              <S.Icon icon={champion.icon} />
-            </S.IconWrapper>
-            <h1>{champion.name}</h1>
-            <h2>{champion.title}</h2>
-          </S.BasicInfos>
+          <Profile
+            icon={champion.icon}
+            name={champion.name}
+            title={champion.title}
+          />
 
           <ProgressBar
             value={champion.info.attack}

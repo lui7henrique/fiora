@@ -1,29 +1,52 @@
-import Image from "next/image"
-import { ISummonerProps } from "pages/summoner/[nick]"
+import { Banner } from "components/Molecules/Banner"
+import { Profile } from "components/Molecules/Profile"
+import { Masteries } from "components/Organisms/Masteries"
+import { Matches } from "components/Organisms/Matches"
+import { useState } from "react"
+import { ISummonerProps } from "types/summoner"
+
+import * as S from "./styles"
 
 export function SummonerTemplate({ summoner }: ISummonerProps) {
+  const [section, setSection] = useState("match-history")
+  console.log(summoner)
   return (
-    <>
-      <h1>{summoner.nick}</h1>
-      <h2>id: {summoner.id}</h2>
-      <h2>puuid: {summoner.puuid}</h2>
-      <h2>acc id: {summoner.accountId}</h2>
+    <S.Container>
+      <Banner splash_art={summoner.splash_art} />
+      <S.Content>
+        <S.Aside>
+          <Profile
+            icon={summoner.icon}
+            name={summoner.nick}
+            level={summoner.level}
+          />
+        </S.Aside>
 
-      {summoner.matches.map((match) => {
-        return (
-          <>
-            <p key={match.id}>
-              {match.champion_id} | {match.id}
-            </p>
-            <Image
-              src={match.champion_icon}
-              alt={match.champion_icon}
-              width={48}
-              height={48}
-            />
-          </>
-        )
-      })}
-    </>
+        <S.Main>
+          <S.Header>
+            <S.Options>
+              <h3
+                className={`${section === "match-history" && "active"} `}
+                onClick={() => setSection("match-history")}
+              >
+                Histórico
+              </h3>
+              <h3
+                className={`${section === "masteries" && "active"} `}
+                onClick={() => setSection("masteries")}
+              >
+                Maestrias
+              </h3>
+            </S.Options>
+          </S.Header>
+          {section === "match-history" && (
+            <Matches matches={summoner.matches} />
+          )}
+          {section === "masteries" && (
+            <Masteries masteries={summoner.masteries} />
+          )}
+        </S.Main>
+      </S.Content>
+    </S.Container>
   )
 }

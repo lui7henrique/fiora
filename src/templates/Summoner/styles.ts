@@ -1,7 +1,8 @@
 import styled from "styled-components"
 
-export const Container = styled.div``
-
+export const Container = styled.div`
+  margin-top: 5rem;
+`
 export const Content = styled.div`
   position: relative;
   max-width: 1180px;
@@ -20,7 +21,7 @@ export const Content = styled.div`
   }
 `
 
-export const Infos = styled.aside`
+export const Aside = styled.aside`
   width: 30%;
   margin-top: -104px;
 
@@ -29,7 +30,6 @@ export const Infos = styled.aside`
   background: var(--shape);
   gap: 1rem;
 
-  position: relative;
   padding: 1rem;
   border-radius: 3px;
 
@@ -38,31 +38,17 @@ export const Infos = styled.aside`
   }
 `
 
-export const Tags = styled.section`
-  position: absolute;
-  padding: 0 1rem;
-  top: 0;
-  left: 0;
+export const Main = styled.main`
   display: flex;
-  gap: 1rem;
-  margin-top: -0.8rem;
-`
+  flex-direction: column;
 
-export const Tag = styled.div`
-  background: var(--primary);
-  color: var(--white);
-  padding: 0.5rem;
-  font-size: 0.7rem;
-`
-
-export const About = styled.main`
-  max-width: 70%;
+  width: 70%;
   background: var(--shape);
   border-radius: 5px;
   box-shadow: 0px -5px 0px var(--background) inset;
 
   @media (max-width: 768px) {
-    max-width: 100%;
+    width: 100%;
   }
 `
 
@@ -97,16 +83,4 @@ export const Options = styled.section`
       border-bottom: 2px solid var(--primary);
     }
   }
-`
-interface IAboutContentProps {
-  isSkins?: boolean
-}
-
-export const AboutContent = styled.div<IAboutContentProps>`
-  padding: ${(props) => (props.isSkins ? "0" : "1rem")};
-`
-
-export const Lore = styled.p`
-  line-height: 1.7;
-  text-align: justify;
 `

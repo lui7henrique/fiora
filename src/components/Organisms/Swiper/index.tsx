@@ -28,10 +28,9 @@ interface ISwiperProps {
 
 SwiperCore.use([Navigation])
 
-export function Swiper({ skins, champion }: ISwiperProps) {
+export function Swiper({ skins }: ISwiperProps) {
   const [isFull, setIsFull] = useState(false)
 
-  console.log(skins, champion)
   return (
     <S.Container>
       <SwiperReact
