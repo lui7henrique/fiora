@@ -22,7 +22,8 @@ export const MasteryInfos = styled.div`
 
     img {
       width: 20px;
-      filter: hue-rotate(210deg);
+      filter: contrast(0);
+      opacity: 0.5;
     }
   }
 `

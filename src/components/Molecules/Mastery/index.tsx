@@ -21,7 +21,7 @@ export function Mastery({ mastery }: IMasteryProps) {
             width={20}
             height={20}
           />
-          {mastery.points}
+          {mastery.points.toLocaleString("pt-BR")}
         </sub>
       </S.MasteryInfos>
     </S.Container>
