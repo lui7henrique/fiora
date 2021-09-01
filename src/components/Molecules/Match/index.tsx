@@ -10,7 +10,7 @@ interface IMatchProps {
 export function Match({ match }: IMatchProps) {
   return (
     <S.Container>
-      <ImageWrapper size={50} icon={match.champion_icon} />
+      <ImageWrapper size={50} icon={match.champion_icon} isMatch />
       <p>Win</p>
     </S.Container>
   )

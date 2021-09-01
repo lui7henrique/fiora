@@ -15,6 +15,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     "http://ddragon.leagueoflegends.com/cdn/11.13.1/data/pt_BR/champion.json"
   ).then((res) => res.json())
   const data = Object.values(res.data)
+
   const champions = data.map((champion: any) => {
     return {
       key: +champion.key,
@@ -41,17 +42,27 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         (champion: any) => champion.key === mastery.championId
       )[0]
 
-      return {
-        key: mastery.championId,
-        level: mastery.championLevel,
-        points: mastery.championPoints,
-        lastPlayTime: mastery.lastPlayTime,
-        chestGranted: mastery.chestGranted,
-        name: champion.name,
-        title: champion.title,
-        category: champion.category,
-        icon: champion.icon
-      }
+      return champion
+        ? {
+            key: mastery.championId,
+            level: mastery.championLevel,
+            points: mastery.championPoints,
+            lastPlayTime: mastery.lastPlayTime,
+            chestGranted: mastery.chestGranted,
+            name: champion.name,
+            category: champion.category,
+            icon: champion.icon
+          }
+        : {
+            key: 114,
+            level: mastery.championLevel,
+            points: mastery.championPoints,
+            lastPlayTime: mastery.lastPlayTime,
+            chestGranted: mastery.chestGranted,
+            name: "Akshan",
+            category: ["Marksman"],
+            icon: "http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/Akshan.png"
+          }
     })
 
     // to get match history, with id, champion, etc.

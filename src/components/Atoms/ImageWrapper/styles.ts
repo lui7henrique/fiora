@@ -2,10 +2,15 @@ import styled from "styled-components"
 
 interface IWrapperProps {
   size: number
+  isMatch: boolean
 }
 
+export const Container = styled.div`
+  position: relative;
+`
+
 export const Wrapper = styled.figure<IWrapperProps>`
-  height: ${({ size }) => `${size}px`};
+  height: ${({ size, isMatch }) => `${isMatch ? size : size - 5}px`};
   position: relative;
   overflow: hidden;
   border-radius: 5px;
@@ -36,4 +41,11 @@ export const Wrapper = styled.figure<IWrapperProps>`
       }
     }
   }
+`
+
+export const MasteryIcon = styled.div`
+  position: absolute;
+  top: 0;
+  margin-top: -5px;
+  margin-left: 5px;
 `

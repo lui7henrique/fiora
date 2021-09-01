@@ -3,6 +3,7 @@ import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
 import { AppProps } from "next/app"
 import Head from "next/head"
+import NextNProgress from "nextjs-progressbar"
 import { GlobalStyles } from "styles/global"
 
 import "swiper/swiper.min.css"
@@ -23,6 +24,13 @@ function MyApp({ Component, pageProps }: AppProps) {
           content="A simple project starter to work with Typescript, React, NextJS and Styled Components"
         />
       </Head>
+      <NextNProgress
+        color="linear-gradient(90deg, #8257e5 5%, #6833e4 50%, #6833e4 100%)"
+        startPosition={0.3}
+        stopDelayMs={200}
+        height={5}
+        showOnShallow={true}
+      />
       <DefaultSeo {...SEO} />
       <GlobalStyles />
       <Header />

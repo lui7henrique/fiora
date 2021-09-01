@@ -96,8 +96,3 @@ export const Search = styled.section`
     color: var(--primary);
   }
 `
-
-export const Difficulty = styled.section`
-  height: 2rem;
-  width: 150px;
-`

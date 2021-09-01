@@ -26,7 +26,7 @@ export function ChampionsTemplate({
     }
   }
 
-  function searchByName(name: string) {
+  function handleSearchByName(name: string) {
     const query = name.trim().toLowerCase()
 
     if (category !== "") {
@@ -56,7 +56,7 @@ export function ChampionsTemplate({
           <Search size={20} />
           <input
             type="text"
-            onChange={(e) => searchByName(e.target.value)}
+            onChange={(e) => handleSearchByName(e.target.value)}
             placeholder="Pesquisa"
           />
         </S.Search>
