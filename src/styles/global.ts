@@ -9,7 +9,10 @@ export const GlobalStyles = createGlobalStyle`
     --primary-border: #6833e4;
     --primary-shape: #734bd1;
 
-    --green: #04d361;
+    --defeat: #AB2A30;
+    --win: #237563;
+
+    --green: #8cc84b;
     --green-low: #1c2a24;
     --green-darker: #0f3924;
 

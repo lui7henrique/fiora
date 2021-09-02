@@ -9,7 +9,7 @@ import * as S from "./styles"
 
 export function SummonerTemplate({ summoner }: ISummonerProps) {
   const [section, setSection] = useState("match-history")
-  console.log(summoner)
+
   return (
     <S.Container>
       <Banner splash_art={summoner.splash_art} />
