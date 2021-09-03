@@ -27,7 +27,9 @@ export function Match({ match }: IMatchProps) {
     (participant) => participant.participantId === principalPlayerId
   )[0]
 
-  console.log(principalPlayer)
+  const kda = `${principalPlayer.stats.kills} / ${principalPlayer.stats.deaths} / ${principalPlayer.stats.assists}`
+
+  console.log(match)
 
   return (
     <S.Container>
@@ -58,7 +60,11 @@ export function Match({ match }: IMatchProps) {
           <sub>{FormatSecondsToMinutes(match.duration)}</sub>
           <sub>{TimestampConverter(match.timestamp)}</sub>
         </S.Times>
+        <S.KDA>{kda}</S.KDA>
       </S.Infos>
+      <S.BuildTeams>
+        <h2>oii</h2>
+      </S.BuildTeams>
     </S.Container>
   )
 }

@@ -2,7 +2,6 @@ import styled from "styled-components"
 
 interface IWrapperProps {
   size: number
-  isMatch: boolean
 }
 
 export const Container = styled.div`
@@ -10,7 +9,8 @@ export const Container = styled.div`
 `
 
 export const Wrapper = styled.figure<IWrapperProps>`
-  height: ${({ size, isMatch }) => `${isMatch ? size : size - 5}px`};
+  max-height: ${({ size }) => `${size}px`};
+  width: ${({ size }) => `${size}px`};
   position: relative;
   overflow: hidden;
   border-radius: 5px;
@@ -19,6 +19,8 @@ export const Wrapper = styled.figure<IWrapperProps>`
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
   img {
+    width: ${({ size }) => `${size}px`};
+    height: ${({ size }) => `${size}px`};
     object-fit: cover;
     -webkit-transform: scale(1.13);
     transform: scale(1.13);

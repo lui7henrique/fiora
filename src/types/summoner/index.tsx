@@ -32,7 +32,7 @@ export type Match = {
   timestamp: number
   duration: number
   lane: string
-  teams: any
+  teams: Team[]
   participants: {
     championId: number
     participantId: number
@@ -143,4 +143,26 @@ export type Rank = {
   tier: string
   veteran: boolean
   wins: number
+}
+
+export type Team = {
+  bans: {
+    championId: number
+    pickTurn: number
+  }[]
+  baronKills: number
+  dominionVictoryScore: number
+  dragonKills: number
+  firstBaron: boolean
+  firstBlood: boolean
+  firstDragon: boolean
+  firstInhibitor: boolean
+  firstRiftHerald: boolean
+  firstTower: boolean
+  inhibitorKills: number
+  riftHeraldKills: number
+  teamId: number
+  towerKills: number
+  vilemawKills: number
+  win: string
 }

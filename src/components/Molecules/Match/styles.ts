@@ -79,3 +79,16 @@ export const Spells = styled.div`
     }
   }
 `
+
+export const KDA = styled.h5`
+  font-size: 0.9rem;
+  font-weight: bold;
+  letter-spacing: -1px;
+`
+
+export const BuildTeams = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+`
