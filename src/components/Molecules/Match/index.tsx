@@ -33,7 +33,7 @@ export function Match({ match }: IMatchProps) {
 
   return (
     <S.Container>
-      <ImageWrapper size={50} icon={match.champion_icon} isMatch />
+      <ImageWrapper size={50} icon={match.champion_icon} />
       <S.Spells>
         <Image
           src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner${FormatSpell(

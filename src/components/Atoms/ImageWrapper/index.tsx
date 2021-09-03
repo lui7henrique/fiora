@@ -6,18 +6,16 @@ interface IImageWrapperProps {
   icon: string
   size: number
   mastery_level?: number
-  isMatch?: boolean
 }
 
 export function ImageWrapper({
   icon,
   size,
-  mastery_level,
-  isMatch
+  mastery_level
 }: IImageWrapperProps) {
   return (
     <S.Container>
-      <S.Wrapper size={size} isMatch={isMatch ? true : false}>
+      <S.Wrapper size={size}>
         <Image src={icon} alt={icon} width={size} height={size} quality={100} />
       </S.Wrapper>
       {mastery_level && mastery_level > 3 && (
