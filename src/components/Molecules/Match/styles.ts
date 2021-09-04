@@ -5,6 +5,7 @@ export const Container = styled.section`
   display: flex;
   align-items: center;
   gap: 1rem;
+  cursor: pointer;
 
   &:hover {
     background: var(--shape-hover);
@@ -94,6 +95,7 @@ export const KDA = styled.h5`
 export const BuildTeams = styled.div`
   width: 100%;
   display: flex;
+  align-items: center;
   justify-content: space-around;
   gap: 1rem;
 

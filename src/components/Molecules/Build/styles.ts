@@ -8,10 +8,6 @@ export const Container = styled.div`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
 
-    .caralhooo {
-      display: none;
-    }
-
     img {
       width: 25px;
       height: 25px;
@@ -51,6 +47,8 @@ export const Container = styled.div`
   }
 
   div {
+    max-height: 30px;
+
     border-radius: 5px;
   }
 `

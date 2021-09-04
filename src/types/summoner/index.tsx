@@ -36,6 +36,7 @@ export type Match = {
   participants: {
     championId: number
     participantId: number
+    teamId: number
     spell1Id: number
     spell2Id: number
     stats: Stats

@@ -40,6 +40,40 @@ export function Match({ match }: IMatchProps) {
   build.push(principalPlayer.stats.item5)
   build.push(principalPlayer.stats.item6)
 
+  const team1 = match.participants
+    .filter((participant) => {
+      return participant.teamId === 100
+    })
+    .map((participant) => {
+      return {
+        championId: participant.championId,
+        championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
+        participantId: participant.participantId,
+        nick: match.participantIdentities.filter(
+          (participantIdentity) =>
+            participantIdentity.participantId === participant.participantId
+        )[0].player.summonerName
+      }
+    })
+
+  const team2 = match.participants
+    .filter((participant) => {
+      return participant.teamId === 200
+    })
+    .map((participant) => {
+      return {
+        championId: participant.championId,
+        championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
+        participantId: participant.participantId,
+        nick: match.participantIdentities.filter(
+          (participantIdentity) =>
+            participantIdentity.participantId === participant.participantId
+        )[0].player.summonerName
+      }
+    })
+
+  console.log(team1, team2)
+
   return (
     <S.Container>
       <ImageWrapper size={40} icon={match.champion_icon} />
@@ -74,7 +108,7 @@ export function Match({ match }: IMatchProps) {
 
       <S.BuildTeams>
         <Build build={build} />
-        <Teams />
+        <Teams team1={team1} team2={team2} />
       </S.BuildTeams>
     </S.Container>
   )
