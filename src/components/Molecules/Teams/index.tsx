@@ -18,7 +18,7 @@ export function Teams({ team1, team2 }: ITeamsProps) {
   console.log(``)
   return (
     <S.Container className="teams">
-      <S.Team>
+      <S.Team className="team1">
         {team1.map((participant) => {
           return (
             <S.Participant key={participant.participantId}>

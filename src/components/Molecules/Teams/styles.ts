@@ -19,7 +19,7 @@ export const Participant = styled.div`
   align-items: center;
 
   p {
-    max-width: 80px;
+    width: 80px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;

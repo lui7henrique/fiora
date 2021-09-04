@@ -1,10 +1,33 @@
 import { GetServerSideProps } from "next"
+import { NextSeo } from "next-seo"
 import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
 import { ISummonerProps, Match } from "types/summoner"
 
 export default function Summoner({ summoner }: ISummonerProps) {
-  return <SummonerTemplate summoner={summoner} />
+  return (
+    <>
+      <NextSeo
+        title={summoner.nick}
+        description={`Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais!1`}
+        canonical={`https://fiora.vercel.app/summoner/${summoner.nick}`}
+        openGraph={{
+          url: `https://fiora.vercel.app/summoner/${summoner.nick}`,
+          title: summoner.nick,
+          description: `Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais!1`,
+          images: [
+            {
+              url: summoner.splash_art,
+              width: 1280,
+              height: 720,
+              alt: summoner.nick
+            }
+          ]
+        }}
+      />
+      <SummonerTemplate summoner={summoner} />
+    </>
+  )
 }
 
 export const getServerSideProps: GetServerSideProps = async (ctx) => {
@@ -112,8 +135,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             item6: unformattedPrincipalPlayer.stats.item6
           }
         }
-
-        console.log(principalPlayer)
 
         const kda = `${principalPlayer.stats.kills} / ${principalPlayer.stats.deaths} / ${principalPlayer.stats.assists}`
 
