@@ -32,20 +32,42 @@ export type Match = {
   timestamp: number
   duration: number
   lane: string
-  teams: Team[]
-  participants: {
+  principalPlayer: PrincipalPlayer
+  kda: string
+  build: number[]
+  team1: {
     championId: number
+    championIcon: string
     participantId: number
-    teamId: number
-    spell1Id: number
-    spell2Id: number
-    stats: Stats
-    timeline: Timeline
+    nick: string
   }[]
-  participantIdentities: {
+  team2: {
+    championId: number
+    championIcon: string
     participantId: number
-    player: ParticipantIdentity
+    nick: string
   }[]
+}
+
+export type PrincipalPlayer = {
+  participantId: number
+  teamId: number
+  championId: number
+  spell1Id: number
+  spell2Id: number
+  stats: {
+    win: boolean
+    kills: number
+    deaths: number
+    assists: number
+    item0: number
+    item1: number
+    item2: number
+    item3: number
+    item4: number
+    item5: number
+    item6: number
+  }
 }
 
 export type ParticipantIdentity = {
@@ -59,53 +81,53 @@ export type ParticipantIdentity = {
   summonerName: string
 }
 
-type Timeline = {
-  creepsPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  csDiffPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  damageTakenDiffPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  damageTakenPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  goldPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  lane: string
-  participantId: number
-  role: string
-  xpDiffPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-  xpPerMinDeltas: {
-    "10-20": number
-    " 0-10": number
-    "30-end": number
-    "20-30": number
-  }
-}
+// type Timeline = {
+//   creepsPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   csDiffPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   damageTakenDiffPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   damageTakenPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   goldPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   lane: string
+//   participantId: number
+//   role: string
+//   xpDiffPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+//   xpPerMinDeltas: {
+//     "10-20": number
+//     " 0-10": number
+//     "30-end": number
+//     "20-30": number
+//   }
+// }
 
 export type Stats = {
   assists: number

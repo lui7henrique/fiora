@@ -1,5 +1,4 @@
 import { ImageWrapper } from "components/Atoms/ImageWrapper"
-import { useRouter } from "next/dist/client/router"
 import Image from "next/image"
 import { Match as MatchType } from "types/summoner"
 import { FormatSecondsToMinutes } from "utils/FormatSecondsToMinutes"
@@ -15,100 +14,41 @@ interface IMatchProps {
 }
 
 export function Match({ match }: IMatchProps) {
-  const { query } = useRouter()
-  const principalPlayerNick = query.nick
-
-  const { participantId: principalPlayerId } =
-    match.participantIdentities.filter(
-      (participantIdentity) =>
-        participantIdentity.player.summonerName.toLowerCase() ===
-        principalPlayerNick
-    )[0]
-
-  const principalPlayer = match.participants.filter(
-    (participant) => participant.participantId === principalPlayerId
-  )[0]
-
-  const kda = `${principalPlayer.stats.kills} / ${principalPlayer.stats.deaths} / ${principalPlayer.stats.assists}`
-
-  const build = []
-  build.push(principalPlayer.stats.item0)
-  build.push(principalPlayer.stats.item1)
-  build.push(principalPlayer.stats.item2)
-  build.push(principalPlayer.stats.item3)
-  build.push(principalPlayer.stats.item4)
-  build.push(principalPlayer.stats.item5)
-  build.push(principalPlayer.stats.item6)
-
-  const team1 = match.participants
-    .filter((participant) => {
-      return participant.teamId === 100
-    })
-    .map((participant) => {
-      return {
-        championId: participant.championId,
-        championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
-        participantId: participant.participantId,
-        nick: match.participantIdentities.filter(
-          (participantIdentity) =>
-            participantIdentity.participantId === participant.participantId
-        )[0].player.summonerName
-      }
-    })
-
-  const team2 = match.participants
-    .filter((participant) => {
-      return participant.teamId === 200
-    })
-    .map((participant) => {
-      return {
-        championId: participant.championId,
-        championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
-        participantId: participant.participantId,
-        nick: match.participantIdentities.filter(
-          (participantIdentity) =>
-            participantIdentity.participantId === participant.participantId
-        )[0].player.summonerName
-      }
-    })
-
-  console.log(team1, team2)
-
   return (
     <S.Container>
       <ImageWrapper size={40} icon={match.champion_icon} />
       <S.Spells>
         <Image
           src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner${FormatSpell(
-            principalPlayer.spell1Id
+            match.principalPlayer.spell1Id
           )}.png`}
           width={17}
           height={17}
-          alt={String(principalPlayer.spell1Id)}
+          alt={String(match.principalPlayer.spell1Id)}
         />
         <Image
           src={`https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/data/spells/icons2d/summoner${FormatSpell(
-            principalPlayer.spell2Id
+            match.principalPlayer.spell2Id
           )}.png`}
           width={17}
           height={17}
-          alt={String(principalPlayer.spell2Id)}
+          alt={String(match.principalPlayer.spell2Id)}
         />
       </S.Spells>
       <S.Infos>
-        <h5 className={`${principalPlayer.stats.win ? "win" : "defeat"}`}>
-          {principalPlayer.stats.win ? "Vitória" : "Derrota"}
+        <h5 className={`${match.principalPlayer.stats.win ? "win" : "defeat"}`}>
+          {match.principalPlayer.stats.win ? "Vitória" : "Derrota"}
         </h5>
         <S.Times>
           <sub>{FormatSecondsToMinutes(match.duration)}</sub>
           <sub>{TimestampConverter(match.timestamp)}</sub>
         </S.Times>
-        <S.KDA>{kda}</S.KDA>
+        <S.KDA>{match.kda}</S.KDA>
       </S.Infos>
 
       <S.BuildTeams>
-        <Build build={build} />
-        <Teams team1={team1} team2={team2} />
+        <Build build={match.build} />
+        <Teams team1={match.team1} team2={match.team2} />
       </S.BuildTeams>
     </S.Container>
   )

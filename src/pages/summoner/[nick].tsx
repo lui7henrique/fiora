@@ -47,7 +47,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
             key: mastery.championId,
             level: mastery.championLevel,
             points: mastery.championPoints,
-            lastPlayTime: mastery.lastPlayTime,
             chestGranted: mastery.chestGranted,
             name: champion.name,
             category: champion.category,
@@ -82,9 +81,86 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         const { data: Match } = await api.get(
           `match/v4/matches/${match.gameId}`
         )
-        const { data: Timeline } = await api.get(
-          `match/v4/timelines/by-match/${match.gameId}`
-        )
+
+        const { participantId: principalPlayerId } =
+          Match.participantIdentities.filter(
+            (participantIdentity: any) =>
+              participantIdentity.player.summonerName.toLowerCase() === nick
+          )[0]
+
+        const unformattedPrincipalPlayer = Match.participants.filter(
+          (participant: any) => participant.participantId === principalPlayerId
+        )[0]
+
+        const principalPlayer = {
+          participantId: unformattedPrincipalPlayer.participantId,
+          teamId: unformattedPrincipalPlayer.teamId,
+          championId: unformattedPrincipalPlayer.championId,
+          spell1Id: unformattedPrincipalPlayer.spell1Id,
+          spell2Id: unformattedPrincipalPlayer.spell2Id,
+          stats: {
+            win: unformattedPrincipalPlayer.stats.win,
+            kills: unformattedPrincipalPlayer.stats.kills,
+            deaths: unformattedPrincipalPlayer.stats.deaths,
+            assists: unformattedPrincipalPlayer.stats.assists,
+            item0: unformattedPrincipalPlayer.stats.item0,
+            item1: unformattedPrincipalPlayer.stats.item1,
+            item2: unformattedPrincipalPlayer.stats.item2,
+            item3: unformattedPrincipalPlayer.stats.item3,
+            item4: unformattedPrincipalPlayer.stats.item4,
+            item5: unformattedPrincipalPlayer.stats.item5,
+            item6: unformattedPrincipalPlayer.stats.item6
+          }
+        }
+
+        console.log(principalPlayer)
+
+        const kda = `${principalPlayer.stats.kills} / ${principalPlayer.stats.deaths} / ${principalPlayer.stats.assists}`
+
+        const team1 = Match.participants
+          .filter((participant: any) => {
+            return participant.teamId === 100
+          })
+          .map((participant: any) => {
+            return {
+              championId: participant.championId,
+              championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
+              participantId: participant.participantId,
+              nick: Match.participantIdentities.filter(
+                (participantIdentity: any) =>
+                  participantIdentity.participantId ===
+                  participant.participantId
+              )[0].player.summonerName
+            }
+          })
+
+        const team2 = Match.participants
+          .filter((participant: any) => {
+            return participant.teamId === 200
+          })
+          .map((participant: any) => {
+            return {
+              championId: participant.championId,
+              championIcon: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${participant.championId}.png`,
+              participantId: participant.participantId,
+              nick: Match.participantIdentities.filter(
+                (participantIdentity: any) =>
+                  participantIdentity.participantId ===
+                  participant.participantId
+              )[0].player.summonerName
+            }
+          })
+
+        const build = []
+        build.push(principalPlayer.stats.item0)
+        build.push(principalPlayer.stats.item1)
+        build.push(principalPlayer.stats.item2)
+        build.push(principalPlayer.stats.item3)
+        build.push(principalPlayer.stats.item4)
+        build.push(principalPlayer.stats.item5)
+        build.push(principalPlayer.stats.item6)
+
+        console.log(team1)
 
         return {
           id: match.gameId,
@@ -94,10 +170,11 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
           timestamp: match.timestamp,
           duration: Match.gameDuration,
           lane: match.lane,
-          teams: Match.teams,
-          participants: Match.participants,
-          participantIdentities: Match.participantIdentities,
-          timeline: Timeline
+          principalPlayer,
+          kda,
+          build,
+          team1,
+          team2
         }
       })
     )
@@ -105,7 +182,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     const summoner = {
       id: dataSummoner.id,
       accountId: dataSummoner.accountId,
-      puuid: dataSummoner.puuid,
       nick: dataSummoner.name,
       splash_art: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${matches[0].champion_id}/${matches[0].champion_id}000.jpg`,
       icon: `http://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/${dataSummoner.profileIconId}.png`,
