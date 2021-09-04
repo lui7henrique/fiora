@@ -1,10 +1,12 @@
 import { ImageWrapper } from "components/Atoms/ImageWrapper"
+import Link from "next/link"
 
 import * as S from "./styles"
 
 interface ITeamsProps {
   team1: Team[]
   team2: Team[]
+  principalPlayerId: number
 }
 
 type Team = {
@@ -14,16 +16,26 @@ type Team = {
   nick: string
 }
 
-export function Teams({ team1, team2 }: ITeamsProps) {
-  console.log(``)
+export function Teams({ team1, team2, principalPlayerId }: ITeamsProps) {
   return (
     <S.Container className="teams">
       <S.Team className="team1">
         {team1.map((participant) => {
           return (
             <S.Participant key={participant.participantId}>
-              <ImageWrapper icon={participant.championIcon} size={15} />
-              <p>{participant.nick}</p>
+              <Link href={`/summoner/${participant.nick}`}>
+                <a>
+                  <ImageWrapper icon={participant.championIcon} size={15} />
+                  <p
+                    className={`${
+                      participant.participantId === principalPlayerId &&
+                      "principalPlayer"
+                    }`}
+                  >
+                    {participant.nick}
+                  </p>
+                </a>
+              </Link>
             </S.Participant>
           )
         })}
@@ -32,8 +44,19 @@ export function Teams({ team1, team2 }: ITeamsProps) {
         {team2.map((participant) => {
           return (
             <S.Participant key={participant.participantId}>
-              <ImageWrapper icon={participant.championIcon} size={15} />
-              <p>{participant.nick}</p>
+              <Link href={`/summoner/${participant.nick}`}>
+                <a>
+                  <ImageWrapper icon={participant.championIcon} size={15} />
+                  <p
+                    className={`${
+                      participant.participantId === principalPlayerId &&
+                      "principalPlayer"
+                    }`}
+                  >
+                    {participant.nick}
+                  </p>
+                </a>
+              </Link>
             </S.Participant>
           )
         })}

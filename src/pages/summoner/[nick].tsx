@@ -9,12 +9,12 @@ export default function Summoner({ summoner }: ISummonerProps) {
     <>
       <NextSeo
         title={summoner.nick}
-        description={`Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais!1`}
+        description={`Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais! 🤗`}
         canonical={`https://fiora.vercel.app/summoner/${summoner.nick}`}
         openGraph={{
           url: `https://fiora.vercel.app/summoner/${summoner.nick}`,
           title: summoner.nick,
-          description: `Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais!1`,
+          description: `Explore informações sobre ${summoner.nick}, como histórico, maestrias, elo, e muito mais! 🤗`,
           images: [
             {
               url: summoner.splash_art,

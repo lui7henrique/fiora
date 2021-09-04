@@ -4,7 +4,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
 
-  section + section {
+  a + a {
     border-top: 1px solid var(--borders);
   }
 `

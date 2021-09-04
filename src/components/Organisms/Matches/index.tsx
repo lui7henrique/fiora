@@ -11,7 +11,7 @@ export function Matches({ matches }: IMatchesProps) {
   return (
     <S.Container>
       {matches.map((match) => {
-        return <Match key={match.id} match={match}></Match>
+        return <Match match={match} key={match.id} />
       })}
     </S.Container>
   )

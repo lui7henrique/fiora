@@ -79,21 +79,7 @@ export const getStaticProps: GetStaticProps = async () => {
       info: champion.info,
       icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${champion.name}.png`,
       splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name}_0.jpg`,
-      splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${champion.key}/${champion.key}000.jpg`,
-      stats: {
-        armor: champion.stats.armor,
-        armorperlevel: champion.stats.armorperlevel,
-        attackdamage: champion.stats.attackdamage,
-        attackdamageperlevel: champion.stats.attackdamageperlevel,
-        attackrange: champion.stats.attackrange,
-        attackspeed: champion.stats.attackspeed,
-        attackspeedperlevel: champion.stats.attackspeedperlevel,
-        crit: champion.stats.crit,
-        critperlevel: champion.stats.critperlevel,
-        hp: champion.stats.hp,
-        hpperlevel: champion.stats.hpperlevel,
-        movespeed: champion.stats.movespeed
-      }
+      splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${champion.key}/${champion.key}000.jpg`
     }
   })
 

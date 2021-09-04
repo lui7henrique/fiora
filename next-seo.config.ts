@@ -4,8 +4,8 @@ export default {
   openGraph: {
     type: "website",
     locale: "en_US",
-    url: "https://talon.vercel.app/",
-    site_name: "Talon"
+    url: "https://fiora.vercel.app",
+    site_name: "Fiora"
   },
   github: {
     handle: "lui7henrique",
