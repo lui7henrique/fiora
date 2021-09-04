@@ -34,6 +34,10 @@ export const Times = styled.div`
   color: var(--support);
   font-weight: bold;
 
+  @media (max-width: 768px) {
+    display: none;
+  }
+
   sub + sub {
     position: relative;
     &:before {
@@ -81,6 +85,7 @@ export const Spells = styled.div`
 `
 
 export const KDA = styled.h5`
+  white-space: nowrap;
   font-size: 0.9rem;
   font-weight: bold;
   letter-spacing: -1px;
@@ -89,6 +94,12 @@ export const KDA = styled.h5`
 export const BuildTeams = styled.div`
   width: 100%;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    .teams {
+      display: none;
+    }
+  }
 `
