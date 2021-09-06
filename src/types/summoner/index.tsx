@@ -9,6 +9,7 @@ export type ISummonerProps = {
     splash_art: string
     matches: Match[]
     masteries: Mastery[]
+    ranks: Rank[]
   }
 }
 
@@ -153,19 +154,14 @@ export type Stats = {
 }
 
 export type Rank = {
-  freshBlood: boolean
-  hotStreak: boolean
-  inactive: boolean
-  leagueId: string
-  leaguePoints: number
-  losses: number
-  queueType: string
-  rank: string
-  summonerId: string
-  summonerName: string
+  queue: string
   tier: string
-  veteran: boolean
+  rank: number
   wins: number
+  losses: number
+  hotStreak: true
+  winrate: number
+  lps: number
 }
 
 export type Team = {

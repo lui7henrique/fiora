@@ -2,6 +2,7 @@ import { Banner } from "components/Molecules/Banner"
 import { Profile } from "components/Molecules/Profile"
 import { Masteries } from "components/Organisms/Masteries"
 import { Matches } from "components/Organisms/Matches"
+import { Ranks } from "components/Organisms/Ranks"
 import { useState } from "react"
 import { ISummonerProps } from "types/summoner"
 
@@ -20,6 +21,7 @@ export function SummonerTemplate({ summoner }: ISummonerProps) {
             name={summoner.nick}
             level={summoner.level}
           />
+          <Ranks ranks={summoner.ranks} />
         </S.Aside>
 
         <S.Main>

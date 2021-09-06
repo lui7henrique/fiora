@@ -28,13 +28,15 @@ export const Aside = styled.aside`
   display: flex;
   flex-direction: column;
   background: var(--shape);
-  gap: 1rem;
 
-  padding: 1rem;
   border-radius: 3px;
 
   @media (max-width: 768px) {
     width: 100%;
+  }
+
+  > section {
+    padding: 1rem;
   }
 `
 

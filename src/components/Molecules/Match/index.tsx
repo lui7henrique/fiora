@@ -15,6 +15,7 @@ interface IMatchProps {
 }
 
 export function Match({ match }: IMatchProps) {
+  console.log(match.principalPlayer.spell1Id)
   return (
     <Link href={`/match/${match.id}`}>
       <a>

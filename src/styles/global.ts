@@ -30,16 +30,19 @@ export const GlobalStyles = createGlobalStyle`
     --attention: #fd951f;
     --borders: #323238;
 
+    --iron: #696362;
+    --silver: #859BA2;
+    --gold: #EBD061;
+    --platinum: #4E9996;
+    --diamond: #576BCE;
+    --master: #9D48E0;
+    --grandmaster: #D94444;
+    --challenger: #F4C874;
+
     --damage: #db3a2c;
     --defense: #8cc84b;
     --magic: #a32ddf;
     --difficulty: #2ac7e3;
-
-    --react-native: #4763ff;
-    --flutter: #0389ff;
-    --dowhile: #ff248a;
-    --black: #09090a;
-    --white: #fff
   }
   * {
     margin: 0;

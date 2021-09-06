@@ -3,6 +3,8 @@ import { NextSeo } from "next-seo"
 import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
 import { ISummonerProps, Match } from "types/summoner"
+import { CalcWinrate } from "utils/CalcWinrate"
+import { FormatRank } from "utils/FormatRank"
 
 export default function Summoner({ summoner }: ISummonerProps) {
   return (
@@ -181,8 +183,6 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
         build.push(principalPlayer.stats.item5)
         build.push(principalPlayer.stats.item6)
 
-        console.log(team1)
-
         return {
           id: match.gameId,
           champion_id: match.champion,
@@ -200,15 +200,33 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       })
     )
 
+    const { data: dataRank } = await api.get(
+      `/league/v4/entries/by-summoner/${dataSummoner.id}`
+    )
+
+    const ranks = dataRank.map((rank: any) => {
+      return {
+        queue: rank.queueType,
+        tier: rank.tier.toLowerCase(),
+        rank: FormatRank(rank.rank),
+        wins: rank.wins,
+        losses: rank.losses,
+        hotStreak: rank.hotStreak,
+        lps: rank.leaguePoints,
+        winrate: CalcWinrate(rank.wins, rank.losses)
+      }
+    })
+    console.log(ranks)
+
     const summoner = {
       id: dataSummoner.id,
-      accountId: dataSummoner.accountId,
       nick: dataSummoner.name,
+      level: dataSummoner.summonerLevel,
       splash_art: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${matches[0].champion_id}/${matches[0].champion_id}000.jpg`,
       icon: `http://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/${dataSummoner.profileIconId}.png`,
-      level: dataSummoner.summonerLevel,
-      matches: matches,
-      masteries: masteries
+      matches,
+      masteries,
+      ranks
     }
 
     return {

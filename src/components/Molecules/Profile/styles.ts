@@ -34,6 +34,9 @@ export const IconWrapper = styled.figure`
     rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
 
   img {
+    transform: scale(1.2);
+    user-select: none;
+    -webkit-user-drag: none;
     background: #121214;
     background-image: linear-gradient(
       to right,

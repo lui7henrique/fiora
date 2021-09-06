@@ -20,5 +20,9 @@ export function FormatSpell(spellId: number) {
       return "ignite"
     case 21:
       return "barrier"
+    case 13:
+      return "_boost"
+    case 1:
+      return "_boost"
   }
 }

@@ -25,6 +25,8 @@ export const Wrapper = styled.figure<IWrapperProps>`
     -webkit-transform: scale(1.13);
     transform: scale(1.13);
     object-position: center;
+    user-select: none;
+    -webkit-user-drag: none;
 
     filter: brightness(0.8);
     background: #121214;

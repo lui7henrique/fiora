@@ -20,6 +20,8 @@ export const Container = styled.div`
   }
 
   img {
+    user-select: none;
+    -webkit-user-drag: none;
     background: #121214;
     background-image: linear-gradient(
       to right,
