@@ -43,6 +43,8 @@ export const GlobalStyles = createGlobalStyle`
     --defense: #8cc84b;
     --magic: #a32ddf;
     --difficulty: #2ac7e3;
+
+    --white: #ffffff;
   }
   * {
     margin: 0;

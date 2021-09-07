@@ -15,7 +15,11 @@ export function Rank({ rank }: IRankProps) {
       <S.Infos>
         <S.TierRankLps tier={rank.tier}>
           <h5>
-            {FormatTier(rank.tier)} {rank.rank}
+            {FormatTier(rank.tier)}{" "}
+            {rank.tier !== "grandmaster" &&
+              rank.tier !== "master" &&
+              rank.tier !== "challenger" &&
+              rank.rank}
           </h5>
         </S.TierRankLps>
         <S.WinLosses>

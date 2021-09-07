@@ -59,6 +59,8 @@ export const ImageContainer = styled.section`
         border: 0;
         font-weight: bold;
         width: 100%;
+        padding: 1rem;
+        border-radius: 0;
       }
 
       button {

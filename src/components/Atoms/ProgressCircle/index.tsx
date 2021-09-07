@@ -19,8 +19,12 @@ export function Progress({ tier, rank, lps }: IProgressProps) {
   let strokeDashOffset = circumference
 
   function setProgress(lps: number) {
-    const offset = circumference - (lps / 100) * circumference
-    strokeDashOffset = offset
+    if (lps > 100) {
+      strokeDashOffset = +strokeDashArray
+    } else {
+      const offset = circumference - (lps / 100) * circumference
+      strokeDashOffset = offset
+    }
   }
   setProgress(lps)
 
@@ -60,8 +64,8 @@ export function Progress({ tier, rank, lps }: IProgressProps) {
         <Image
           src={`/img/ranks/${tier}_${rank}.png`}
           alt="Rank"
-          width={size / 2}
-          height={size / 2}
+          width={size / 2.5}
+          height={size / 2.5}
         />
       </div>
     </S.Progress>

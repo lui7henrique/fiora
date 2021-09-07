@@ -27,7 +27,7 @@ export const Progress = styled.div<IProgressProps>`
       font-weight: bold;
       color: var(--support);
       text-transform: uppercase;
-      margin-bottom: -7px;
+      margin-bottom: -5px;
     }
 
     img {
