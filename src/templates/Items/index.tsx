@@ -12,7 +12,7 @@ interface IItensTemplateProps {
 }
 
 export function ItensTemplate({ items, tree }: IItensTemplateProps) {
-  const [currentItems, setItems] = useState(items.slice(0, 20))
+  const [currentItems, setItems] = useState(items.slice(0, 80))
   const [hasMore, setHasMore] = useState(true)
 
   const getMoreItems = async () => {
@@ -21,7 +21,7 @@ export function ItensTemplate({ items, tree }: IItensTemplateProps) {
     } else {
       const newItems = items.slice(
         currentItems.length,
-        currentItems.length + 20
+        currentItems.length + 80
       )
       setItems((currentItems) => [...currentItems, ...newItems])
     }
@@ -29,19 +29,19 @@ export function ItensTemplate({ items, tree }: IItensTemplateProps) {
 
   return (
     <S.Container>
-      <InfiniteScroll
-        dataLength={currentItems.length}
-        next={getMoreItems}
-        hasMore={hasMore}
-        loader={<h4>Loading...</h4>}
-        endMessage={
-          <p style={{ textAlign: "center" }}>
-            <b>Yay! You have seen it all</b>
-          </p>
-        }
-      >
-        <ItemsList items={currentItems} />
-      </InfiniteScroll>
+      <S.Filters>
+        <h1>Filtros</h1>
+      </S.Filters>
+      <S.List>
+        <InfiniteScroll
+          dataLength={currentItems.length}
+          next={getMoreItems}
+          hasMore={hasMore}
+          loader={<></>}
+        >
+          <ItemsList items={currentItems} />
+        </InfiniteScroll>
+      </S.List>
     </S.Container>
   )
 }

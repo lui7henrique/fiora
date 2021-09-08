@@ -29,10 +29,17 @@ export const getStaticProps: GetStaticProps = async () => {
         image: `http://ddragon.leagueoflegends.com/cdn/11.14.1/img/item/${item.image.full}`
       }
     })
+    .sort(function (a, b) {
+      if (a.gold.total > b.gold.total) {
+        return 1
+      }
+      if (a.gold.total < b.gold.total) {
+        return -1
+      }
+      return 0
+    })
 
   const tree = data.tree
-
-  console.log(items)
 
   return {
     props: {
