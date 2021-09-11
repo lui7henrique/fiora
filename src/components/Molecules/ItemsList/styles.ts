@@ -1,18 +1,25 @@
 import styled from "styled-components"
 
 export const Container = styled.section`
-  max-width: 100%;
+  max-width: none;
+  position: absolute;
+  background: var(--shape);
+  border-radius: 5px;
+  box-shadow: 0px -5px 0px var(--background) inset;
   display: grid;
   grid-template-columns: repeat(12, 1fr);
   padding: 1rem;
   gap: 1rem;
-  overflow: hidden;
 `
 
 export const Item = styled.div`
   position: relative;
-  cursor: pointer;
 
+  &:hover {
+    .infos {
+      display: block;
+    }
+  }
   img {
     border-radius: 5px;
     background: #121214;
@@ -33,5 +40,28 @@ export const Item = styled.div`
         background-position: 40rem 0;
       }
     }
+  }
+`
+
+export const Infos = styled.div`
+  background: var(--shape-hover);
+  position: absolute;
+  bottom: auto;
+  display: none;
+  z-index: 55;
+  border-radius: 5px;
+  padding: 1rem;
+`
+
+export const Description = styled.div`
+  width: 350px;
+`
+
+export const NameAndIcon = styled.div`
+  display: flex;
+  gap: 5px;
+
+  h3 {
+    white-space: nowrap;
   }
 `

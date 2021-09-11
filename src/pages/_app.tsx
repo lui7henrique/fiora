@@ -1,3 +1,4 @@
+import { Footer } from "components/Organisms/Footer"
 import { Header } from "components/Organisms/Header"
 import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
@@ -35,6 +36,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <GlobalStyles />
       <Header />
       <Component {...pageProps} />
+      <Footer />
     </>
   )
 }
