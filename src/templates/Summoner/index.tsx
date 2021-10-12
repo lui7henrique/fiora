@@ -1,7 +1,5 @@
-import { Banner } from "components/Molecules/Banner"
 import { Profile } from "components/Molecules/Profile"
 import { Masteries } from "components/Organisms/Masteries"
-import { Matches } from "components/Organisms/Matches"
 import { Ranks } from "components/Organisms/Ranks"
 import { useState } from "react"
 import { ISummonerProps } from "types/summoner"
@@ -13,7 +11,7 @@ export function SummonerTemplate({ summoner }: ISummonerProps) {
 
   return (
     <S.Container>
-      <Banner splash_art={summoner.splash_art} />
+      {/* <Banner splash_art={summoner.splash_art} /> */}
       <S.Content>
         <S.Aside>
           <Profile
@@ -42,7 +40,7 @@ export function SummonerTemplate({ summoner }: ISummonerProps) {
             </S.Options>
           </S.Header>
           {section === "match-history" && (
-            <Matches matches={summoner.matches} />
+            <Masteries masteries={summoner.masteries} />
           )}
           {section === "masteries" && (
             <Masteries masteries={summoner.masteries} />
