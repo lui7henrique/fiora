@@ -80,6 +80,7 @@ export const Search = styled.section`
   height: 2rem;
   padding-left: 1rem;
   gap: 1rem;
+  width: 100%;
 
   input {
     width: 95px;
@@ -90,6 +91,7 @@ export const Search = styled.section`
     color: var(--text);
     border-top: 1px solid var(--borders);
     border-bottom: 1px solid var(--borders);
+    width: 100%;
   }
 
   svg {

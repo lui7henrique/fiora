@@ -3,7 +3,7 @@ import styled from "styled-components"
 export const CardList = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1rem;
+  gap: 1.3rem;
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -16,36 +16,43 @@ export const Card = styled.section`
   max-width: 100%;
   display: flex;
   flex-direction: column;
-  background-color: var(--shape);
   position: relative;
+  overflow: hidden;
+  box-shadow: rgb(0 0 0 / 80%) 0px 20px 25px -16px,
+    rgb(0 0 0 / 72%) 0px 20px 20px -20px;
 
   &:hover {
     .wrapper {
       img {
         transform: scale(1.1);
-        filter: brightness(1);
+        filter: brightness(0.4);
       }
     }
-  }
 
-  &:after {
-    border-bottom-color: transparent;
-    border-left-color: transparent;
-    border-right-color: transparent;
-    border-style: solid;
-    border-top-color: var(--background);
-    border-width: 25px 25px 0 0;
-    content: "";
-    position: absolute;
-    transform: rotate(90deg);
-    right: 0;
-    top: 0;
-    z-index: 40;
+    .infos {
+      transform: translate(0%, 0%);
+    }
   }
 `
 
 export const Infos = styled.div`
-  padding: 0.5rem 1rem;
+  position: absolute;
+  bottom: 0;
+  transform: translate(-100%, 0%);
+  padding: 1rem;
+  transition: all 0.3s ease-in-out;
+`
+
+export const Name = styled.h2`
+  font-size: 1.3rem;
+  font-weight: 700;
+`
+
+export const Title = styled.h4`
+  font-size: 0.9rem;
+  font-weight: normal;
+  filter: brightness(0.7);
+  text-transform: capitalize;
 `
 
 export const Splash = styled.div`
@@ -75,11 +82,10 @@ export const Splash = styled.div`
     height: 210px;
     position: relative;
     overflow: hidden;
+    border-radius: 5px;
 
     img {
       object-fit: cover;
-      -webkit-transform: scaleX(1);
-      transform: scaleX(1);
       -webkit-transition: all 0.2s linear;
       transition: all 0.2s linear;
       object-position: top center;

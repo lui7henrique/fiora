@@ -46,6 +46,7 @@ export const GlobalStyles = createGlobalStyle`
 
     --white: #ffffff;
   }
+
   * {
     margin: 0;
     padding: 0;
@@ -66,7 +67,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: --apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: Robot, sans-serif;
     background: var(--background);
     color: var(--text);
     overflow-x: hidden;

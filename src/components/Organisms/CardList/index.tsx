@@ -21,8 +21,9 @@ export function CardList({ champions }: IChampionsProps) {
                     />
                   </figure>
                 </S.Splash>
-                <S.Infos>
-                  <h2>{champion.name}</h2>
+                <S.Infos className="infos">
+                  <S.Name>{champion.name}</S.Name>
+                  <S.Title>{champion.title}</S.Title>
                 </S.Infos>
               </S.Card>
             </a>
