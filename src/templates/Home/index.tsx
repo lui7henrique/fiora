@@ -1,9 +1,7 @@
 import { Search } from "@styled-icons/boxicons-regular"
 import { useRouter } from "next/dist/client/router"
-import Image from "next/image"
 import { useState } from "react"
 
-import fioraSplash from "../../../public/img/fiora.jpg"
 import * as S from "./styles"
 
 export function HomeTemplate() {
@@ -35,7 +33,6 @@ export function HomeTemplate() {
             </form>
           </div>
         </S.ImageContainer>
-        <Image src={fioraSplash} alt="Fiora splash" layout="fill"></Image>
       </S.ImageWrapper>
     </S.Container>
   )

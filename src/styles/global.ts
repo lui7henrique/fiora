@@ -6,6 +6,10 @@ export const GlobalStyles = createGlobalStyle`
     --shape: #202024;
     --gray: #e1e1e6;
     --text: #a8a8b3;
+    --support: #737380;
+
+    --title: #ffffff;
+    --subtitle: #9e9e9e;
 
     --primary: #8257e5;
     --primary-darker: #28203e;
@@ -21,13 +25,11 @@ export const GlobalStyles = createGlobalStyle`
     --green-low: #1c2a24;
     --green-darker: #0f3924;
 
-    --support: #737380;
 
     --shape-dark: #3c3c42;
     --shape-hover: #29292e;
 
     --icons: #41414d;
-    --attention: #fd951f;
     --borders: #323238;
 
     --iron: #696362;
@@ -73,9 +75,21 @@ export const GlobalStyles = createGlobalStyle`
     overflow-x: hidden;
   }
 
+  h1, h2, h3, h4, h5, h6 {
+    color: ${({ theme }) => theme.colors.title};
+  }
+
+  p {
+    color: ${({ theme }) => theme.colors.text}
+  }
+
   a {
     text-decoration: none;
-    color: var(--text);
+    color: ${({ theme }) => theme.colors.text};
+  }
+
+  sub {
+    color: ${({ theme }) => theme.colors.support};
   }
 
   button {
@@ -94,6 +108,7 @@ export const GlobalStyles = createGlobalStyle`
   body::-webkit-scrollbar-thumb {
     background-color: var(--primary);
     border: 3px solid var(--primary);
+    border-radius: 5px;
   }
 
   physicaldamage {

@@ -1,14 +1,16 @@
-import { Footer } from "components/Organisms/Footer"
 import { Header } from "components/Organisms/Header"
+import { PlayerProvider } from "hooks/usePlayer"
 import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
 import { AppProps } from "next/app"
 import Head from "next/head"
 import NextNProgress from "nextjs-progressbar"
+import { ThemeProvider } from "styled-components"
 import { GlobalStyles } from "styles/global"
-
 import "swiper/swiper.min.css"
 import "swiper/components/navigation/navigation.min.css"
+import theme from "styles/theme"
+
 import SEO from "../../next-seo.config"
 
 function MyApp({ Component, pageProps }: AppProps) {
@@ -33,10 +35,14 @@ function MyApp({ Component, pageProps }: AppProps) {
         showOnShallow={true}
       />
       <DefaultSeo {...SEO} />
-      <GlobalStyles />
-      <Header />
-      <Component {...pageProps} />
-      <Footer />
+
+      <ThemeProvider theme={theme}>
+        <PlayerProvider>
+          <GlobalStyles />
+          <Header />
+          <Component {...pageProps} />
+        </PlayerProvider>
+      </ThemeProvider>
     </>
   )
 }

@@ -3,18 +3,23 @@ import styled from "styled-components"
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 1rem;
+
+  line-height: 1.7;
+  text-align: justify;
+  background: ${({ theme }) => theme.colors.shape};
+  border-radius: 5px;
+`
+
+export const Title = styled.h3`
+  font-size: 1.5rem;
+  padding: 1rem;
 `
 
 export const Tips = styled.section`
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
-
-  & + & {
-    padding-top: 1rem;
-    border-top: 1px solid var(--borders);
-  }
+  padding: 1rem;
+  border-top: 1px solid var(--borders);
 
   ul {
     margin-left: 2rem;

@@ -10,10 +10,11 @@ interface IProfileProps {
 }
 
 export function Profile({ icon, name, title, level }: IProfileProps) {
+  console.log(icon)
   return (
     <S.BasicInfos>
       <S.IconWrapper>
-        <Image src={icon} width={130} height={130} alt="Profile icon" />
+        <Image src={icon} width={200} height={200} alt="Profile icon" />
       </S.IconWrapper>
       {level && <S.Level>{level}</S.Level>}
       <h1>{name}</h1>

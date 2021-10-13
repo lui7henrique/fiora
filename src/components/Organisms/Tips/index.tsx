@@ -8,6 +8,8 @@ interface ITipsProps {
 export function Tips({ allytips, enemytips }: ITipsProps) {
   return (
     <S.Container>
+      <S.Title>Dicas</S.Title>
+
       <S.Tips>
         <h4>Jogando como:</h4>
         <ul>
@@ -16,6 +18,7 @@ export function Tips({ allytips, enemytips }: ITipsProps) {
           })}
         </ul>
       </S.Tips>
+
       <S.Tips>
         <h4>Jogando contra:</h4>
         <ul>

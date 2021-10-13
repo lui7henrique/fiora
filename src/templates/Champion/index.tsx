@@ -1,11 +1,11 @@
 /* eslint-disable @next/next/no-img-element */
 import { ProgressBar } from "components/Atoms/ProgressBar"
 import { Banner } from "components/Molecules/Banner"
+import { Lore } from "components/Molecules/Lore"
 import { Profile } from "components/Molecules/Profile"
-import { Skills } from "components/Organisms/Skills"
+import { Skills } from "components/Molecules/Skills"
 import { Swiper } from "components/Organisms/Swiper"
 import { Tips } from "components/Organisms/Tips"
-import { useState } from "react"
 import { ChampionType } from "types/champion"
 
 import * as S from "./styles"
@@ -15,8 +15,6 @@ interface IChampionTemplateProps {
 }
 
 export function ChampionTemplate({ champion }: IChampionTemplateProps) {
-  const [section, setSection] = useState("lore")
-
   return (
     <S.Container>
       <Banner
@@ -27,9 +25,6 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
       />
       <S.Content>
         <S.Infos>
-          <S.Tags>
-            <S.Tag>{champion.tags[0]}</S.Tag>
-          </S.Tags>
           <Profile
             icon={champion.icon}
             name={champion.name}
@@ -62,55 +57,10 @@ export function ChampionTemplate({ champion }: IChampionTemplateProps) {
           />
         </S.Infos>
         <S.About>
-          <S.Header>
-            <S.Options>
-              <h3
-                className={`${section === "lore" && "active"} `}
-                onClick={() => setSection("lore")}
-              >
-                Lore
-              </h3>
-              <h3
-                className={`${section === "skills" && "active"} `}
-                onClick={() => setSection("skills")}
-              >
-                Skills
-              </h3>
-              {(champion.allytips.length > 0 ||
-                champion.enemytips.length > 0) && (
-                <h3
-                  className={`${section === "tips" && "active"} `}
-                  onClick={() => setSection("tips")}
-                >
-                  Dicas
-                </h3>
-              )}
-              {champion.id !== "Seraphine" && (
-                <h3
-                  className={`${section === "skins" && "active"} `}
-                  onClick={() => setSection("skins")}
-                >
-                  Skins
-                </h3>
-              )}
-            </S.Options>
-          </S.Header>
-
-          <S.AboutContent isSkins={section === "skins"}>
-            {section === "lore" && <S.Lore>{champion.lore}</S.Lore>}
-            {section === "skills" && (
-              <Skills skills={champion.spells} passive={champion.passive} />
-            )}
-            {section === "tips" && (
-              <Tips
-                enemytips={champion.enemytips}
-                allytips={champion.allytips}
-              />
-            )}
-            {section === "skins" && (
-              <Swiper skins={champion.skins} champion={champion.name} />
-            )}
-          </S.AboutContent>
+          <Lore lore={champion.lore} />
+          <Skills skills={champion.spells} passive={champion.passive} />
+          <Tips enemytips={champion.enemytips} allytips={champion.allytips} />
+          <Swiper skins={champion.skins} champion={champion.name} />
         </S.About>
       </S.Content>
     </S.Container>

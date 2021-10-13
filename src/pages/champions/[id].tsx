@@ -1,6 +1,8 @@
 import { NextSeo } from "next-seo"
 import { ChampionTemplate } from "templates/Champion"
 import { ChampionType } from "types/champion"
+import { addZeros } from "utils/champion/FormatChampionKey"
+import { formatSpellByIndex } from "utils/champion/FormatSpellByIndex"
 
 type IChampionProps = {
   champion: ChampionType
@@ -58,7 +60,7 @@ export async function getStaticProps({ params }: any) {
     tags: data.tags,
     info: data.info,
     stats: data.stats,
-    icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${data.id}.png`,
+    icon: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/${data.key}/${data.key}000.jpg`,
     splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${data.name}_0.jpg`,
     splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${data.key}/${data.key}000.jpg`,
 
@@ -85,19 +87,27 @@ export async function getStaticProps({ params }: any) {
       }
     }),
 
-    spells: data.spells.map((spell: any) => {
+    spells: data.spells.map((spell: any, index: number) => {
       return {
         id: spell.id,
         name: spell.name,
         description: spell.description,
-        image: `http://ddragon.leagueoflegends.com/cdn/11.13.1/img/spell/${spell.image.full}`
+        image: `http://ddragon.leagueoflegends.com/cdn/11.13.1/img/spell/${spell.image.full}`,
+        video: `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${addZeros(
+          data.key,
+          4
+        )}/ability_${addZeros(data.key, 4)}_${formatSpellByIndex(index)}1.mp4`
       }
     }),
 
     passive: {
       name: data.passive.name,
       description: data.passive.description,
-      image: `http://ddragon.leagueoflegends.com/cdn/11.13.1/img/passive/${data.passive.image.full}`
+      image: `http://ddragon.leagueoflegends.com/cdn/11.13.1/img/passive/${data.passive.image.full}`,
+      video: `https://d28xe8vt774jo5.cloudfront.net/champion-abilities/${addZeros(
+        data.key,
+        4
+      )}/ability_${addZeros(data.key, 4)}_P1.mp4`
     }
   }
 

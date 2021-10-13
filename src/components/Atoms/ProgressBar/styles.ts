@@ -35,7 +35,7 @@ export const Level = styled.div<ILevelProps>`
   &:after {
     border-bottom-color: transparent;
     border-left-color: transparent;
-    border-right-color: var(--shape);
+    border-right-color: ${({ theme }) => theme.colors.shape};
     border-style: solid;
     border-top-color: transparent;
     border-width: 8px 8px 0 0;
@@ -44,22 +44,22 @@ export const Level = styled.div<ILevelProps>`
     right: 0;
     bottom: 0;
     top: auto;
-    z-index: 40;
+    z-index: 5;
   }
 
   &:before {
     border-bottom-color: transparent;
-    border-left-color: var(--shape);
+    border-left-color: ${({ theme }) => theme.colors.shape};
     border-right-color: transparent;
     border-style: solid;
-    border-top-color: var(--shape);
+    border-top-color: ${({ theme }) => theme.colors.shape};
     border-width: 0 0 8px 8px;
     content: "";
     position: absolute;
     left: 0;
     top: 0;
     top: auto;
-    z-index: 40;
+    z-index: 5;
   }
 
   &.complete {

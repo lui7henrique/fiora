@@ -14,7 +14,7 @@ export const BasicInfos = styled.section`
   }
 
   h2 {
-    color: var(--support);
+    color: ${({ theme }) => theme.colors.support};
     text-transform: capitalize;
     margin-top: -5px;
     font-size: 0.8rem;
@@ -23,20 +23,25 @@ export const BasicInfos = styled.section`
 `
 
 export const IconWrapper = styled.figure`
-  width: 130px;
-  height: 130px;
+  width: 200px;
+  height: 200px;
   overflow: hidden;
   border-radius: 50%;
-  border: 5px solid var(--background);
   position: relative;
-  box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
-    rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
-    rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+  box-shadow: rgb(0 0 0 / 80%) 0px 20px 25px -16px,
+    rgb(0 0 0 / 72%) 0px 20px 20px -20px;
 
   img {
     transform: scale(1.2);
+    -webkit-transition: all 0.2s linear;
+    transition: all 0.2s linear;
+    object-position: top center;
+    filter: brightness(0.8);
+
     user-select: none;
     -webkit-user-drag: none;
+
+    // skeleton
     background: #121214;
     background-image: linear-gradient(
       to right,
