@@ -3,6 +3,10 @@ import { createGlobalStyle } from "styled-components"
 export const GlobalStyles = createGlobalStyle`
   :root {
     --background: #121214;
+    --shape: #202024;
+    --gray: #e1e1e6;
+    --text: #a8a8b3;
+
     --primary: #8257e5;
     --primary-darker: #28203e;
     --primary-hover: #9466ff;
@@ -11,18 +15,14 @@ export const GlobalStyles = createGlobalStyle`
 
     --defeat: #AB2A30;
     --win: #237563;
+    --yellow: #ffcd1e;
 
     --green: #8cc84b;
     --green-low: #1c2a24;
     --green-darker: #0f3924;
 
-    --yellow: #ffcd1e;
-
-    --gray: #e1e1e6;
-    --text: #a8a8b3;
     --support: #737380;
 
-    --shape: #202024;
     --shape-dark: #3c3c42;
     --shape-hover: #29292e;
 
