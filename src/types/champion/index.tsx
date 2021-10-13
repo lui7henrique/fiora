@@ -50,10 +50,12 @@ export type ChampionType = {
     name: string
     description: string
     image: string
+    video: string
   }[]
   passive: {
     name: string
     description: string
     image: string
+    video: string
   }
 }
