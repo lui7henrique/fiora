@@ -10,7 +10,7 @@ export function Header() {
       <S.Content>
         <Link href="/">
           <a>
-            <span className="logo">Fiora</span>
+            <span className="logo">Zed.gg</span>
           </a>
         </Link>
         <section>

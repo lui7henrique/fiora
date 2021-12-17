@@ -1,15 +1,9 @@
 export type ISummonerProps = {
   summoner: {
     id: number
-    accountId: string
-    puuid: string
     nick: string
-    icon: string
     level: number
-    splash_art: string
-    matches: Match[]
-    masteries: Mastery[]
-    ranks: Rank[]
+    icon: string
   }
 }
 

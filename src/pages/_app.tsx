@@ -39,7 +39,7 @@ function MyApp({ Component, pageProps }: AppProps) {
       <ThemeProvider theme={theme}>
         <PlayerProvider>
           <GlobalStyles />
-          <Header />
+
           <Component {...pageProps} />
         </PlayerProvider>
       </ThemeProvider>

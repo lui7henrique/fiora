@@ -1,81 +1,86 @@
 import styled from "styled-components"
 
-export const Container = styled.div`
-  margin-top: 5rem;
-`
+export const Container = styled.section``
 
-export const ImageWrapper = styled.section`
+export const VideoBanner = styled.video`
   width: 100%;
-  height: 85vh;
-  position: relative;
+  height: 100%;
+  filter: brightness(0.3);
+  object-fit: cover;
+  object-position: center;
 
-  img {
-    object-fit: cover;
-    transform: scale(1);
-    object-position: top center;
-    filter: brightness(0.3) blur(5px);
-    background: #121214;
-    background-image: linear-gradient(
-      to right,
-      #121214 0%,
-      #171719 20%,
-      #121214 40%,
-      #121214 100%
-    );
-    background-size: 80rem 14rem;
-    animation: placeholderShimmer 1s linear infinite forwards;
-    @keyframes placeholderShimmer {
-      0% {
-        background-position: -40rem 0;
-      }
-      100% {
-        background-position: 40rem 0;
-      }
-    }
+  @media (max-width: 768px) {
+    object-position: 38% center;
   }
 `
 
-export const ImageContainer = styled.section`
-  width: 100%;
+export const Mute = styled.div`
   position: absolute;
-  top: 50%;
+  bottom: 0;
+  margin: 1rem;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(0.8);
+  }
+`
+
+export const Wrapper = styled.section`
+  width: 100%;
+  height: 85vh;
+  position: relative;
+  background-image: url("/videos/zed.mp4");
+  background-size: cover;
+  background-repeat: no-repeat;
+`
+
+export const WrapperContainer = styled.section`
+  width: 100%;
+  height: auto;
   z-index: 2;
+  position: absolute;
+  top: 45%;
+`
 
-  div {
-    max-width: 640px;
-    padding: 1rem;
-    margin: 0 auto;
+export const WrapperContent = styled.div`
+  max-width: 640px;
+  margin: 0 auto;
+  padding: 1rem;
+`
 
-    form {
-      display: flex;
-      justify-content: space-between;
-      border-radius: 5px 50px 50px 5px;
-      height: 3rem;
-      background: var(--white);
-      padding: 0 0 0 1rem;
+export const Search = styled.form`
+  display: flex;
+  justify-content: space-between;
+  border-radius: 5px 50px 50px 5px;
+  height: 3.5rem;
+  background: var(--white);
+  padding-left: 0.5rem;
+  box-shadow: rgb(0 0 0 / 80%) 0px 20px 25px -16px,
+    rgb(0 0 0 / 72%) 0px 20px 20px -20px;
+`
 
-      input {
-        outline: 0;
-        border: 0;
-        font-weight: bold;
-        width: 100%;
-        padding: 1rem;
-        border-radius: 0;
-      }
+export const Input = styled.input`
+  outline: 0;
+  border: 0;
+  font-weight: normal;
+  font-size: 16px;
+  color: var(--text);
+  width: 100%;
+  padding: 1rem;
+  border-radius: 0;
+`
 
-      button {
-        outline: 0;
-        border: 0;
-        background: var(--primary);
-        width: 50px;
-        border-radius: 0 5px 5px 0;
-        cursor: pointer;
-        transition: all 0.2s ease-in-out;
+export const Button = styled.button`
+  outline: 0;
+  border: 0;
+  background: var(--primary);
+  width: 70px;
+  border-radius: 0 5px 5px 0;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
 
-        &:hover {
-          filter: brightness(0.8);
-        }
-      }
-    }
+  &:hover {
+    filter: brightness(0.8);
   }
 `

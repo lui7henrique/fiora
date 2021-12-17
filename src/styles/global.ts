@@ -69,7 +69,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: Robot, sans-serif;
+    font-family: Roboto, sans-serif;
     background: var(--background);
     color: var(--text);
     overflow-x: hidden;

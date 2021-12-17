@@ -1,3 +1,4 @@
+import { DefaultLayout } from "layouts/Default"
 import { NextSeo } from "next-seo"
 import { ChampionTemplate } from "templates/Champion"
 import { ChampionType } from "types/champion"
@@ -31,7 +32,9 @@ export default function Champion({ champion }: IChampionProps) {
           ]
         }}
       />
-      <ChampionTemplate champion={champion} />
+      <DefaultLayout>
+        <ChampionTemplate champion={champion} />
+      </DefaultLayout>
     </>
   )
 }
