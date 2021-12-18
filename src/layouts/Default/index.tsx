@@ -27,10 +27,10 @@ export const DefaultLayout = ({
       <NextSeo
         title={`Zed | ${title}`}
         description={description}
-        canonical="https://zed.vercel.app"
+        canonical="https://zed.gg.vercel.app"
         openGraph={{
-          url: "https://fiora.vercel.app",
-          title: "Fiora | Campeões",
+          url: "https://zed.gg.vercel.app",
+          title: `Zed | ${title}`,
           description:
             "Com mais de 140 Campeões à disposição, sempre há coisas novas para aperfeiçoar. Dê uma olhada em todos eles aqui.",
           images: [
