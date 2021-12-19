@@ -1,88 +1,56 @@
 import styled from "styled-components"
 
 export const Container = styled.div`
-  margin-top: 5rem;
-`
-export const Content = styled.div`
-  position: relative;
-  max-width: 1180px;
-  margin: 0 auto;
-  gap: 2rem;
-  padding: 1rem;
-
   display: flex;
-  align-items: flex-start;
-  -webkit-box-pack: justify;
-  justify-content: space-between;
-  z-index: 2;
+  flex-direction: column;
+  gap: 1rem;
+`
 
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
+export const Content = styled.div`
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  gap: 1rem;
 `
 
 export const Aside = styled.aside`
-  width: 30%;
-  margin-top: -104px;
-
   display: flex;
   flex-direction: column;
-  background: var(--shape);
-
-  border-radius: 3px;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-
-  > section {
-    padding: 1rem;
-  }
-`
-
-export const Main = styled.main`
-  display: flex;
-  flex-direction: column;
-
-  width: 70%;
-  background: var(--shape);
-  border-radius: 5px;
-  box-shadow: 0px -5px 0px var(--background) inset;
-
-  @media (max-width: 768px) {
-    width: 100%;
-  }
-`
-
-export const Header = styled.header`
-  height: 3rem;
-  border-bottom: 1px solid var(--borders);
-  display: flex;
   align-items: center;
+  gap: 1rem;
+  margin-top: -3rem;
 `
 
-export const Options = styled.section`
-  padding: 0 1rem;
+export const Profile = styled.div`
   display: flex;
-  gap: 1rem;
-  height: 3rem;
+  flex-direction: column;
+  position: relative;
+`
 
-  h3 {
-    margin-top: 0.7rem;
-    text-decoration: none;
-    color: var(--gray);
-    filter: brightness(0.5);
-    transition: all 0.1s ease-in-out;
-    cursor: pointer;
-    font-weight: normal;
+export const Level = styled.h3`
+  position: absolute;
+  bottom: 10%;
+  right: 0%;
+  padding: 1rem;
+  background: ${({ theme }) => theme.colors.shape};
 
-    &.active {
-      filter: brightness(1);
-      border-bottom: 2px solid var(--primary);
-    }
-    &:hover {
-      filter: brightness(1);
-      border-bottom: 2px solid var(--primary);
-    }
-  }
+  opacity: 1;
+  border-radius: 50%;
+  font-size: 14px;
+`
+
+export const Avatar = styled.img`
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  border-radius: 50%;
+  user-select: none;
+  -webkit-user-drag: none;
+`
+
+export const Nickname = styled.h1`
+  font-size: 1.5rem;
+  font-weight: bold;
+`
+
+export const Main = styled.section`
+  padding: 1rem;
 `
