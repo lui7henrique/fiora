@@ -1,5 +1,4 @@
 import { DefaultLayout } from "layouts/Default"
-import { NextSeo } from "next-seo"
 import { ChampionTemplate } from "templates/Champion"
 import { ChampionType } from "types/champion"
 import { addZeros } from "utils/champion/FormatChampionKey"
@@ -12,27 +11,7 @@ type IChampionProps = {
 export default function Champion({ champion }: IChampionProps) {
   return (
     <>
-      <NextSeo
-        title={`${champion.name}, ${champion.title}`}
-        description={champion.blurb}
-        canonical={`https://talon.vercel.app/champions/${champion.id}`}
-        openGraph={{
-          url: `https://talon.vercel.app/champions/${champion.id}`,
-          title: `${champion.name}, ${champion.title}`,
-          description: champion.blurb,
-          images: [
-            {
-              url:
-                champion.skins[champion.skins.length - 1].splash_art_cropped ??
-                champion.skins[0].splash_art_full,
-              width: 1280,
-              height: 720,
-              alt: champion.name
-            }
-          ]
-        }}
-      />
-      <DefaultLayout>
+      <DefaultLayout title={champion.name} description={champion.blurb}>
         <ChampionTemplate champion={champion} />
       </DefaultLayout>
     </>
