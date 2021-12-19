@@ -1,5 +1,4 @@
 import { GetStaticProps } from "next"
-import { NextSeo } from "next-seo"
 
 import { DefaultLayout } from "../../layouts/Default"
 import { ChampionsTemplate } from "../../templates/Champions/index"

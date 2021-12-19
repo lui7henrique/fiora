@@ -4,6 +4,8 @@ import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
 import { ISummonerProps } from "types/summoner"
 
+import { DefaultLayout } from "../../layouts/Default"
+
 export default function Summoner({ summoner }: ISummonerProps) {
   return (
     <>
@@ -25,7 +27,9 @@ export default function Summoner({ summoner }: ISummonerProps) {
           ]
         }}
       />
-      <SummonerTemplate summoner={summoner} />
+      <DefaultLayout title="Invocador" description="Invocador" hasLimiter>
+        <SummonerTemplate summoner={summoner} />
+      </DefaultLayout>
     </>
   )
 }

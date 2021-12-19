@@ -1,4 +1,3 @@
-import { Header } from "components/Organisms/Header"
 import { PlayerProvider } from "hooks/usePlayer"
 import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
