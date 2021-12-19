@@ -21,11 +21,11 @@ export const DefaultLayout = ({
   return (
     <>
       <Head>
-        <title>Zed | {title}</title>
+        <title>Zed.gg | {title}</title>
         <meta name="description" content={description} />
       </Head>
       <NextSeo
-        title={`Zed | ${title}`}
+        title={`Zed.gg | ${title}`}
         description={description}
         canonical="https://zed.gg.vercel.app"
         openGraph={{
