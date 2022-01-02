@@ -10,6 +10,10 @@ export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
   gap: 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Aside = styled.aside`
@@ -18,6 +22,10 @@ export const Aside = styled.aside`
   align-items: center;
   gap: 1rem;
   margin-top: -3rem;
+
+  @media (max-width: 768px) {
+    margin-top: 0rem;
+  }
 `
 
 export const Profile = styled.div`
@@ -40,7 +48,7 @@ export const Level = styled.h3`
 
 export const Avatar = styled.img`
   width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.border};
+  border: 1.5px solid ${({ theme }) => theme.colors.border};
   border-radius: 50%;
   user-select: none;
   -webkit-user-drag: none;
@@ -49,6 +57,7 @@ export const Avatar = styled.img`
 export const Nickname = styled.h1`
   font-size: 1.5rem;
   font-weight: bold;
+  color: ${({ theme }) => theme.colors.title};
 `
 
 export const Main = styled.section`

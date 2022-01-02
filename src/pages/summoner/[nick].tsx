@@ -54,11 +54,16 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     }
 
     const { data: dataMatch } = await americas.get<Array<string>>(
-      `/match/v5/matches/by-puuid/${summoner.puuid}/ids`
+      `/match/v5/matches/by-puuid/${summoner.puuid}/ids`,
+      {
+        params: {
+          count: 10
+        }
+      }
     )
 
     const matchHistory = await Promise.all(
-      dataMatch.slice(0, 10).map(async (match) => {
+      dataMatch.map(async (match) => {
         const { data } = await americas.get(`/match/v5/matches/${match}`)
         return FormatMatch(summoner.nick, data)
       })

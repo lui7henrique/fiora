@@ -5,6 +5,10 @@ export const Header = styled.div`
   grid-template-columns: 1fr 3fr;
   border-bottom: 1px solid ${({ theme }) => theme.colors.shape};
   padding: 0 1rem;
+
+  @media (max-width: 768px) {
+    grid-template-columns: 1fr;
+  }
 `
 
 export const Options = styled.div`
