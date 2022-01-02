@@ -8,6 +8,12 @@ export default {
     title: "#dbdbdb",
     text: "#9e9e9e",
     support: "rgb(88, 88, 88)",
-    border: "#323238"
+    border: "#323238",
+    success: "#04d361",
+    "success-low": "#1c2a24",
+    "success-darker": "#0f3924",
+    error: "#ce4a4a",
+    "error-light": "#eb3223",
+    "error-darker": "#3d1b23"
   }
 }
