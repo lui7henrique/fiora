@@ -17,15 +17,19 @@ export const Content = styled.div`
 `
 
 export const Aside = styled.aside`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 1rem;
   margin-top: -3rem;
 
   @media (max-width: 768px) {
     margin-top: 0rem;
   }
+`
+export const ProfileWrapper = styled.div`
+  position: sticky;
+  top: 6rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
 `
 
 export const Profile = styled.div`

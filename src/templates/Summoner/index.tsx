@@ -53,12 +53,14 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
 
       <S.Content>
         <S.Aside>
-          <S.Profile>
-            <S.Level>{summoner.level}</S.Level>
+          <S.ProfileWrapper>
+            <S.Profile>
+              <S.Level>{summoner.level}</S.Level>
 
-            <S.Avatar src={summoner.icon} alt={summoner.nick} />
-          </S.Profile>
-          <S.Nickname>{summoner.nick}</S.Nickname>
+              <S.Avatar src={summoner.icon} alt={summoner.nick} />
+            </S.Profile>
+            <S.Nickname>{summoner.nick}</S.Nickname>
+          </S.ProfileWrapper>
         </S.Aside>
         {width < 768 && width !== 0 && (
           <Header
