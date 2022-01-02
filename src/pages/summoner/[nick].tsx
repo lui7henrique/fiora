@@ -1,12 +1,14 @@
 import { GetServerSideProps } from "next"
 import { NextSeo } from "next-seo"
+import { americas } from "services/americas"
 import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
 import { ISummonerProps } from "types/summoner"
+import { FormatMatch } from "utils/summoner/FormatMatch"
 
 import { DefaultLayout } from "../../layouts/Default"
 
-export default function Summoner({ summoner }: ISummonerProps) {
+export default function Summoner({ summoner, matchHistory }: ISummonerProps) {
   return (
     <>
       <NextSeo
@@ -28,7 +30,7 @@ export default function Summoner({ summoner }: ISummonerProps) {
         }}
       />
       <DefaultLayout title="Invocador" description="Invocador" hasLimiter>
-        <SummonerTemplate summoner={summoner} />
+        <SummonerTemplate summoner={summoner} matchHistory={matchHistory} />
       </DefaultLayout>
     </>
   )
@@ -44,14 +46,28 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const summoner = {
       id: dataSummoner.id,
+      puuid: dataSummoner.puuid,
+      accountId: dataSummoner.accountId,
       nick: dataSummoner.name,
       level: dataSummoner.summonerLevel,
       icon: `http://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/${dataSummoner.profileIconId}.png`
     }
 
+    const { data: dataMatch } = await americas.get<Array<string>>(
+      `/match/v5/matches/by-puuid/${summoner.puuid}/ids`
+    )
+
+    const matchHistory = await Promise.all(
+      dataMatch.slice(0, 10).map(async (match) => {
+        const { data } = await americas.get(`/match/v5/matches/${match}`)
+        return FormatMatch(summoner.nick, data)
+      })
+    )
+
     return {
       props: {
-        summoner
+        summoner,
+        matchHistory
       }
     }
   } catch (err) {

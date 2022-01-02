@@ -1,10 +1,11 @@
+import { MatchHistory } from "components/Organisms/MatchHistory"
 import { useState, useMemo, useEffect, ReactNode } from "react"
 import { ISummonerProps } from "types/summoner"
 
 import { Header } from "./Header"
 import * as S from "./styles"
 
-export function SummonerTemplate({ summoner }: ISummonerProps) {
+export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
   const [activeSection, setActiveSection] =
     useState<{ name: string; label: string; component: ReactNode }>()
 
@@ -13,7 +14,7 @@ export function SummonerTemplate({ summoner }: ISummonerProps) {
       {
         name: "match",
         label: "Histórico",
-        component: <h1>Histórico</h1>
+        component: <MatchHistory matchHistory={matchHistory} />
       },
       {
         name: "masteries",
