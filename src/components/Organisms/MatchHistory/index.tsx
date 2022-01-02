@@ -86,17 +86,19 @@ export const MatchHistory = ({
   }
 
   return (
-    <InfiniteScroll
-      dataLength={matchHistory.length}
-      next={loadMore}
-      hasMore={hasMore}
-      loader={<></>}
-    >
-      <S.Container>
-        {matchHistory.map((match) => {
-          return <Match key={match.id} match={match} />
-        })}
-      </S.Container>
-    </InfiniteScroll>
+    <>
+      <InfiniteScroll
+        dataLength={matchHistory.length}
+        next={loadMore}
+        hasMore={hasMore}
+        loader={<S.Loading>Carregando...</S.Loading>}
+      >
+        <S.Container>
+          {matchHistory.map((match) => {
+            return <Match key={match.id} match={match} />
+          })}
+        </S.Container>
+      </InfiniteScroll>
+    </>
   )
 }

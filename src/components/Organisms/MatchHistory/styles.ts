@@ -1,5 +1,5 @@
 import Image from "next/image"
-import styled, { css } from "styled-components"
+import styled, { css, keyframes } from "styled-components"
 
 export const Container = styled.section`
   display: flex;
@@ -115,4 +115,34 @@ export const AMA = styled.h4<{ AMA: number }>`
 
   font-weight: bold;
   letter-spacing: 2px;
+`
+const opacity = keyframes`
+  0% {
+    opacity: 0.2
+  }
+
+  20% {
+    opacity: 0.4
+  }
+
+  40% {
+    opacity: 0.6
+  }
+  60% {
+    opacity: 0.8
+  }
+
+  80% {
+    opacity: 1
+  }
+
+  100% {
+    opacity: 0.2
+  }
+`
+
+export const Loading = styled.h5`
+  font-size: 1.2rem;
+  margin-top: 1rem;
+  animation: ${opacity} 1.5s linear infinite;
 `
