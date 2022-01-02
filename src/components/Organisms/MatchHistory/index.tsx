@@ -2,6 +2,7 @@ import format from "date-fns/format"
 import pt from "date-fns/locale/pt"
 import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
+
 import { americas } from "services/americas"
 import { ISummonerProps } from "types/summoner"
 import { FormatSecondsToMinutes } from "utils/FormatSecondsToMinutes"

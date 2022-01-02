@@ -11,10 +11,16 @@
     "react-hooks/rules-of-hooks": "error",
     "react-hooks/exhaustive-deps": "warn",
     "import-helpers/order-imports": [
-      "warn",
+      "error",
       {
-        "newlinesBetween": "always",
-        "groups": ["module", "/^@shared/", ["parent", "sibling", "index"]],
+        "newlinesBetween": "ignore",
+        "groups": [
+          "absolute",
+          "module",
+          ["sibling", "parent"],
+          "/^shared/",
+          "index"
+        ],
         "alphabetize": { "order": "asc", "ignoreCase": true }
       }
     ],
