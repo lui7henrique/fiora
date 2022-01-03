@@ -15,7 +15,8 @@ export function FormatSummonerInfos(
     champion: {
       id: summonerInfos.championId,
       name: summonerInfos.championName,
-      image: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/${summonerInfos.championId}/${summonerInfos.championId}000.jpg`,
+      tile: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/${summonerInfos.championId}/${summonerInfos.championId}000.jpg`,
+      icon: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${summonerInfos.championId}.png`,
       level: summonerInfos.champLevel
     },
     build: [
@@ -26,7 +27,8 @@ export function FormatSummonerInfos(
       summonerInfos.item4,
       summonerInfos.item5,
       summonerInfos.item6
-    ]
+    ],
+    teamId: summonerInfos.teamId
   }
 
   return formattedSummonerInfos

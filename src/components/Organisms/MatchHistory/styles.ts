@@ -7,25 +7,41 @@ export const Container = styled.section`
   gap: 1rem;
 `
 
-export const Match = styled.div<{ win: boolean }>`
+export const Match = styled.a<{ win: boolean }>`
   display: flex;
   width: 100%;
+  justify-content: space-between;
+  align-items: center;
   background: ${({ theme }) => theme.colors.shape};
   padding: 1rem;
   gap: 1rem;
   border-left: 4.5px solid
     ${({ win, theme }) =>
       win ? theme.colors["success-darker"] : theme.colors["error-darker"]};
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+  }
+`
+
+export const Infos = styled.div`
+  display: flex;
+  gap: 1rem;
 `
 
 export const ChampionIcon = styled.figure`
-  height: 70px;
-  width: 70px;
+  height: 80px;
+  width: 80px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
 
   border: 1.5px solid ${({ theme }) => theme.colors.border};
+
+  @media (max-width: 768px) {
+    height: 50px;
+    width: 50px;
+  }
 `
 
 export const ChampionImage = styled(Image)`
@@ -36,6 +52,25 @@ export const ChampionImage = styled(Image)`
   transition: all 0.2s linear;
   object-position: top center;
   filter: brightness(0.8);
+
+  background: #121214;
+  background-image: linear-gradient(
+    to right,
+    #121214 0%,
+    #171719 20%,
+    #121214 40%,
+    #121214 100%
+  );
+  background-size: 80rem 14rem;
+  animation: placeholderShimmer 1s linear infinite forwards;
+  @keyframes placeholderShimmer {
+    0% {
+      background-position: -40rem 0;
+    }
+    100% {
+      background-position: 40rem 0;
+    }
+  }
 
   user-drag: none;
   -webkit-user-drag: none;
@@ -116,6 +151,83 @@ export const AMA = styled.h4<{ AMA: number }>`
   font-weight: bold;
   letter-spacing: 2px;
 `
+export const Teams = styled.div`
+  display: flex;
+  gap: 1rem;
+
+  @media (max-width: 768px) {
+    display: none;
+  }
+`
+
+export const Team = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`
+
+export const Participant = styled.a`
+  display: flex;
+  gap: 0.2rem;
+  align-items: center;
+`
+
+export const ParticipantIconWrapper = styled.div<{ isMainSummoner: boolean }>`
+  height: 20px;
+  width: 20px;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+
+  border: 2px solid
+    ${({ theme, isMainSummoner }) =>
+      isMainSummoner ? theme.colors.primary : "transparent"};
+`
+
+export const ParticipantIcon = styled(Image)`
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  transform: scale(1.2);
+  -webkit-transition: all 0.2s linear;
+  transition: all 0.2s linear;
+  object-position: top center;
+  filter: brightness(0.8);
+
+  background: #121214;
+  background-image: linear-gradient(
+    to right,
+    #121214 0%,
+    #171719 20%,
+    #121214 40%,
+    #121214 100%
+  );
+  background-size: 80rem 14rem;
+  animation: placeholderShimmer 1s linear infinite forwards;
+  @keyframes placeholderShimmer {
+    0% {
+      background-position: -40rem 0;
+    }
+    100% {
+      background-position: 40rem 0;
+    }
+  }
+
+  user-drag: none;
+  -webkit-user-drag: none;
+  user-select: none;
+  -moz-user-select: none;
+  -webkit-user-select: none;
+  -ms-user-select: none;
+`
+
+export const ParticipantNickname = styled.h4<{ isMainSummoner: boolean }>`
+  font-size: 12px;
+  font-weight: ${({ isMainSummoner }) => (isMainSummoner ? 500 : 300)};
+  width: 16ch;
+  color: ${({ theme }) => theme.colors.text};
+`
+
 const opacity = keyframes`
   0% {
     opacity: 0.2

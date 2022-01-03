@@ -1,6 +1,6 @@
 import format from "date-fns/format"
 import pt from "date-fns/locale/pt"
-import { useState } from "react"
+import { useState, useEffect } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 import { americas } from "services/americas"
@@ -8,6 +8,7 @@ import { ISummonerProps } from "types/summoner"
 import { FormatSecondsToMinutes } from "utils/FormatSecondsToMinutes"
 import { calcAMA } from "utils/summoner/CalcAMA"
 import { FormatMatch } from "utils/summoner/FormatMatch"
+import { v4 } from "uuid"
 
 import * as S from "./styles"
 
@@ -20,36 +21,114 @@ type MatchProps = {
 }
 
 const Match = ({ match }: MatchProps) => {
+  const [width, setWidth] = useState(0)
+
+  const team1 = match.participants.filter(
+    (participant) => participant.teamId === 100
+  )
+
+  const team2 = match.participants.filter(
+    (participant) => participant.teamId === 200
+  )
+
+  const updateWindowDimensions = () => {
+    const newWidth = window.innerWidth
+    setWidth(newWidth)
+  }
+
+  useEffect(() => {
+    window.addEventListener("resize", updateWindowDimensions)
+    console.log(width)
+  }, [width])
+
   return (
-    <S.Match win={match.win}>
-      <S.ChampionIcon>
-        <S.ChampionImage
-          src={match.mainSummoner.champion.image}
-          alt={match.mainSummoner.champion.name}
-          layout={"fill"}
-        />
-      </S.ChampionIcon>
-      <S.MatchInfo>
-        <S.Win win={match.win}>{match.win ? "Vitória" : "Derrota"}</S.Win>
-        <S.MatchTime>
-          <S.MatchDuration>
-            {FormatSecondsToMinutes(match.duration)}
-          </S.MatchDuration>
-          <S.Divisor>•</S.Divisor>
-          <S.MatchCreation>
-            {format(match.creation, "dd 'de' MMMM 'de' yyyy", {
-              locale: pt
-            })}
-          </S.MatchCreation>
-        </S.MatchTime>
-        <S.SummonerStats>
-          <S.KDA>{match.mainSummoner.kda}</S.KDA>
-          <S.Divisor>-</S.Divisor>
-          <S.AMA AMA={calcAMA(match.mainSummoner.kda)}>
-            {calcAMA(match.mainSummoner.kda)}
-          </S.AMA>
-        </S.SummonerStats>
-      </S.MatchInfo>
+    <S.Match win={match.win} href={`match/${match.id}`}>
+      <S.Infos>
+        <S.ChampionIcon>
+          <S.ChampionImage
+            src={match.mainSummoner.champion.tile}
+            alt={match.mainSummoner.champion.name}
+            layout={"fill"}
+          />
+        </S.ChampionIcon>
+
+        <S.MatchInfo>
+          <S.Win win={match.win}>{match.win ? "Vitória" : "Derrota"}</S.Win>
+
+          <S.MatchTime>
+            <S.MatchDuration>
+              {FormatSecondsToMinutes(match.duration)}
+            </S.MatchDuration>
+            <S.Divisor>•</S.Divisor>
+            <S.MatchCreation>
+              {width >= 978 || width === 0
+                ? format(match.creation, "dd 'de' MMMM 'de' yyyy", {
+                    locale: pt
+                  })
+                : format(match.creation, "dd/MM/yyyy", {
+                    locale: pt
+                  })}
+            </S.MatchCreation>
+          </S.MatchTime>
+
+          <S.SummonerStats>
+            <S.KDA>{match.mainSummoner.kda}</S.KDA>
+            <S.Divisor>-</S.Divisor>
+            <S.AMA AMA={calcAMA(match.mainSummoner.kda)}>
+              {calcAMA(match.mainSummoner.kda)}
+            </S.AMA>
+          </S.SummonerStats>
+        </S.MatchInfo>
+      </S.Infos>
+
+      <S.Teams>
+        <S.Team>
+          {team1.map((participant) => {
+            const isMainSummoner =
+              participant.summoner.name === match.mainSummoner.summoner.name
+            return (
+              <S.Participant
+                target="blank"
+                href={`/summoner/${participant.summoner.name}`}
+                key={v4()}
+              >
+                <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
+                  <S.ParticipantIcon
+                    src={participant.champion.icon}
+                    layout="fill"
+                  />
+                </S.ParticipantIconWrapper>
+                <S.ParticipantNickname isMainSummoner={isMainSummoner}>
+                  {participant.summoner.name}
+                </S.ParticipantNickname>
+              </S.Participant>
+            )
+          })}
+        </S.Team>
+        <S.Team>
+          {team2.map((participant) => {
+            const isMainSummoner =
+              participant.summoner.name === match.mainSummoner.summoner.name
+            return (
+              <S.Participant
+                target="blank"
+                href={`/summoner/${participant.summoner.name}`}
+                key={v4()}
+              >
+                <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
+                  <S.ParticipantIcon
+                    src={participant.champion.icon}
+                    layout="fill"
+                  />
+                </S.ParticipantIconWrapper>
+                <S.ParticipantNickname isMainSummoner={isMainSummoner}>
+                  {participant.summoner.name}
+                </S.ParticipantNickname>
+              </S.Participant>
+            )
+          })}
+        </S.Team>
+      </S.Teams>
     </S.Match>
   )
 }

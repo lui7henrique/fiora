@@ -25,7 +25,7 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
         component: <h1>Campeões</h1>
       }
     ],
-    []
+    [matchHistory, summoner]
   )
 
   const updateWindowDimensions = () => {
