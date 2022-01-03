@@ -25,7 +25,7 @@ export const Aside = styled.aside`
 `
 export const ProfileWrapper = styled.div`
   position: sticky;
-  top: 6rem;
+  top: 1rem;
   display: flex;
   flex-direction: column;
   align-items: center;

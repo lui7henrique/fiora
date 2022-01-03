@@ -22,6 +22,7 @@ export const Content = styled.div`
 
 export const Infos = styled.aside`
   width: 30%;
+
   margin-top: -104px;
 
   display: flex;
@@ -29,12 +30,15 @@ export const Infos = styled.aside`
   background: ${({ theme }) => theme.colors.shape};
   gap: 1rem;
 
-  position: relative;
   padding: 1rem;
   border-radius: 3px;
 
+  position: sticky;
+  top: 1rem;
+
   @media (max-width: 768px) {
     width: 100%;
+    position: initial;
   }
 `
 
@@ -47,5 +51,6 @@ export const About = styled.main`
 
   @media (max-width: 768px) {
     max-width: 100%;
+    margin-top: 0px;
   }
 `

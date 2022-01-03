@@ -1,17 +1,16 @@
+import Image from "next/image"
 import styled from "styled-components"
 
 export const Container = styled.section`
   width: 100%;
 
   .swiper-button-prev {
-    margin-left: -2rem;
+    margin-left: -1.5rem;
     position: absolute;
-    top: 44%;
   }
   .swiper-button-next {
-    margin-right: -2rem;
+    margin-right: -1.5rem;
     position: absolute;
-    top: 44%;
   }
   .swiper-button-prev,
   .swiper-button-next {
@@ -19,7 +18,8 @@ export const Container = styled.section`
     border-radius: 50%;
     background: var(--shape);
     transform: scale(0.4);
-    padding: 42px;
+    top: 44%;
+    padding: 50px;
     font-weight: bold;
     box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px,
       rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px,
@@ -43,6 +43,7 @@ export const Wrapper = styled.div`
   position: relative;
 
   .splash-art {
+    cursor: pointer;
     background: #121214;
     background-image: linear-gradient(
       to right,
@@ -93,4 +94,41 @@ export const Price = styled.section`
       font-weight: bold;
     }
   }
+`
+
+// Open Skin -----------------------------------------------------------
+export const OpenSkin = styled.div`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 9999999;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+`
+
+export const Overlay = styled.div`
+  width: 100%;
+  height: 100%;
+  background: #00000066;
+  backdrop-filter: blur(3px);
+  z-index: 9999999;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem;
+`
+
+export const SkinContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+`
+
+export const Skin = styled(Image)``
+
+export const SkinLink = styled.a`
+  color: ${({ theme }) => theme.colors.text};
 `

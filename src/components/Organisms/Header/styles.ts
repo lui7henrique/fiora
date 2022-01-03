@@ -5,9 +5,6 @@ export const Container = styled.header`
   height: 5rem;
   border-bottom: 1px solid var(--borders);
   background-color: var(--shape);
-  z-index: 99;
-  top: 0;
-  position: fixed;
 
   .logo {
     font-size: 32px;

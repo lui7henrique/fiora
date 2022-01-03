@@ -6,6 +6,4 @@ export const Limiter = styled.div`
   padding: 1rem;
 `
 
-export const Container = styled.div`
-  margin-top: 5rem;
-`
+export const Container = styled.div``

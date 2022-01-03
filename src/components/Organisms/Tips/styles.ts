@@ -23,6 +23,10 @@ export const Tips = styled.section`
 
   ul {
     margin-left: 2rem;
+    margin-top: 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
 
     li {
       line-height: 1.5;
