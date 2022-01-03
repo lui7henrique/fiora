@@ -18,10 +18,6 @@ export const Match = styled.a<{ win: boolean }>`
   border-left: 4.5px solid
     ${({ win, theme }) =>
       win ? theme.colors["success-darker"] : theme.colors["error-darker"]};
-
-  @media (max-width: 768px) {
-    flex-direction: column;
-  }
 `
 
 export const Infos = styled.div`
@@ -102,6 +98,10 @@ export const MatchDuration = styled.h4`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 export const Divisor = styled.sub`
@@ -109,6 +109,10 @@ export const Divisor = styled.sub`
   color: ${({ theme }) => theme.colors.support};
   font-weight: normal;
   user-select: none;
+
+  @media (max-width: 768px) {
+    font-size: 14px;
+  }
 `
 
 export const MatchCreation = styled.h4`
@@ -116,6 +120,10 @@ export const MatchCreation = styled.h4`
   color: ${({ theme }) => theme.colors.text};
   font-weight: normal;
   opacity: 0.5;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 export const SummonerStats = styled.div`
@@ -130,11 +138,19 @@ export const KDA = styled.h4`
   font-weight: bold;
   opacity: 0.5;
   letter-spacing: 2px;
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 `
 
 export const AMA = styled.h4<{ AMA: number }>`
   font-size: 14px;
   color: ${({ theme }) => theme.colors.support};
+
+  @media (max-width: 768px) {
+    font-size: 12px;
+  }
 
   ${({ AMA }) =>
     AMA > 2 &&

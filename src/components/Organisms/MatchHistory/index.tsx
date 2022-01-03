@@ -21,8 +21,6 @@ type MatchProps = {
 }
 
 const Match = ({ match }: MatchProps) => {
-  const [width, setWidth] = useState(0)
-
   const team1 = match.participants.filter(
     (participant) => participant.teamId === 100
   )
@@ -30,16 +28,6 @@ const Match = ({ match }: MatchProps) => {
   const team2 = match.participants.filter(
     (participant) => participant.teamId === 200
   )
-
-  const updateWindowDimensions = () => {
-    const newWidth = window.innerWidth
-    setWidth(newWidth)
-  }
-
-  useEffect(() => {
-    window.addEventListener("resize", updateWindowDimensions)
-    console.log(width)
-  }, [width])
 
   return (
     <S.Match win={match.win} href={`match/${match.id}`}>
@@ -61,13 +49,9 @@ const Match = ({ match }: MatchProps) => {
             </S.MatchDuration>
             <S.Divisor>•</S.Divisor>
             <S.MatchCreation>
-              {width >= 978 || width === 0
-                ? format(match.creation, "dd 'de' MMMM 'de' yyyy", {
-                    locale: pt
-                  })
-                : format(match.creation, "dd/MM/yyyy", {
-                    locale: pt
-                  })}
+              {format(match.creation, "dd 'de' MMMM 'de' yyyy", {
+                locale: pt
+              })}
             </S.MatchCreation>
           </S.MatchTime>
 
