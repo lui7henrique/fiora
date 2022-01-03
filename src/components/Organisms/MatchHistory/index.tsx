@@ -1,6 +1,6 @@
 import format from "date-fns/format"
 import pt from "date-fns/locale/pt"
-import { useState, useEffect } from "react"
+import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 import { americas } from "services/americas"
