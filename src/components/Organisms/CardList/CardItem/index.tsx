@@ -50,6 +50,7 @@ export const CardItem = ({ champion }: CardItemProps) => {
           </S.Infos>
 
           <S.BestPlayerContainer>
+            <S.BestPlayerBanner />
             <S.BestPlayerIconWrapper>
               <S.BestPlayerIcon
                 src="https://ddragon.leagueoflegends.com/cdn/11.14.1/img/profileicon/6.png"
@@ -58,8 +59,7 @@ export const CardItem = ({ champion }: CardItemProps) => {
               />
             </S.BestPlayerIconWrapper>
             <S.BestPlayerName>
-              Melhor jogador:{" "}
-              <a href="/summoners/busetinha%20corp">busetinha corp</a>
+              Melhor jogador: Em desenvolvimento 🚧
             </S.BestPlayerName>
           </S.BestPlayerContainer>
         </S.Card>

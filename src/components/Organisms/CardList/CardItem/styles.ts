@@ -137,10 +137,25 @@ export const BestPlayer = styled(Link)``
 export const BestPlayerContainer = styled.div`
   display: flex;
   align-items: center;
+  position: relative;
 
   border-top: 1px solid ${({ theme }) => theme.colors.border};
   padding-top: 1rem;
   padding: 1rem;
+
+  cursor: not-allowed;
+`
+
+export const BestPlayerBanner = styled.div`
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(0.5px);
+
+  position: absolute;
+  right: 0;
+  border-radius: 0 0 5px 5px;
+  z-index: 25;
 `
 
 export const BestPlayerIconWrapper = styled.figure`
