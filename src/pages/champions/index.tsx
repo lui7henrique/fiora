@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next"
+import { merakianalytics } from "services/merakianalytics"
 
 import { DefaultLayout } from "../../layouts/Default"
 import { ChampionsTemplate } from "../../templates/Champions/index"
@@ -32,6 +33,11 @@ export type ChampionType = {
     hpperlevel: number
     movespeed: number
   }
+  price: {
+    blueEssence: number
+    rp: number
+    saleRp: number
+  }
 }
 
 export default function Champions({ champions }: IChampionsProps) {
@@ -50,21 +56,28 @@ export const getStaticProps: GetStaticProps = async () => {
   ).then((res) => res.json())
   const data = Object.values(res.data)
 
-  const champions = data.map((champion: any) => {
-    return {
-      key: champion.key,
-      id: champion.id,
-      name: champion.name,
-      title: champion.title,
-      blurb: champion.blurb,
-      partype: champion.partype,
-      category: champion.tags,
-      info: champion.info,
-      icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${champion.name}.png`,
-      splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name}_0.jpg`,
-      splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${champion.key}/${champion.key}000.jpg`
-    }
-  })
+  const champions = await Promise.all(
+    data.map(async (champion: any) => {
+      const { data: championsMoreInfos } = await merakianalytics.get(
+        `/champions/${champion.id}.json`
+      )
+
+      return {
+        key: champion.key,
+        id: champion.id,
+        name: champion.name,
+        title: champion.title,
+        blurb: champion.blurb,
+        partype: champion.partype,
+        category: champion.tags,
+        info: champion.info,
+        icon: `http://ddragon.leagueoflegends.com/cdn/11.16.1/img/champion/${champion.name}.png`,
+        splash_art_full: `http://ddragon.leagueoflegends.com/cdn/img/champion/splash/${champion.name}_0.jpg`,
+        splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${champion.key}/${champion.key}000.jpg`,
+        price: championsMoreInfos.price
+      }
+    })
+  )
 
   return {
     props: {

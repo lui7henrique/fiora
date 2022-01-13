@@ -1,4 +1,5 @@
 import { DefaultLayout } from "layouts/Default"
+import { datadragon } from "services/datadragon"
 import { ChampionTemplate } from "templates/Champion"
 import { ChampionType } from "types/champion"
 import { addZeros } from "utils/champion/FormatChampionKey"
@@ -103,10 +104,7 @@ export async function getStaticProps({ params }: any) {
 
 // to generate static pages
 export async function getStaticPaths() {
-  const res = await fetch(
-    "http://ddragon.leagueoflegends.com/cdn/11.14.1/data/en_US/champion.json"
-  )
-  const { data } = await res.json()
+  const { data } = await datadragon.get("champion.json")
   const champions = Object.keys(data)
 
   const paths = champions.map((champion) => ({

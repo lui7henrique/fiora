@@ -4,6 +4,7 @@ export const CardList = styled.section`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 1.3rem;
+
   @media (max-width: 768px) {
     grid-template-columns: repeat(2, 1fr);
   }

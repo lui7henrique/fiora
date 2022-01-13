@@ -8,6 +8,7 @@ export default {
     title: "#dbdbdb",
     text: "#9e9e9e",
     support: "rgb(88, 88, 88)",
+
     border: "#323238",
     success: "#00875f",
     "success-low": "#1c2a24",
@@ -16,6 +17,8 @@ export default {
     "error-light": "#eb3223",
     "error-darker": "#3d1b23",
     attention: "#fd951f",
-    "attention-darker": "#78460e"
+    "attention-darker": "#78460e",
+
+    blue_essence: "#0BCCEB"
   }
 }
