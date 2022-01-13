@@ -15,7 +15,9 @@ export const Match = styled.a<{ win: boolean }>`
   background: ${({ theme }) => theme.colors.shape};
   padding: 1rem;
   gap: 1rem;
-  border-left: 4.5px solid
+
+  border-radius: 5px;
+  border-left: 5px solid
     ${({ win, theme }) =>
       win ? theme.colors["success-darker"] : theme.colors["error-darker"]};
 `
