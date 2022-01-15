@@ -104,8 +104,8 @@ export async function getStaticProps({ params }: any) {
 
 // to generate static pages
 export async function getStaticPaths() {
-  const { data } = await datadragon.get("champion.json")
-  const champions = Object.keys(data)
+  const { data } = await datadragon.get("/champion.json")
+  const champions = Object.keys(data.data)
 
   const paths = champions.map((champion) => ({
     params: { id: champion }

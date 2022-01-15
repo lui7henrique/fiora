@@ -13,7 +13,7 @@ export default function Items({ items, tree }: IItensProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const { data } = await datadragon.get("item.json")
+  const { data } = await datadragon.get("/item.json")
 
   const items = Object.values(data.data)
     .filter((item: any) => item.maps[11] === true || item.maps[12] === true)
