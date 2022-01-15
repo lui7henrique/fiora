@@ -1,5 +1,6 @@
 import { DefaultLayout } from "layouts/Default"
 import { datadragon } from "services/datadragon"
+import { merakianalytics } from "services/merakianalytics"
 import { ChampionTemplate } from "templates/Champion"
 import { ChampionType } from "types/champion"
 import { addZeros } from "utils/champion/FormatChampionKey"
@@ -10,6 +11,14 @@ type IChampionProps = {
 }
 
 export default function Champion({ champion }: IChampionProps) {
+  const fetchSkins = async () => {
+    const { skins } = await (
+      await merakianalytics.get(`/champions/${champion.id}.json`)
+    ).data
+    console.log(skins)
+  }
+  fetchSkins()
+
   return (
     <>
       <DefaultLayout title={champion.name} description={champion.blurb}>
@@ -22,10 +31,8 @@ export default function Champion({ champion }: IChampionProps) {
 export async function getStaticProps({ params }: any) {
   const { id } = params
 
-  const res = await fetch(
-    `http://ddragon.leagueoflegends.com/cdn/11.13.1/data/pt_BR/champion/${id}.json`
-  ).then((res) => res.json())
-  const data: any = Object.values(res.data)[0]
+  const { data: responseData } = await datadragon.get(`/champion/${id}.json`)
+  const data: any = Object.values(responseData.data)[0]
 
   const { skins } = await fetch(
     `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${id}.json`

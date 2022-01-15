@@ -1,4 +1,5 @@
 import { GetStaticProps } from "next"
+import { datadragon } from "services/datadragon"
 import { merakianalytics } from "services/merakianalytics"
 
 import { DefaultLayout } from "../../layouts/Default"
@@ -51,10 +52,8 @@ export default function Champions({ champions }: IChampionsProps) {
 }
 
 export const getStaticProps: GetStaticProps = async () => {
-  const res = await fetch(
-    "http://ddragon.leagueoflegends.com/cdn/11.13.1/data/pt_BR/champion.json"
-  ).then((res) => res.json())
-  const data = Object.values(res.data)
+  const { data: responseData } = await datadragon.get("/champion.json")
+  const data = Object.values(responseData.data)
 
   const champions = await Promise.all(
     data.map(async (champion: any) => {
