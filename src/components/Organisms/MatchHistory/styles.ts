@@ -212,9 +212,9 @@ export const ParticipantIconWrapper = styled.div<{ isMainSummoner: boolean }>`
   overflow: hidden;
   border-radius: 50%;
 
-  border: 2px solid
+  border: 1px solid
     ${({ theme, isMainSummoner }) =>
-      isMainSummoner ? theme.colors.primary : "transparent"};
+      isMainSummoner ? theme.colors.text : "transparent"};
 `
 
 export const ParticipantIcon = styled(Image)`
@@ -255,7 +255,7 @@ export const ParticipantIcon = styled(Image)`
 `
 
 export const ParticipantNickname = styled.h4<{ isMainSummoner: boolean }>`
-  font-size: 10px;
+  font-size: 11px;
   font-weight: ${({ isMainSummoner }) => (isMainSummoner ? 500 : 300)};
   width: 16ch;
   color: ${({ theme }) => theme.colors.text};
