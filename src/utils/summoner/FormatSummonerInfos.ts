@@ -17,6 +17,7 @@ export function FormatSummonerInfos(
       name: summonerInfos.championName,
       tile: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-tiles/${summonerInfos.championId}/${summonerInfos.championId}000.jpg`,
       icon: `https://raw.communitydragon.org/pbe/plugins/rcp-be-lol-game-data/global/default/v1/champion-icons/${summonerInfos.championId}.png`,
+      splash_art_cropped: `https://raw.communitydragon.org/latest/plugins/rcp-be-lol-game-data/global/default/v1/champion-splashes/${summonerInfos.championId}/${summonerInfos.championId}000.jpg`,
       level: summonerInfos.champLevel
     },
     build: [

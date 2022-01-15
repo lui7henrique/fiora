@@ -10,36 +10,34 @@ export const Container = styled.section`
 export const Match = styled.a<{ win: boolean }>`
   display: flex;
   width: 100%;
-  justify-content: space-between;
-  align-items: center;
+  height: 100%;
   background: ${({ theme }) => theme.colors.shape};
-  padding: 1rem;
-  gap: 1rem;
 
   border-radius: 5px;
-  border-left: 5px solid
+  /* border-right: 5px solid
     ${({ win, theme }) =>
-      win ? theme.colors["success-darker"] : theme.colors["error-darker"]};
+    win ? theme.colors["success"] : theme.colors["error"]}; */
 `
 
 export const Infos = styled.div`
   display: flex;
   gap: 1rem;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.6rem;
 `
 
 export const ChampionIcon = styled.figure`
-  height: 80px;
-  width: 80px;
+  width: 30%;
   position: relative;
   overflow: hidden;
-  border-radius: 50%;
+  border-radius: 5px 0 0 5px;
 
-  border: 1.5px solid ${({ theme }) => theme.colors.border};
-
-  @media (max-width: 768px) {
-    height: 50px;
-    width: 50px;
+  @media (max-width: 512px) {
+    width: 60%;
   }
+  /* border-right: 1px solid ${({ theme }) => theme.colors.border}; */
 `
 
 export const ChampionImage = styled(Image)`
@@ -49,7 +47,12 @@ export const ChampionImage = styled(Image)`
   -webkit-transition: all 0.2s linear;
   transition: all 0.2s linear;
   object-position: top center;
-  filter: brightness(0.8);
+
+  mask-image: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 1) 0%,
+    rgba(0, 0, 0, 0) 100%
+  );
 
   background: #121214;
   background-image: linear-gradient(
@@ -84,7 +87,7 @@ export const MatchInfo = styled.div`
   gap: 0.2rem;
 `
 export const Win = styled.h3<{ win: boolean }>`
-  font-size: 1.2rem;
+  font-size: 1rem;
   color: ${({ theme, win }) =>
     win ? theme.colors.success : theme.colors.error};
   opacity: 0.7;
@@ -101,7 +104,7 @@ export const MatchDuration = styled.h4`
   color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     font-size: 12px;
   }
 `
@@ -112,7 +115,7 @@ export const Divisor = styled.sub`
   font-weight: normal;
   user-select: none;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     font-size: 14px;
   }
 `
@@ -123,8 +126,21 @@ export const MatchCreation = styled.h4`
   font-weight: normal;
   opacity: 0.5;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
+    display: none;
+  }
+`
+
+export const MatchCreationMinimal = styled.h4`
+  font-size: 14px;
+  color: ${({ theme }) => theme.colors.text};
+  font-weight: normal;
+  display: none;
+
+  @media (max-width: 512px) {
+    display: block;
     font-size: 12px;
+    opacity: 0.7;
   }
 `
 
@@ -135,22 +151,21 @@ export const SummonerStats = styled.div`
 `
 
 export const KDA = styled.h4`
-  font-size: 14px;
+  font-size: 12px;
   color: ${({ theme }) => theme.colors.title};
   font-weight: bold;
   opacity: 0.5;
-  letter-spacing: 2px;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     font-size: 12px;
   }
 `
 
 export const AMA = styled.h4<{ AMA: number }>`
-  font-size: 14px;
+  font-size: 12px;
   color: ${({ theme }) => theme.colors.support};
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     font-size: 12px;
   }
 
@@ -173,7 +188,7 @@ export const Teams = styled.div`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 512px) {
     display: none;
   }
 `
@@ -191,8 +206,8 @@ export const Participant = styled.a`
 `
 
 export const ParticipantIconWrapper = styled.div<{ isMainSummoner: boolean }>`
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
   position: relative;
   overflow: hidden;
   border-radius: 50%;
@@ -240,7 +255,7 @@ export const ParticipantIcon = styled(Image)`
 `
 
 export const ParticipantNickname = styled.h4<{ isMainSummoner: boolean }>`
-  font-size: 12px;
+  font-size: 10px;
   font-weight: ${({ isMainSummoner }) => (isMainSummoner ? 500 : 300)};
   width: 16ch;
   color: ${({ theme }) => theme.colors.text};

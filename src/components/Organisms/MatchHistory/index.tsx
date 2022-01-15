@@ -31,15 +31,14 @@ const Match = ({ match }: MatchProps) => {
 
   return (
     <S.Match win={match.win} href={`match/${match.id}`}>
+      <S.ChampionIcon>
+        <S.ChampionImage
+          src={match.mainSummoner.champion.splash_art_cropped}
+          alt={match.mainSummoner.champion.name}
+          layout={"fill"}
+        />
+      </S.ChampionIcon>
       <S.Infos>
-        <S.ChampionIcon>
-          <S.ChampionImage
-            src={match.mainSummoner.champion.tile}
-            alt={match.mainSummoner.champion.name}
-            layout={"fill"}
-          />
-        </S.ChampionIcon>
-
         <S.MatchInfo>
           <S.Win win={match.win}>{match.win ? "Vitória" : "Derrota"}</S.Win>
 
@@ -47,12 +46,16 @@ const Match = ({ match }: MatchProps) => {
             <S.MatchDuration>
               {FormatSecondsToMinutes(match.duration)}
             </S.MatchDuration>
+
             <S.Divisor>•</S.Divisor>
             <S.MatchCreation>
               {format(match.creation, "dd 'de' MMMM 'de' yyyy", {
                 locale: pt
               })}
             </S.MatchCreation>
+            <S.MatchCreationMinimal>
+              {format(match.creation, "dd/MM/yyyy")}
+            </S.MatchCreationMinimal>
           </S.MatchTime>
 
           <S.SummonerStats>
@@ -63,56 +66,56 @@ const Match = ({ match }: MatchProps) => {
             </S.AMA>
           </S.SummonerStats>
         </S.MatchInfo>
-      </S.Infos>
 
-      <S.Teams>
-        <S.Team>
-          {team1.map((participant) => {
-            const isMainSummoner =
-              participant.summoner.name === match.mainSummoner.summoner.name
-            return (
-              <S.Participant
-                target="blank"
-                href={`/summoner/${participant.summoner.name}`}
-                key={v4()}
-              >
-                <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
-                  <S.ParticipantIcon
-                    src={participant.champion.icon}
-                    layout="fill"
-                  />
-                </S.ParticipantIconWrapper>
-                <S.ParticipantNickname isMainSummoner={isMainSummoner}>
-                  {participant.summoner.name}
-                </S.ParticipantNickname>
-              </S.Participant>
-            )
-          })}
-        </S.Team>
-        <S.Team>
-          {team2.map((participant) => {
-            const isMainSummoner =
-              participant.summoner.name === match.mainSummoner.summoner.name
-            return (
-              <S.Participant
-                target="blank"
-                href={`/summoner/${participant.summoner.name}`}
-                key={v4()}
-              >
-                <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
-                  <S.ParticipantIcon
-                    src={participant.champion.icon}
-                    layout="fill"
-                  />
-                </S.ParticipantIconWrapper>
-                <S.ParticipantNickname isMainSummoner={isMainSummoner}>
-                  {participant.summoner.name}
-                </S.ParticipantNickname>
-              </S.Participant>
-            )
-          })}
-        </S.Team>
-      </S.Teams>
+        <S.Teams>
+          <S.Team>
+            {team1.map((participant) => {
+              const isMainSummoner =
+                participant.summoner.name === match.mainSummoner.summoner.name
+              return (
+                <S.Participant
+                  target="blank"
+                  href={`/summoner/${participant.summoner.name}`}
+                  key={v4()}
+                >
+                  <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
+                    <S.ParticipantIcon
+                      src={participant.champion.icon}
+                      layout="fill"
+                    />
+                  </S.ParticipantIconWrapper>
+                  <S.ParticipantNickname isMainSummoner={isMainSummoner}>
+                    {participant.summoner.name}
+                  </S.ParticipantNickname>
+                </S.Participant>
+              )
+            })}
+          </S.Team>
+          <S.Team>
+            {team2.map((participant) => {
+              const isMainSummoner =
+                participant.summoner.name === match.mainSummoner.summoner.name
+              return (
+                <S.Participant
+                  target="blank"
+                  href={`/summoner/${participant.summoner.name}`}
+                  key={v4()}
+                >
+                  <S.ParticipantIconWrapper isMainSummoner={isMainSummoner}>
+                    <S.ParticipantIcon
+                      src={participant.champion.icon}
+                      layout="fill"
+                    />
+                  </S.ParticipantIconWrapper>
+                  <S.ParticipantNickname isMainSummoner={isMainSummoner}>
+                    {participant.summoner.name}
+                  </S.ParticipantNickname>
+                </S.Participant>
+              )
+            })}
+          </S.Team>
+        </S.Teams>
+      </S.Infos>
     </S.Match>
   )
 }

@@ -9,6 +9,7 @@ import { FormatMatch } from "utils/summoner/FormatMatch"
 import { DefaultLayout } from "../../layouts/Default"
 
 export default function Summoner({ summoner, matchHistory }: ISummonerProps) {
+  console.log(matchHistory[0].mainSummoner.champion)
   return (
     <>
       <NextSeo
