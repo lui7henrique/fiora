@@ -43,7 +43,7 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
 
   return (
     <S.Container>
-      {(width > 768 || width === 0) && (
+      {(width > 978 || width === 0) && (
         <Header
           activeSection={activeSection}
           setActiveSection={setActiveSection}
@@ -53,16 +53,18 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
 
       <S.Content>
         <S.Aside>
-          <S.ProfileWrapper>
-            <S.Profile>
-              <S.Level>{summoner.level}</S.Level>
+          <S.AsideContent>
+            <S.ProfileWrapper>
+              <S.Profile>
+                <S.Level>{summoner.level}</S.Level>
 
-              <S.Avatar src={summoner.icon} alt={summoner.nick} />
-            </S.Profile>
-            <S.Nickname>{summoner.nick}</S.Nickname>
-          </S.ProfileWrapper>
+                <S.Avatar src={summoner.icon} alt={summoner.nick} />
+              </S.Profile>
+              <S.Nickname>{summoner.nick}</S.Nickname>
+            </S.ProfileWrapper>
+          </S.AsideContent>
         </S.Aside>
-        {width < 768 && width !== 0 && (
+        {width < 978 && width !== 0 && (
           <Header
             activeSection={activeSection}
             setActiveSection={setActiveSection}

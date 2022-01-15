@@ -6,7 +6,7 @@ export const Header = styled.div`
   border-bottom: 1px solid ${({ theme }) => theme.colors.shape};
   padding: 0 1rem;
 
-  @media (max-width: 768px) {
+  @media (max-width: 978px) {
     grid-template-columns: 1fr;
   }
 `

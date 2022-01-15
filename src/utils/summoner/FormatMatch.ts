@@ -11,13 +11,23 @@ export function FormatMatch(playerNickname: string, match: Match) {
     (p) => p.summonerName === playerNickname
   )[0]
 
+  const formattedMainSummoner = FormatSummonerInfos(mainSummonerInfos)
+
+  const formattedParticipants = info.participants.map((p) =>
+    FormatSummonerInfos(p)
+  )
+
   const formattedMatch = {
     id: metadata.matchId,
     win: mainSummonerInfos.win,
     duration: info.gameDuration,
     creation: info.gameCreation,
-    mainSummoner: FormatSummonerInfos(mainSummonerInfos),
-    participants: info.participants.map((p) => FormatSummonerInfos(p))
+    mainSummoner: formattedMainSummoner,
+    participants: formattedParticipants,
+    mvp:
+      Math.max(
+        ...formattedParticipants.map((participant) => participant.ama)
+      ) === formattedMainSummoner.ama
   }
 
   return formattedMatch

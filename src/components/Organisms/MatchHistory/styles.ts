@@ -12,11 +12,26 @@ export const Match = styled.a<{ win: boolean }>`
   width: 100%;
   height: 100%;
   background: ${({ theme }) => theme.colors.shape};
+  position: relative;
 
   border-radius: 5px;
   /* border-right: 5px solid
     ${({ win, theme }) =>
     win ? theme.colors["success"] : theme.colors["error"]}; */
+`
+
+export const MVP = styled.h6`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 25;
+
+  font-style: italic;
+
+  padding: 0.3rem;
+  margin: 0.5rem;
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 5px;
 `
 
 export const Infos = styled.div`
@@ -34,7 +49,7 @@ export const ChampionIcon = styled.figure`
   overflow: hidden;
   border-radius: 5px 0 0 5px;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     width: 60%;
   }
   /* border-right: 1px solid ${({ theme }) => theme.colors.border}; */
@@ -50,7 +65,7 @@ export const ChampionImage = styled(Image)`
 
   mask-image: linear-gradient(
     90deg,
-    rgba(255, 255, 255, 1) 0%,
+    rgba(255, 255, 255, 1) 30%,
     rgba(0, 0, 0, 0) 100%
   );
 
@@ -86,6 +101,13 @@ export const MatchInfo = styled.div`
   flex-direction: column;
   gap: 0.2rem;
 `
+
+export const MatchBasicInfos = styled.div`
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+`
+
 export const Win = styled.h3<{ win: boolean }>`
   font-size: 1rem;
   color: ${({ theme, win }) =>
@@ -104,7 +126,7 @@ export const MatchDuration = styled.h4`
   color: ${({ theme }) => theme.colors.text};
   font-weight: bold;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     font-size: 12px;
   }
 `
@@ -115,7 +137,7 @@ export const Divisor = styled.sub`
   font-weight: normal;
   user-select: none;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     font-size: 14px;
   }
 `
@@ -126,7 +148,7 @@ export const MatchCreation = styled.h4`
   font-weight: normal;
   opacity: 0.5;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     display: none;
   }
 `
@@ -137,7 +159,7 @@ export const MatchCreationMinimal = styled.h4`
   font-weight: normal;
   display: none;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     display: block;
     font-size: 12px;
     opacity: 0.7;
@@ -156,7 +178,7 @@ export const KDA = styled.h4`
   font-weight: bold;
   opacity: 0.5;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     font-size: 12px;
   }
 `
@@ -165,7 +187,7 @@ export const AMA = styled.h4<{ AMA: number }>`
   font-size: 12px;
   color: ${({ theme }) => theme.colors.support};
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     font-size: 12px;
   }
 
@@ -188,7 +210,7 @@ export const Teams = styled.div`
   display: flex;
   gap: 1rem;
 
-  @media (max-width: 512px) {
+  @media (max-width: 678px) {
     display: none;
   }
 `

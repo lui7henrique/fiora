@@ -31,6 +31,8 @@ const Match = ({ match }: MatchProps) => {
 
   return (
     <S.Match win={match.win} href={`match/${match.id}`}>
+      {match.mvp && <S.MVP>MVP</S.MVP>}
+
       <S.ChampionIcon>
         <S.ChampionImage
           src={match.mainSummoner.champion.splash_art_cropped}
@@ -40,7 +42,9 @@ const Match = ({ match }: MatchProps) => {
       </S.ChampionIcon>
       <S.Infos>
         <S.MatchInfo>
-          <S.Win win={match.win}>{match.win ? "Vitória" : "Derrota"}</S.Win>
+          <S.MatchBasicInfos>
+            <S.Win win={match.win}>{match.win ? "Vitória" : "Derrota"}</S.Win>
+          </S.MatchBasicInfos>
 
           <S.MatchTime>
             <S.MatchDuration>

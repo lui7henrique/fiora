@@ -1,6 +1,7 @@
 // full response https://developer.riotgames.com/apis#match-v5/GET_getMatch
 
 import { Match } from "types/match"
+import { calcAMA } from "./CalcAMA"
 
 export function FormatSummonerInfos(
   summonerInfos: Match["info"]["participants"][0]
@@ -12,6 +13,9 @@ export function FormatSummonerInfos(
       icon: `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${summonerInfos.profileIcon}.png`
     },
     kda: `${summonerInfos.kills}/${summonerInfos.deaths}/${summonerInfos.assists}`,
+    ama: calcAMA(
+      `${summonerInfos.kills}/${summonerInfos.deaths}/${summonerInfos.assists}`
+    ),
     champion: {
       id: summonerInfos.championId,
       name: summonerInfos.championName,
