@@ -23,7 +23,7 @@ const Mastery = ({ mastery }: { mastery: SummonerProps["masteries"][0] }) => {
       {championLevel && (
         <S.ChampionLevelIcon
           src={`/icons/masteries/bg/mastery-${championLevel}.png`}
-          alt={championLevel}
+          alt={String(championLevel)}
         />
       )}
       <S.MasteryTileWrapper>
