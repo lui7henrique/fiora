@@ -1,10 +1,11 @@
+import { Toast } from "components/Atoms/Toast"
 import format from "date-fns/format"
 import pt from "date-fns/locale/pt"
 import { useState } from "react"
 import InfiniteScroll from "react-infinite-scroll-component"
 
 import { americas } from "services/americas"
-import { ISummonerProps } from "types/summoner"
+import { SummonerProps } from "types/summoner"
 import { FormatSecondsToMinutes } from "utils/FormatSecondsToMinutes"
 import { calcAMA } from "utils/summoner/CalcAMA"
 import { FormatMatch } from "utils/summoner/FormatMatch"
@@ -13,8 +14,8 @@ import { v4 } from "uuid"
 import * as S from "./styles"
 
 type MatchHistoryProps = {
-  summoner: ISummonerProps["summoner"]
-} & Pick<ISummonerProps, "matchHistory">
+  summoner: SummonerProps["summoner"]
+} & Pick<SummonerProps, "matchHistory">
 
 type MatchProps = {
   match: MatchHistoryProps["matchHistory"][0]
@@ -152,6 +153,10 @@ export const MatchHistory = ({
 
       setMatchHistory([...matchHistory, ...newMatchHistory])
     } catch (err) {
+      Toast.fire({
+        icon: "error",
+        title: "Não conseguimos recuperar mais partidas :/"
+      })
       setHasMore(false)
     }
   }

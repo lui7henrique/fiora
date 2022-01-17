@@ -1,13 +1,19 @@
+import { Masteries } from "components/Organisms/Masteries"
 import { MatchHistory } from "components/Organisms/MatchHistory"
 import { useState, useMemo, useEffect, ReactNode } from "react"
-import { ISummonerProps } from "types/summoner"
+import { SummonerProps } from "types/summoner"
 
 import { Header } from "./Header"
 import * as S from "./styles"
 
-export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
+export function SummonerTemplate({
+  summoner,
+  matchHistory,
+  masteries
+}: SummonerProps) {
   const [activeSection, setActiveSection] =
     useState<{ name: string; label: string; component: ReactNode }>()
+
   const [width, setWidth] = useState(0)
 
   const sections = useMemo(
@@ -22,10 +28,10 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
       {
         name: "masteries",
         label: "Campeões",
-        component: <h1>Campeões</h1>
+        component: <Masteries masteries={masteries} />
       }
     ],
-    [matchHistory, summoner]
+    [masteries, matchHistory, summoner]
   )
 
   const updateWindowDimensions = () => {
@@ -35,7 +41,7 @@ export function SummonerTemplate({ summoner, matchHistory }: ISummonerProps) {
 
   useEffect(() => {
     setActiveSection(sections[0])
-  }, [])
+  }, [sections])
 
   useEffect(() => {
     window.addEventListener("resize", updateWindowDimensions)

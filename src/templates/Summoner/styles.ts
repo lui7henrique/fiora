@@ -9,7 +9,8 @@ export const Container = styled.div`
 export const Content = styled.div`
   display: grid;
   grid-template-columns: 1fr 3fr;
-  gap: 1rem;
+  gap: 2rem;
+  overflow: normal;
 
   @media (max-width: 978px) {
     grid-template-columns: 1fr;
@@ -81,6 +82,4 @@ export const Nickname = styled.h1`
   color: ${({ theme }) => theme.colors.title};
 `
 
-export const Main = styled.section`
-  padding: 1rem;
-`
+export const Main = styled.section``

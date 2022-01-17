@@ -11,14 +11,6 @@ type IChampionProps = {
 }
 
 export default function Champion({ champion }: IChampionProps) {
-  const fetchSkins = async () => {
-    const { skins } = await (
-      await merakianalytics.get(`/champions/${champion.id}.json`)
-    ).data
-    console.log(skins)
-  }
-  fetchSkins()
-
   return (
     <>
       <DefaultLayout title={champion.name} description={champion.blurb}>
@@ -34,9 +26,9 @@ export async function getStaticProps({ params }: any) {
   const { data: responseData } = await datadragon.get(`/champion/${id}.json`)
   const data: any = Object.values(responseData.data)[0]
 
-  const { skins } = await fetch(
-    `http://cdn.merakianalytics.com/riot/lol/resources/latest/en-US/champions/${id}.json`
-  ).then((res) => res.json())
+  const { skins } = await (
+    await merakianalytics.get(`/champions/${id}.json`)
+  ).data
 
   const champion = {
     id: data.id,

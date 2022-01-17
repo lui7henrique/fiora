@@ -33,7 +33,6 @@ export function Swiper({ skins }: ISwiperProps) {
     } else {
       document.body.style.overflowY = "auto"
     }
-    console.log(openSkin)
   }, [openSkin])
 
   return (

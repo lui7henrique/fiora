@@ -6,6 +6,10 @@ import { calcAMA } from "./CalcAMA"
 export function FormatSummonerInfos(
   summonerInfos: Match["info"]["participants"][0]
 ) {
+  const ama = calcAMA(
+    `${summonerInfos.kills}/${summonerInfos.deaths}/${summonerInfos.assists}`
+  )
+
   const formattedSummonerInfos = {
     summoner: {
       id: summonerInfos.summonerId,
@@ -13,9 +17,7 @@ export function FormatSummonerInfos(
       icon: `http://ddragon.leagueoflegends.com/cdn/11.24.1/img/profileicon/${summonerInfos.profileIcon}.png`
     },
     kda: `${summonerInfos.kills}/${summonerInfos.deaths}/${summonerInfos.assists}`,
-    ama: calcAMA(
-      `${summonerInfos.kills}/${summonerInfos.deaths}/${summonerInfos.assists}`
-    ),
+    ama: ama,
     champion: {
       id: summonerInfos.championId,
       name: summonerInfos.championName,

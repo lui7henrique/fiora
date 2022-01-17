@@ -3,13 +3,17 @@ import { NextSeo } from "next-seo"
 import { americas } from "services/americas"
 import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
-import { ISummonerProps } from "types/summoner"
+import { SummonerProps, UnformattedMastery } from "types/summoner"
+import { formatMasteries } from "utils/summoner/formatMasteries"
 import { FormatMatch } from "utils/summoner/FormatMatch"
 
 import { DefaultLayout } from "../../layouts/Default"
 
-export default function Summoner({ summoner, matchHistory }: ISummonerProps) {
-  console.log(matchHistory[0].mainSummoner.champion)
+export default function Summoner({
+  summoner,
+  matchHistory,
+  masteries
+}: SummonerProps) {
   return (
     <>
       <NextSeo
@@ -31,7 +35,11 @@ export default function Summoner({ summoner, matchHistory }: ISummonerProps) {
         }}
       />
       <DefaultLayout title="Invocador" description="Invocador" hasLimiter>
-        <SummonerTemplate summoner={summoner} matchHistory={matchHistory} />
+        <SummonerTemplate
+          summoner={summoner}
+          matchHistory={matchHistory}
+          masteries={masteries}
+        />
       </DefaultLayout>
     </>
   )
@@ -70,10 +78,18 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
       })
     )
 
+    const { data: dataMasteries }: { data: UnformattedMastery[] } =
+      await api.get(
+        `/champion-mastery/v4/champion-masteries/by-summoner/${summoner.id}`
+      )
+
+    const masteries = formatMasteries(dataMasteries)
+
     return {
       props: {
         summoner,
-        matchHistory
+        matchHistory,
+        masteries
       }
     }
   } catch (err) {

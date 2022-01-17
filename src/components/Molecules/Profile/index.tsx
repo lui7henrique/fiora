@@ -10,7 +10,6 @@ interface IProfileProps {
 }
 
 export function Profile({ icon, name, title, level }: IProfileProps) {
-  console.log(icon)
   return (
     <S.BasicInfos>
       <S.IconWrapper>
