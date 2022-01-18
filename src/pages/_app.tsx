@@ -4,15 +4,21 @@ import { DefaultSeo } from "next-seo"
 import { AppProps } from "next/app"
 import Head from "next/head"
 import NextNProgress from "nextjs-progressbar"
+import { hotjar } from "react-hotjar"
 import { ThemeProvider } from "styled-components"
 import { GlobalStyles } from "styles/global"
 import "swiper/swiper.min.css"
+import { useEffect } from "react"
 import "swiper/components/navigation/navigation.min.css"
 import theme from "styles/theme"
 
 import SEO from "../../next-seo.config"
 
 function MyApp({ Component, pageProps }: AppProps) {
+  useEffect(() => {
+    hotjar.initialize(2788975, 6)
+  }, [])
+
   return (
     <>
       <Head>
