@@ -16,11 +16,9 @@ import theme from "styles/theme"
 import SEO from "../../next-seo.config"
 
 function MyApp({ Component, pageProps }: AppProps) {
-  const { asPath } = useRouter()
-
   useEffect(() => {
     hotjar.initialize(2788975, 6)
-  }, [asPath])
+  }, [])
 
   return (
     <>
