@@ -1,9 +1,7 @@
 import { Header } from "components/Organisms/Header"
 import { NextSeo } from "next-seo"
 import Head from "next/head"
-import { ReactNode, useEffect } from "react"
-
-import { hotjar } from "react-hotjar"
+import { ReactNode } from "react"
 
 import * as S from "./styles"
 
@@ -20,10 +18,6 @@ export const DefaultLayout = ({
   children,
   hasLimiter = false
 }: DefaultLayoutProps) => {
-  useEffect(() => {
-    hotjar.initialize(2789062, 6)
-  }, [])
-
   return (
     <>
       <Head>
