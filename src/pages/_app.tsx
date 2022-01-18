@@ -3,6 +3,7 @@ import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
 import { AppProps } from "next/app"
 import Head from "next/head"
+import { useRouter } from "next/router"
 import NextNProgress from "nextjs-progressbar"
 import { useEffect } from "react"
 import { hotjar } from "react-hotjar"
@@ -15,9 +16,11 @@ import theme from "styles/theme"
 import SEO from "../../next-seo.config"
 
 function MyApp({ Component, pageProps }: AppProps) {
+  const { asPath } = useRouter()
+
   useEffect(() => {
     hotjar.initialize(2788975, 6)
-  }, [])
+  }, [asPath])
 
   return (
     <>
