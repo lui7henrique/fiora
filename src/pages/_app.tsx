@@ -3,7 +3,6 @@ import { DefaultSeo } from "next-seo"
 /* eslint-disable @next/next/no-page-custom-font */
 import { AppProps } from "next/app"
 import Head from "next/head"
-import { useRouter } from "next/router"
 import NextNProgress from "nextjs-progressbar"
 import { useEffect } from "react"
 import { hotjar } from "react-hotjar"
