@@ -13,11 +13,13 @@ export const Match = styled.a<{ win: boolean }>`
   height: 100%;
   background: ${({ theme }) => theme.colors.shape};
   position: relative;
-
   border-radius: 5px;
-  /* border-right: 5px solid
-    ${({ win, theme }) =>
-    win ? theme.colors["success"] : theme.colors["error"]}; */
+
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    background: ${({ theme }) => theme.colors.shapeHover};
+  }
 `
 
 export const MVP = styled.h6`
