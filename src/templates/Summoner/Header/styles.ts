@@ -8,6 +8,7 @@ export const Header = styled.div`
 
   @media (max-width: 978px) {
     grid-template-columns: 1fr;
+    padding: 0;
   }
 `
 
@@ -15,6 +16,10 @@ export const Options = styled.div`
   display: flex;
   gap: 2rem;
   padding: 0 1rem;
+
+  @media (max-width: 978px) {
+    padding: 0;
+  }
 `
 
 export const Option = styled.h4<{ isActive: boolean }>`

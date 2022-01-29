@@ -9,7 +9,8 @@ import * as S from "./styles"
 export function SummonerTemplate({
   summoner,
   matchHistory,
-  masteries
+  masteries,
+  ranks
 }: SummonerProps) {
   const [activeSection, setActiveSection] =
     useState<{ name: string; label: string; component: ReactNode }>()
@@ -68,6 +69,28 @@ export function SummonerTemplate({
               </S.Profile>
               <S.Nickname>{summoner.nick}</S.Nickname>
             </S.ProfileWrapper>
+
+            {ranks.length > 0 && (
+              <S.Ranks>
+                {ranks.map((rank) => {
+                  return (
+                    <S.Rank
+                      key={JSON.stringify(rank)}
+                      // href={`/league/${rank.leagueId}`}
+                    >
+                      <S.RankIcon src={rank.icon} alt={rank.tier} />
+                      <S.RankInfos>
+                        <S.RankQueue>{rank.queueType}</S.RankQueue>
+                        <S.RankName>{rank.tier}</S.RankName>
+                        <S.WinRate>
+                          Winrate: <strong>{rank.winrate}</strong>
+                        </S.WinRate>
+                      </S.RankInfos>
+                    </S.Rank>
+                  )
+                })}
+              </S.Ranks>
+            )}
           </S.AsideContent>
         </S.Aside>
         {width < 978 && width !== 0 && (

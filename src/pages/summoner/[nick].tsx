@@ -3,16 +3,22 @@ import { NextSeo } from "next-seo"
 import { americas } from "services/americas"
 import { api } from "services/riot"
 import { SummonerTemplate } from "templates/Summoner"
-import { SummonerProps, UnformattedMastery } from "types/summoner"
+import {
+  SummonerProps,
+  UnformattedMastery,
+  UnformattedRank
+} from "types/summoner"
 import { formatMasteries } from "utils/summoner/formatMasteries"
 import { FormatMatch } from "utils/summoner/FormatMatch"
+import { formatRanks } from "utils/summoner/formatRanks"
 
 import { DefaultLayout } from "../../layouts/Default"
 
 export default function Summoner({
   summoner,
   matchHistory,
-  masteries
+  masteries,
+  ranks
 }: SummonerProps) {
   return (
     <>
@@ -39,6 +45,7 @@ export default function Summoner({
           summoner={summoner}
           matchHistory={matchHistory}
           masteries={masteries}
+          ranks={ranks}
         />
       </DefaultLayout>
     </>
@@ -85,11 +92,17 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
     const masteries = formatMasteries(dataMasteries)
 
+    const { data: DataRank }: { data: UnformattedRank[] } = await api.get(
+      `/league/v4/entries/by-summoner/${summoner.id}`
+    )
+    const ranks = formatRanks(DataRank)
+
     return {
       props: {
         summoner,
         matchHistory,
-        masteries
+        masteries,
+        ranks
       }
     }
   } catch (err) {
