@@ -1,3 +1,4 @@
+import { Hotjar } from "components/Atoms/Hotjar"
 import { Header } from "components/Organisms/Header"
 import { NextSeo } from "next-seo"
 import Head from "next/head"
@@ -23,6 +24,7 @@ export const DefaultLayout = ({
       <Head>
         <title>Zed.gg | {title}</title>
         <meta name="description" content={description} />
+        <Hotjar />
       </Head>
       <NextSeo
         title={`Zed.gg | ${title}`}
