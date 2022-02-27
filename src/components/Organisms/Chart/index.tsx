@@ -1,6 +1,6 @@
 import { ApexOptions } from "apexcharts"
 import dynamic from "next/dynamic"
-import { useCallback } from "react"
+import { useCallback, useEffect } from "react"
 import theme from "styles/theme"
 import { formatMatch } from "utils/match/formatMatch"
 
@@ -22,7 +22,6 @@ type ChartProps = {
 export const Chart = ({ data, title }: ChartProps) => {
   const defaultOptions = useCallback((): ApexOptions => {
     return {
-      chart: {},
       grid: {
         show: false
       },
@@ -32,7 +31,7 @@ export const Chart = ({ data, title }: ChartProps) => {
       plotOptions: {
         bar: {
           horizontal: true,
-          columnWidth: "55%"
+          columnWidth: "100%"
         }
       },
       // tooltip: {
@@ -45,6 +44,7 @@ export const Chart = ({ data, title }: ChartProps) => {
       },
       xaxis: {
         categories: [...data.map((participant) => participant.summoner.name)],
+
         axisBorder: {
           color: theme.colors.primary
         },
@@ -86,7 +86,7 @@ export const Chart = ({ data, title }: ChartProps) => {
       options={defaultOptions()}
       series={series}
       type="bar"
-      height={500}
+      height="600"
       width="100%"
     />
   )
