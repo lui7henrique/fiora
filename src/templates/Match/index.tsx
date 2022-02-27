@@ -24,10 +24,6 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
           {
             label: "Maior multiabates",
             accessor: "largestMultiKill"
-          },
-          {
-            label: "First Blood",
-            accessor: "firstBlood"
           }
         ]
       },
@@ -79,6 +75,86 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             accessor: "damageDealtToTurrets"
           }
         ]
+      },
+      {
+        title: "Dano recebido e curado",
+        graphs: [
+          {
+            label: "Dano curado",
+            accessor: "totalHeal"
+          },
+          {
+            label: "Dano recebido",
+            accessor: "totalDamageTaken"
+          },
+          {
+            label: "Dano Físico recebido",
+            accessor: "physicalDamageTaken"
+          },
+          {
+            label: "Dano Mágico recebido",
+            accessor: "magicDamageTaken"
+          },
+          {
+            label: "Dano Verdadeiro recebido",
+            accessor: "trueDamageTaken"
+          },
+          {
+            label: "Dano Automitigado",
+            accessor: "damageSelfMitigated"
+          }
+        ]
+      },
+      {
+        title: "Visão",
+        graphs: [
+          {
+            label: "Placar de Visão",
+            accessor: "visionScore"
+          },
+          {
+            label: "Sentinelas Invisíveis posicionadas",
+            accessor: "wardsPlaced"
+          },
+          {
+            label: "Sentinelas destruídas",
+            accessor: "wardsKilled"
+          },
+          {
+            label: "Sentinelas de Controle posicionadas",
+            accessor: "detectorWardsPlaced"
+          }
+        ]
+      },
+      {
+        title: "Receita",
+        graphs: [
+          {
+            label: "Ouro Recebido",
+            accessor: "goldEarned"
+          },
+          {
+            label: "Ouro Gasto",
+            accessor: "goldSpent"
+          },
+          {
+            label: "Tropas abatidas",
+            accessor: "totalMinionsKilled"
+          }
+        ]
+      },
+      {
+        title: "Objetivos",
+        graphs: [
+          {
+            label: "Torres destruídas",
+            accessor: "turretTakedowns"
+          },
+          {
+            label: "Inibidores destruídos",
+            accessor: "inhibitorTakedowns"
+          }
+        ]
       }
     ],
     []
@@ -107,52 +183,24 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             </S.MatchOption>
           )
         })}
-
-        {/* <div>
-        <h1>Dano recebido e curado</h1>
-        <h3>Dano curado</h3>
-        <h3>Dano recebido</h3>
-        <h3>Dano Físico recebido</h3>
-        <h3>Dano Mágico recebido</h3>
-        <h3>Dano Verdadeiro recebido</h3>
-        <h3>Dano Automitigado</h3>
-      </div>
-
-      <div>
-        <h1>Visão</h1>
-        <h3>Placar de Visão</h3>
-        <h3>Sentinelas Invisíveis posicionadas</h3>
-        <h3>Sentinelas destruídas</h3>
-        <h3>Sentinelas de Controle posicionadas</h3>
-      </div>
-      <div>
-        <h1>Receita</h1>
-        <h3>Ouro Recebido</h3>
-        <h3>Ouro Gasto</h3>
-        <h3>Tropas abatidas</h3>
-        <h3>Monstros neutros abatidos (MNA)</h3>
-        <h3>MNA na selva da sua equipe</h3>
-        <h3>MNA na selva inimiga</h3>
-      </div>
-      <div>
-        <h1>Torres destruídas</h1>
-        <h3>Inibidores destruídos</h3>
-      </div> */}
       </S.MatchOptions>
       <S.Content>
-        <Chart
-          data={match.participants.map((participant) => {
-            const data =
-              participant[activeOption.accessor as keyof typeof participant]
+        <S.ChartContainer>
+          <S.ChartTile>{activeOption.label}</S.ChartTile>
+          <Chart
+            data={match.participants.map((participant) => {
+              const data =
+                participant[activeOption.accessor as keyof typeof participant]
 
-            return {
-              summoner: participant.summoner,
-              champion: participant.champion,
-              data: data as Array<number | boolean>
-            }
-          })}
-        />
-        {activeOption.label}
+              return {
+                summoner: participant.summoner,
+                champion: participant.champion,
+                data: data as Array<number | boolean>
+              }
+            })}
+            title={activeOption.label}
+          />
+        </S.ChartContainer>
       </S.Content>
     </S.Container>
   )

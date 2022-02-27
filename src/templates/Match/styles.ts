@@ -2,7 +2,7 @@ import styled, { css } from "styled-components"
 
 export const Container = styled.div`
   display: flex;
-  gap: 4rem;
+  gap: 2rem;
 `
 
 export const MatchOptions = styled.aside`
@@ -55,3 +55,11 @@ export const MatchOptionGraphLabel = styled.h3<{ active?: boolean }>`
 export const Content = styled.main`
   width: 75%;
 `
+
+export const ChartContainer = styled.div`
+  background-color: ${({ theme }) => theme.colors.shape};
+  padding: 1rem;
+  border-radius: 5px;
+`
+
+export const ChartTile = styled.h2``

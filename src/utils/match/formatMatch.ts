@@ -36,7 +36,6 @@ export const formatMatch = (matchInfo: Match["info"]) => {
         // fight
         largestKillingSpree: participant.largestKillingSpree,
         largestMultiKill: participant.largestMultiKill,
-        firstBlood: participant.firstBloodKill,
 
         // dmg
         totalDamageDealtToChampions: participant.totalDamageDealtToChampions,
@@ -50,7 +49,30 @@ export const formatMatch = (matchInfo: Match["info"]) => {
         trueDamageDealt: participant.trueDamageDealt,
         largestCriticalStrike: participant.largestCriticalStrike,
         damageDealtToObjectives: participant.damageDealtToObjectives,
-        damageDealtToTurrets: participant.damageDealtToTurrets
+        damageDealtToTurrets: participant.damageDealtToTurrets,
+
+        // heal
+        totalHeal: participant.totalHeal,
+        totalDamageTaken: participant.totalDamageTaken,
+        physicalDamageTaken: participant.physicalDamageTaken,
+        magicDamageTaken: participant.magicDamageTaken,
+        trueDamageTaken: participant.trueDamageTaken,
+        damageSelfMitigated: participant.damageSelfMitigated,
+
+        // vision
+        visionScore: participant.visionScore,
+        wardsPlaced: participant.wardsPlaced,
+        wardsKilled: participant.wardsKilled,
+        detectorWardsPlaced: participant.detectorWardsPlaced,
+
+        // gold
+        goldEarned: participant.goldEarned,
+        goldSpent: participant.goldSpent,
+        totalMinionsKilled: participant.totalMinionsKilled,
+
+        // other
+        turretTakedowns: participant.turretTakedowns,
+        inhibitorTakedowns: participant.inhibitorTakedowns
       }
     })
   }
