@@ -1,3 +1,4 @@
+import { Chart } from "components/Organisms/Chart"
 import { useMemo, useState } from "react"
 import { formatMatch } from "utils/match/formatMatch"
 import * as S from "./styles"
@@ -13,16 +14,20 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
         title: "Combate",
         graphs: [
           {
-            label: "AMA"
+            label: "AMA",
+            accessor: "ama"
           },
           {
-            label: "Maior sequência de abates"
+            label: "Maior sequência de abates",
+            accessor: "largestKillingSpree"
           },
           {
-            label: "Maior multiabates"
+            label: "Maior multiabates",
+            accessor: "largestMultiKill"
           },
           {
-            label: "First Blood"
+            label: "First Blood",
+            accessor: "firstBlood"
           }
         ]
       },
@@ -30,37 +35,48 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
         title: "Dano",
         graphs: [
           {
-            label: "Dano total à campeões"
+            label: "Dano total à campeões",
+            accessor: "totalDamageDealtToChampions"
           },
           {
-            label: "Dano Físico a Campeões"
+            label: "Dano Físico a Campeões",
+            accessor: "physicalDamageDealtToChampions"
           },
           {
-            label: "Dano Mágico a Campeões"
+            label: "Dano Mágico a Campeões",
+            accessor: "magicDamageDealtToChampions"
           },
           {
-            label: "Dano Verdadeiro a Campeões"
+            label: "Dano Verdadeiro a Campeões",
+            accessor: "trueDamageDealtToChampions"
           },
           {
-            label: "Dano total"
+            label: "Dano total",
+            accessor: "totalDamageDealt"
           },
           {
-            label: "Dano Físico"
+            label: "Dano Físico",
+            accessor: "physicalDamageDealt"
           },
           {
-            label: "Dano Mágico"
+            label: "Dano Mágico",
+            accessor: "magicDamageDealt"
           },
           {
-            label: "Dano Verdadeiro"
+            label: "Dano Verdadeiro",
+            accessor: "trueDamageDealt"
           },
           {
-            label: "Maior Acerto Crítico"
+            label: "Maior Acerto Crítico",
+            accessor: "largestCriticalStrike"
           },
           {
-            label: "Dano Total aos Objetivos"
+            label: "Dano Total aos Objetivos",
+            accessor: "damageDealtToObjectives"
           },
           {
-            label: "Dano Total a Torres"
+            label: "Dano Total a Torres",
+            accessor: "damageDealtToTurrets"
           }
         ]
       }
@@ -82,6 +98,7 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
                   <S.MatchOptionGraphLabel
                     key={graph.label}
                     onClick={() => setActiveOption(graph)}
+                    active={activeOption === graph}
                   >
                     {graph.label}
                   </S.MatchOptionGraphLabel>
@@ -122,7 +139,21 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
         <h3>Inibidores destruídos</h3>
       </div> */}
       </S.MatchOptions>
-      <S.Content>{activeOption.label}</S.Content>
+      <S.Content>
+        <Chart
+          data={match.participants.map((participant) => {
+            const data =
+              participant[activeOption.accessor as keyof typeof participant]
+
+            return {
+              summoner: participant.summoner,
+              champion: participant.champion,
+              data: data as Array<number | boolean>
+            }
+          })}
+        />
+        {activeOption.label}
+      </S.Content>
     </S.Container>
   )
 }
