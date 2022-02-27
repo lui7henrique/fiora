@@ -18,6 +18,18 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             accessor: "ama"
           },
           {
+            label: "Abates",
+            accessor: "kills"
+          },
+          {
+            label: "Assistências",
+            accessor: "assists"
+          },
+          {
+            label: "Deaths",
+            accessor: "deaths"
+          },
+          {
             label: "Maior sequência de abates",
             accessor: "largestKillingSpree"
           },

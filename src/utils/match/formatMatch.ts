@@ -34,6 +34,9 @@ export const formatMatch = (matchInfo: Match["info"]) => {
       return {
         ...FormatSummonerInfos(participant),
         // fight
+        kills: participant.kills,
+        deaths: participant.deaths,
+        assists: participant.assists,
         largestKillingSpree: participant.largestKillingSpree,
         largestMultiKill: participant.largestMultiKill,
 

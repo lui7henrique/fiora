@@ -3,6 +3,10 @@ import styled, { css } from "styled-components"
 export const Container = styled.div`
   display: flex;
   gap: 2rem;
+
+  @media (max-width: 978px) {
+    flex-direction: column;
+  }
 `
 
 export const MatchOptions = styled.aside`
@@ -13,10 +17,15 @@ export const MatchOptions = styled.aside`
 
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: 5px;
+
+  @media (max-width: 978px) {
+    width: 100%;
+  }
 `
 
 export const MatchOption = styled.div`
   padding-top: 1rem;
+
   & + & {
     border-top: 1px solid ${({ theme }) => theme.colors.border};
   }
@@ -42,7 +51,7 @@ export const MatchOptionGraphLabel = styled.h3<{ active?: boolean }>`
   &:hover {
     border-left: 6px solid
       ${({ theme, active }) =>
-        active ? theme.colors.primary : theme.colors.shape};
+        active ? theme.colors.primary : theme.colors.shapeHover};
   }
 
   ${({ active }) =>
@@ -54,12 +63,19 @@ export const MatchOptionGraphLabel = styled.h3<{ active?: boolean }>`
 
 export const Content = styled.main`
   width: 75%;
+
+  @media (max-width: 978px) {
+    width: 100%;
+  }
 `
 
 export const ChartContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.shape};
   padding: 1rem;
   border-radius: 5px;
+
+  position: sticky;
+  top: 2rem;
 `
 
 export const ChartTile = styled.h2``
