@@ -1,4 +1,4 @@
-import styled from "styled-components"
+import styled, { css } from "styled-components"
 
 export const Container = styled.header`
   width: 100vw;
@@ -26,31 +26,37 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`
 
-  section {
-    display: flex;
-    gap: 1rem;
-    height: 5rem;
+export const NavWrapper = styled.div`
+  display: flex;
+  gap: 1rem;
+  height: 5rem;
+`
 
-    nav {
-      display: flex;
-      gap: 1rem;
-    }
+export const Nav = styled.nav`
+  display: flex;
+  gap: 1rem;
+`
 
-    a {
-      margin-top: 1.75rem;
-      text-decoration: none;
-      color: var(--gray);
-      filter: brightness(0.5);
-      transition: all 0.2s ease-in-out;
-      &:hover {
-        filter: brightness(1);
-        border-bottom: 3px solid var(--primary);
-      }
-      &.active {
-        filter: brightness(1);
-        border-bottom: 3px solid var(--primary);
-      }
-    }
+export const Link = styled.a<{
+  active?: boolean
+}>`
+  margin-top: 1.75rem;
+  text-decoration: none;
+  color: var(--gray);
+  filter: brightness(0.5);
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    filter: brightness(1);
+    border-bottom: 3px solid var(--primary);
   }
+
+  ${({ active }) =>
+    active &&
+    css`
+      filter: brightness(1);
+      border-bottom: 3px solid var(--primary);
+    `}
 `
