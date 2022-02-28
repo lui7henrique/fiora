@@ -26,7 +26,7 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             accessor: "assists"
           },
           {
-            label: "Deaths",
+            label: "Mortes",
             accessor: "deaths"
           },
           {
@@ -176,27 +176,27 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
 
   return (
     <S.Container>
-      <S.MatchOptions>
-        {options.map((option) => {
-          return (
-            <S.MatchOption key={option.title}>
-              <S.MatchOptionTitle>{option.title}</S.MatchOptionTitle>
-              {option.graphs.map((graph) => {
-                return (
-                  <S.MatchOptionGraphLabel
-                    key={graph.label}
-                    onClick={() => setActiveOption(graph)}
-                    active={activeOption === graph}
-                  >
-                    {graph.label}
-                  </S.MatchOptionGraphLabel>
-                )
-              })}
-            </S.MatchOption>
-          )
-        })}
-      </S.MatchOptions>
-      <S.Content>
+      <S.ChartsContainer>
+        <S.ChartOptions>
+          {options.map((option) => {
+            return (
+              <S.ChartOption key={option.title}>
+                <S.ChartOptionTitle>{option.title}</S.ChartOptionTitle>
+                {option.graphs.map((graph) => {
+                  return (
+                    <S.ChartOptionLabel
+                      key={graph.label}
+                      onClick={() => setActiveOption(graph)}
+                      active={activeOption === graph}
+                    >
+                      {graph.label}
+                    </S.ChartOptionLabel>
+                  )
+                })}
+              </S.ChartOption>
+            )
+          })}
+        </S.ChartOptions>
         <S.ChartContainer>
           <S.ChartTile>{activeOption.label}</S.ChartTile>
           <Chart
@@ -213,7 +213,7 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             title={activeOption.label}
           />
         </S.ChartContainer>
-      </S.Content>
+      </S.ChartsContainer>
     </S.Container>
   )
 }

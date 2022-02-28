@@ -2,6 +2,7 @@ import styled, { css } from "styled-components"
 
 export const Container = styled.div`
   display: flex;
+  flex-direction: column;
   gap: 2rem;
 
   @media (max-width: 978px) {
@@ -9,11 +10,27 @@ export const Container = styled.div`
   }
 `
 
-export const MatchOptions = styled.aside`
+export const ChartOptions = styled.aside`
   display: flex;
   flex-direction: column;
   gap: 1rem;
   width: 25%;
+  max-height: 680px;
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.shapeHover};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.primary};
+    border: ${({ theme }) => theme.colors.primary};
+    border-radius: 5px;
+  }
 
   background-color: ${({ theme }) => theme.colors.shape};
   border-radius: 5px;
@@ -23,7 +40,12 @@ export const MatchOptions = styled.aside`
   }
 `
 
-export const MatchOption = styled.div`
+export const ChartsContainer = styled.div`
+  display: flex;
+  gap: 1rem;
+`
+
+export const ChartOption = styled.div`
   padding-top: 1rem;
 
   & + & {
@@ -31,7 +53,7 @@ export const MatchOption = styled.div`
   }
 `
 
-export const MatchOptionTitle = styled.h4`
+export const ChartOptionTitle = styled.h4`
   font-size: 0.8rem;
   color: ${({ theme }) => theme.colors.support};
   opacity: 0.5;
@@ -40,7 +62,7 @@ export const MatchOptionTitle = styled.h4`
   padding: 0 1rem;
 `
 
-export const MatchOptionGraphLabel = styled.h3<{ active?: boolean }>`
+export const ChartOptionLabel = styled.h3<{ active?: boolean }>`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.title};
   padding: 0.8rem;
@@ -61,21 +83,16 @@ export const MatchOptionGraphLabel = styled.h3<{ active?: boolean }>`
     `}
 `
 
-export const Content = styled.main`
-  width: 75%;
-
-  @media (max-width: 978px) {
-    width: 100%;
-  }
-`
-
 export const ChartContainer = styled.div`
   background-color: ${({ theme }) => theme.colors.shape};
   padding: 1rem;
   border-radius: 5px;
 
-  position: sticky;
-  top: 2rem;
+  width: 75%;
+
+  @media (max-width: 978px) {
+    width: 100%;
+  }
 `
 
 export const ChartTile = styled.h2``

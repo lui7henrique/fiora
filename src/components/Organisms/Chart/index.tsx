@@ -1,6 +1,6 @@
 import { ApexOptions } from "apexcharts"
 import dynamic from "next/dynamic"
-import { useCallback, useEffect } from "react"
+import { useCallback } from "react"
 import theme from "styles/theme"
 import { formatMatch } from "utils/match/formatMatch"
 
@@ -86,7 +86,7 @@ export const Chart = ({ data, title }: ChartProps) => {
       options={defaultOptions()}
       series={series}
       type="bar"
-      height="600"
+      height="600px"
       width="100%"
     />
   )
