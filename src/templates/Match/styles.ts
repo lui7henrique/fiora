@@ -3,7 +3,29 @@ import styled, { css } from "styled-components"
 export const Container = styled.div`
   display: flex;
   flex-direction: column;
-  gap: 2rem;
+  gap: 1rem;
+
+  @media (max-width: 978px) {
+    flex-direction: column;
+  }
+`
+
+export const TeamsContainer = styled.section`
+  background-color: ${({ theme }) => theme.colors.shape};
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  border-radius: 5px;
+
+  gap: 0.5rem;
+
+  @media (max-width: 978px) {
+    grid-template-columns: 1fr;
+  }
+`
+
+export const ChartsContainer = styled.section`
+  display: flex;
+  gap: 1rem;
 
   @media (max-width: 978px) {
     flex-direction: column;
@@ -38,11 +60,6 @@ export const ChartOptions = styled.aside`
   @media (max-width: 978px) {
     width: 100%;
   }
-`
-
-export const ChartsContainer = styled.div`
-  display: flex;
-  gap: 1rem;
 `
 
 export const ChartOption = styled.div`

@@ -2,6 +2,7 @@ import { Chart } from "components/Organisms/Chart"
 import { useMemo, useState } from "react"
 import { formatMatch } from "utils/match/formatMatch"
 import * as S from "./styles"
+import { Team } from "./Team"
 
 type MatchTemplateProps = {
   match: ReturnType<typeof formatMatch>
@@ -176,6 +177,19 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
 
   return (
     <S.Container>
+      <S.TeamsContainer>
+        <Team
+          participants={match.participants.filter(
+            (participant) => participant.team === 100
+          )}
+        />
+        <Team
+          participants={match.participants.filter(
+            (participant) => participant.team === 200
+          )}
+        />
+      </S.TeamsContainer>
+
       <S.ChartsContainer>
         <S.ChartOptions>
           {options.map((option) => {
