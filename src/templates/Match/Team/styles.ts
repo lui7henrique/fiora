@@ -41,7 +41,7 @@ export const Team = styled.div`
 
 export const Participant = styled.div<{ team: number }>`
   display: flex;
-  gap: 0.5rem;
+  gap: 1rem;
   align-items: center;
 
   ${({ team }) =>
@@ -53,6 +53,22 @@ export const Participant = styled.div<{ team: number }>`
 
       flex-direction: row-reverse;
     `}
+`
+
+export const Summoner = styled.div<{ team: number }>`
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  ${({ team }) =>
+    team === 100 &&
+    css`
+      @media (max-width: 978px) {
+        flex-direction: row;
+      }
+
+      flex-direction: row-reverse;
+    `};
 `
 
 export const ChampionIconWrapper = styled.figure`
@@ -110,8 +126,8 @@ export const Build = styled.div`
 `
 
 export const ItemWrapper = styled.div`
-  width: 1.5rem;
-  height: 1.5rem;
+  width: 1.7rem;
+  height: 1.7rem;
   border-radius: 5px;
   position: relative;
   overflow: hidden;
@@ -125,3 +141,31 @@ export const Item = styled.img`
 `
 
 export const ItemEmpty = styled.div``
+
+export const Stats = styled.div`
+  display: flex;
+  flex-direction: column;
+`
+
+export const KDA = styled.h5`
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.text};
+  letter-spacing: 2px;
+`
+
+export const CreepScore = styled.h6<{ team: number }>`
+  font-size: 0.7rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.support};
+
+  ${({ team }) =>
+    team === 100 &&
+    css`
+      text-align: right;
+
+      @media (max-width: 978px) {
+        text-align: left;
+      }
+    `}
+`

@@ -16,18 +16,20 @@ export const Team = ({ participants }: TeamProps) => {
   const Participant = useCallback(({ participant }: ParticipantType) => {
     return (
       <S.Participant team={participant.teamId}>
-        <S.ChampionIconWrapper>
-          <S.ChampionIcon
-            src={participant.champion.icon}
-            layout="fill"
-            alt="teste"
-          />
-        </S.ChampionIconWrapper>
-        <Link href={`/summoner/${participant.summoner.name}`} passHref>
-          <S.ParticipantNick team={participant.teamId}>
-            {participant.summoner.name}
-          </S.ParticipantNick>
-        </Link>
+        <S.Summoner team={participant.teamId}>
+          <S.ChampionIconWrapper>
+            <S.ChampionIcon
+              src={participant.champion.icon}
+              layout="fill"
+              alt="teste"
+            />
+          </S.ChampionIconWrapper>
+          <Link href={`/summoner/${participant.summoner.name}`} passHref>
+            <S.ParticipantNick team={participant.teamId}>
+              {participant.summoner.name}
+            </S.ParticipantNick>
+          </Link>
+        </S.Summoner>
         <S.Build>
           {participant.build.map((item) => {
             return (
@@ -43,6 +45,12 @@ export const Team = ({ participants }: TeamProps) => {
             )
           })}
         </S.Build>
+        <S.Stats>
+          <S.KDA>{participant.kda}</S.KDA>
+          <S.CreepScore team={participant.teamId}>
+            {participant.totalMinionsKilled} cs
+          </S.CreepScore>
+        </S.Stats>
       </S.Participant>
     )
   }, [])
