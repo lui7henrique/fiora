@@ -28,8 +28,6 @@ export const IconWrapper = styled.figure`
   overflow: hidden;
   border-radius: 50%;
   position: relative;
-  box-shadow: rgb(0 0 0 / 80%) 0px 20px 25px -16px,
-    rgb(0 0 0 / 72%) 0px 20px 20px -20px;
 
   img {
     transform: scale(1.2);
