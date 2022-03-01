@@ -142,9 +142,20 @@ export const Item = styled.img`
 
 export const ItemEmpty = styled.div``
 
-export const Stats = styled.div`
+export const Stats = styled.div<{ team: number }>`
   display: flex;
   flex-direction: column;
+  width: 7ch;
+
+  ${({ team }) =>
+    team === 100 &&
+    css`
+      align-items: flex-end;
+
+      @media (max-width: 978px) {
+        align-items: flex-start;
+      }
+    `}
 `
 
 export const KDA = styled.h5`
@@ -168,4 +179,19 @@ export const CreepScore = styled.h6<{ team: number }>`
         text-align: left;
       }
     `}
+`
+
+export const DamageContainer = styled.div`
+  width: 100px;
+  height: 5px;
+  background: ${({ theme }) => theme.colors.border};
+  border-radius: px;
+`
+
+export const TotalDamage = styled.div<{ percentage: number }>`
+  width: ${({ percentage }) => percentage}%;
+  height: 100%;
+
+  background: ${({ theme }) => theme.colors.primary};
+  border-radius: 3px;
 `

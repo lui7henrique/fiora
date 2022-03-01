@@ -9,6 +9,11 @@ type MatchTemplateProps = {
 }
 
 export const MatchTemplate = ({ match }: MatchTemplateProps) => {
+  const maxTotalDamage = Math.max.apply(
+    Math,
+    match.participants.map((p) => p.totalDamageDealtToChampions)
+  )
+
   const options = useMemo(
     () => [
       {
@@ -182,11 +187,13 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
           participants={match.participants.filter(
             (participant) => participant.team === 100
           )}
+          maxTotalDamage={maxTotalDamage}
         />
         <Team
           participants={match.participants.filter(
             (participant) => participant.team === 200
           )}
+          maxTotalDamage={maxTotalDamage}
         />
       </S.TeamsContainer>
 

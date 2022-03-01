@@ -6,13 +6,14 @@ import * as S from "./styles"
 
 type TeamProps = {
   participants: ReturnType<typeof formatMatch>["participants"]
+  maxTotalDamage: number
 }
 
 type ParticipantType = {
   participant: TeamProps["participants"][0]
 }
 
-export const Team = ({ participants }: TeamProps) => {
+export const Team = ({ participants, maxTotalDamage }: TeamProps) => {
   const Participant = useCallback(({ participant }: ParticipantType) => {
     return (
       <S.Participant team={participant.teamId}>
@@ -45,12 +46,22 @@ export const Team = ({ participants }: TeamProps) => {
             )
           })}
         </S.Build>
-        <S.Stats>
+        <S.Stats team={participant.teamId}>
           <S.KDA>{participant.kda}</S.KDA>
           <S.CreepScore team={participant.teamId}>
             {participant.totalMinionsKilled} cs
           </S.CreepScore>
         </S.Stats>
+        <S.DamageContainer>
+          <S.TotalDamage
+            percentage={
+              +(
+                (100 * participant.totalDamageDealtToChampions) /
+                maxTotalDamage
+              ).toFixed(2)
+            }
+          />
+        </S.DamageContainer>
       </S.Participant>
     )
   }, [])
