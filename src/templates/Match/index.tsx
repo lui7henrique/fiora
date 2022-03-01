@@ -188,12 +188,14 @@ export const MatchTemplate = ({ match }: MatchTemplateProps) => {
             (participant) => participant.team === 100
           )}
           maxTotalDamage={maxTotalDamage}
+          mvp={match.mvp}
         />
         <Team
           participants={match.participants.filter(
             (participant) => participant.team === 200
           )}
           maxTotalDamage={maxTotalDamage}
+          mvp={match.mvp}
         />
       </S.TeamsContainer>
 

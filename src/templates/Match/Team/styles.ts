@@ -55,10 +55,11 @@ export const Participant = styled.div<{ team: number }>`
     `}
 `
 
-export const Summoner = styled.div<{ team: number }>`
+export const Summoner = styled.div<{ team: number; isMvp?: boolean }>`
   display: flex;
   align-items: center;
   gap: 1rem;
+  position: relative;
 
   ${({ team }) =>
     team === 100 &&
@@ -69,9 +70,31 @@ export const Summoner = styled.div<{ team: number }>`
 
       flex-direction: row-reverse;
     `};
+
+  ${({ isMvp }) =>
+    isMvp &&
+    css`
+      &::after {
+        content: "MVP";
+        position: absolute;
+        bottom: 0;
+        left: 0;
+
+        font-size: 0.5rem;
+        font-weight: bold;
+
+        background-color: ${({ theme }) => theme.colors.primary};
+        color: ${({ theme }) => theme.colors.title};
+
+        padding: 0.2rem;
+        border-radius: 5px;
+
+        transform: translateY(0.1rem);
+      }
+    `}
 `
 
-export const ChampionIconWrapper = styled.figure`
+export const ChampionIconWrapper = styled.figure<{ isMvp?: boolean }>`
   width: 2.5rem;
   height: 2.5rem;
   border-radius: 50%;

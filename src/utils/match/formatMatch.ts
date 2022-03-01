@@ -20,6 +20,7 @@ export const formatMatch = (matchInfo: Match["info"]) => {
   const formattedParticipants = matchInfo.participants.map((participant) => {
     return {
       ...FormatSummonerInfos(participant),
+
       // fight
       kills: participant.kills,
       deaths: participant.deaths,
@@ -80,7 +81,12 @@ export const formatMatch = (matchInfo: Match["info"]) => {
     mapId,
     platformId,
     queueId,
-    participants: formattedParticipants
+    participants: formattedParticipants,
+    mvp: formattedParticipants.find(
+      (participant) =>
+        participant.ama ===
+        Math.max(...formattedParticipants.map((participant) => participant.ama))
+    )?.summoner.id
   }
 
   return formattedMatch
