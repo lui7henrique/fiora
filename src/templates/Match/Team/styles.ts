@@ -207,14 +207,18 @@ export const CreepScore = styled.h6<{ team: number }>`
 export const DamageContainer = styled.div`
   width: 100px;
   height: 5px;
-  background: ${({ theme }) => theme.colors.border};
-  border-radius: px;
+  background: ${({ theme }) => theme.colors.shapeHover};
+  border-radius: 5px;
 `
 
 export const TotalDamage = styled.div<{ percentage: number }>`
   width: ${({ percentage }) => percentage}%;
   height: 100%;
 
-  background: ${({ theme }) => theme.colors.primary};
+  background: linear-gradient(
+    90deg,
+    rgba(130, 87, 229, 1) 0%,
+    rgba(77, 50, 140, 1) 100%
+  );
   border-radius: 3px;
 `

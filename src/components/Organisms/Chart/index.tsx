@@ -34,9 +34,6 @@ export const Chart = ({ data, title }: ChartProps) => {
           columnWidth: "100%"
         }
       },
-      // tooltip: {
-      //   enabled: false
-      // },
       stroke: {
         show: true,
         width: 2,
@@ -44,7 +41,6 @@ export const Chart = ({ data, title }: ChartProps) => {
       },
       xaxis: {
         categories: [...data.map((participant) => participant.summoner.name)],
-
         axisBorder: {
           color: theme.colors.primary
         },
