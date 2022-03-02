@@ -16,6 +16,13 @@ export const Container = styled.header`
     font-style: italic;
     font-weight: bold;
   }
+
+  @media (max-width: 768px) {
+    .logo,
+    .logo-link {
+      display: none;
+    }
+  }
 `
 
 export const Content = styled.div`
@@ -26,6 +33,37 @@ export const Content = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
+`
+
+export const BaseLinks = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: 100%;
+`
+
+export const GoBack = styled.button`
+  font-size: 1.3rem;
+  border: 1px solid ${({ theme }) => theme.colors.border};
+  background-color: transparent;
+  border-radius: 5px;
+
+  padding: 0.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+
+  svg {
+    width: 20px;
+    height: 20px;
+  }
+
+  &:hover {
+    background-color: ${({ theme }) => theme.colors.shapeHover};
+  }
 `
 
 export const NavWrapper = styled.div`

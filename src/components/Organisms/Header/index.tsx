@@ -1,6 +1,8 @@
 import { useRouter } from "next/dist/client/router"
 import Link from "next/link"
 import { useCallback } from "react"
+import { FiArrowLeft } from "react-icons/fi"
+import { useTheme } from "styled-components"
 
 import * as S from "./styles"
 
@@ -10,7 +12,8 @@ type BaseActiveLinkProps = {
 }
 
 export function Header() {
-  const { asPath } = useRouter()
+  const { asPath, back } = useRouter()
+  const theme = useTheme()
 
   const BaseActiveLink = useCallback(
     (props: BaseActiveLinkProps) => {
@@ -28,11 +31,16 @@ export function Header() {
   return (
     <S.Container>
       <S.Content>
-        <Link href="/">
-          <a>
-            <span className="logo">Zed.gg</span>
-          </a>
-        </Link>
+        <S.BaseLinks>
+          <Link href="/">
+            <a className="logo-link">
+              <span className="logo">Zed.gg</span>
+            </a>
+          </Link>
+          <S.GoBack onClick={back}>
+            <FiArrowLeft color={theme.colors.text} />
+          </S.GoBack>
+        </S.BaseLinks>
         <S.NavWrapper>
           <S.Nav>
             <BaseActiveLink href="/" label="Home" />
