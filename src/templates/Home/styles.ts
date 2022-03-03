@@ -1,4 +1,5 @@
-import styled from "styled-components"
+import Image from "next/image"
+import styled, { css } from "styled-components"
 
 export const Container = styled.section``
 
@@ -83,4 +84,89 @@ export const Button = styled.button`
   &:hover {
     filter: brightness(0.8);
   }
+`
+
+export const PreviouslySummoners = styled.div<{
+  isVisible: boolean
+}>`
+  display: flex;
+  flex-direction: column;
+  border-radius: 0 0 5px 5px;
+
+  background-color: ${(props) => props.theme.colors.shape}33;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+
+  max-height: 0;
+  overflow-y: auto;
+
+  transition: all 0.2s ease-in-out;
+  overflow: 9999;
+
+  &::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: ${({ theme }) => theme.colors.shapeHover};
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: ${({ theme }) => theme.colors.primary};
+    border: ${({ theme }) => theme.colors.primary};
+    border-radius: 5px;
+  }
+
+  ${({ isVisible }) =>
+    isVisible &&
+    css`
+      max-height: 200px;
+    `}
+`
+
+export const PreviouslySummoner = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.8rem 1rem;
+  transition: all 0.1s ease-in-out;
+  justify-content: space-between;
+
+  &:hover {
+    background-color: ${(props) => props.theme.colors.shape}80;
+  }
+`
+
+export const PreviouslySummonerBasicInfos = styled.a`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  width: 95%;
+`
+
+export const PreviouslySummonerIconContainer = styled.figure`
+  width: 3rem;
+  height: 3rem;
+  position: relative;
+  overflow: hidden;
+  border-radius: 50%;
+`
+
+export const PreviouslySummonerIcon = styled(Image)`
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+`
+
+export const PreviouslySummonerInfos = styled.div``
+
+export const PreviouslySummonerName = styled.h3`
+  font-size: 1rem;
+  color: ${({ theme }) => theme.colors.text};
+`
+
+export const PreviouslySummonerLevel = styled.sub`
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: ${({ theme }) => theme.colors.support};
 `

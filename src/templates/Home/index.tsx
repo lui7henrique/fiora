@@ -3,35 +3,72 @@ import { Toast } from "components/Atoms/Toast"
 import { useRouter } from "next/dist/client/router"
 import { useState, useRef, useEffect } from "react"
 import { GoMute, GoUnmute } from "react-icons/go"
+import { IoMdClose } from "react-icons/io"
 import { api } from "services/riot"
 
 import * as S from "./styles"
+
+type Summoner = {
+  accountId: string
+  id: string
+  name: string
+  profileIconId: number
+  puuid: string
+  revisionDate: number
+  summonerLevel: number
+}
 
 export function HomeTemplate() {
   // constants
   const router = useRouter()
   const videoRef = useRef<HTMLVideoElement>(null)
+  const key = "@zedgg/summoners"
 
   // states
-  const [summoner, setSummoner] = useState("")
+  const [summonerNick, setSummonerNick] = useState("")
   const [isMuted, setIsMuted] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const [previouslySummoners, setPreviouslySummoners] = useState(
+    [] as Summoner[]
+  )
 
   // functions
   const handleSubmitSearch = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (summoner.length <= 3 || summoner.length > 16) {
+    if (summonerNick.length <= 3 || summonerNick.length > 16) {
       Toast.fire({
         icon: "error",
         title: "Nome de usuário inválido"
       })
     } else {
       try {
-        const { data: dataSummoner } = await api.get(
-          `/summoner/v4/summoners/by-name/${summoner}`
+        const response = await api.get(
+          `/summoner/v4/summoners/by-name/${summonerNick}`
         )
 
-        router.push(`/summoner/${summoner}`)
+        if (response.status === 200) {
+          const { data } = response as { data: Summoner }
+
+          const localStorageData = localStorage.getItem(key)
+          const formattedLocalStorageData: Summoner[] = localStorage
+            ? JSON.parse(localStorageData!)
+            : []
+
+          const hasSummoner = formattedLocalStorageData?.some(
+            (summoner) => summoner.id === data.id
+          )
+
+          if (!hasSummoner) {
+            const formattedData = localStorageData
+              ? [...formattedLocalStorageData, data]
+              : [data]
+
+            localStorage.setItem(key, JSON.stringify(formattedData))
+          }
+
+          router.push(`/summoner/${summonerNick}`)
+        }
       } catch (err) {
         Toast.fire({
           icon: "error",
@@ -41,7 +78,38 @@ export function HomeTemplate() {
     }
   }
 
+  const handleDeleteSummoner = (previouslySummoner: Summoner) => {
+    const localStorageData = localStorage.getItem(key)
+    const formattedLocalStorageData: Summoner[] = localStorage
+      ? JSON.parse(localStorageData!)
+      : []
+
+    const filteredData = formattedLocalStorageData.filter(
+      (summoner) => summoner.id !== previouslySummoner.id
+    )
+
+    localStorage.setItem(key, JSON.stringify(filteredData))
+
+    setPreviouslySummoners(filteredData)
+
+    Toast.fire({
+      icon: "success",
+      title: "Invocador excluído do histórico com sucesso!"
+    })
+  }
+
   useEffect(() => {
+    const loadPreviouslySummoners = () => {
+      const localStorageData = localStorage.getItem(key)
+      const formattedLocalStorageData: Summoner[] = localStorage
+        ? JSON.parse(localStorageData!)
+        : []
+
+      setPreviouslySummoners(formattedLocalStorageData)
+    }
+
+    loadPreviouslySummoners()
+
     if (videoRef.current) {
       videoRef.current.volume = 0.5
     }
@@ -58,9 +126,9 @@ export function HomeTemplate() {
           muted={isMuted}
           autoPlay
           loop
-          // poster="images/torres.jpg"
           className="bg_video"
           ref={videoRef}
+          onClick={() => setIsVisible(false)}
         >
           <source src="/videos/zed2.mp4" type="video/mp4" />
         </S.VideoBanner>
@@ -74,12 +142,45 @@ export function HomeTemplate() {
               <S.Input
                 type="text"
                 placeholder="Digite o nome de um invocador"
-                onChange={(e) => setSummoner(e.target.value)}
+                onChange={(e) => setSummonerNick(e.target.value)}
+                onClick={() => setIsVisible(true)}
               />
               <S.Button type="submit">
                 <Search size={25} color={"white"} />
               </S.Button>
             </S.Search>
+
+            <S.PreviouslySummoners isVisible={isVisible}>
+              {previouslySummoners.map((summoner) => {
+                return (
+                  <S.PreviouslySummoner key={summoner.id}>
+                    <S.PreviouslySummonerBasicInfos
+                      href={`/summoner/${summoner.name}`}
+                    >
+                      <S.PreviouslySummonerIconContainer>
+                        <S.PreviouslySummonerIcon
+                          src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.profileIconId}.png`}
+                          layout="fill"
+                        />
+                      </S.PreviouslySummonerIconContainer>
+                      <S.PreviouslySummonerInfos>
+                        <S.PreviouslySummonerName>
+                          {summoner.name}
+                        </S.PreviouslySummonerName>
+                        <S.PreviouslySummonerLevel>
+                          Nível {summoner.summonerLevel}
+                        </S.PreviouslySummonerLevel>
+                      </S.PreviouslySummonerInfos>
+                    </S.PreviouslySummonerBasicInfos>
+
+                    <IoMdClose
+                      size={20}
+                      onClick={() => handleDeleteSummoner(summoner)}
+                    />
+                  </S.PreviouslySummoner>
+                )
+              })}
+            </S.PreviouslySummoners>
           </S.WrapperContent>
         </S.WrapperContainer>
       </S.Wrapper>
