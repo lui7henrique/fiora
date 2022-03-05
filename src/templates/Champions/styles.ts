@@ -34,24 +34,24 @@ export const Filter = styled.section`
   align-items: center;
   justify-content: space-between;
   border: 1px solid var(--borders);
-  height: 2rem;
+  height: 3rem;
 `
 
 export const Classes = styled.section`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  height: 2rem;
+  height: 3rem;
   gap: 2rem;
-  margin-left: -2rem;
-  margin-right: 1rem;
+  padding: 0 2rem;
+  border-left: 1px solid ${({ theme }) => theme.colors.border};
 
   @media (max-width: 768px) {
     display: none;
   }
 
   button {
-    height: 2rem;
+    height: 3rem;
     background: var(--background);
     border-top: 1px solid var(--borders);
     border-bottom: 1px solid var(--borders);
@@ -77,20 +77,20 @@ export const Classes = styled.section`
 export const Search = styled.section`
   display: flex;
   align-items: center;
-  height: 2rem;
+  height: 100%;
   padding-left: 1rem;
   gap: 1rem;
   width: 100%;
 
   input {
     width: 95px;
-    height: 2rem;
+    height: 3rem;
     border: none;
     outline: none;
-    background: var(--background);
-    color: var(--text);
-    border-top: 1px solid var(--borders);
-    border-bottom: 1px solid var(--borders);
+    background: ${({ theme }) => theme.colors.background};
+    color: ${({ theme }) => theme.colors.text};
+    border-top: 1px solid ${({ theme }) => theme.colors.border};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border};
     width: 100%;
   }
 

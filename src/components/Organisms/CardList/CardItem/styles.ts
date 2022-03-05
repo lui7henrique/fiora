@@ -21,10 +21,6 @@ export const Image = styled.figure<{ alt: string }>`
       transform: scale(1);
       filter: brightness(0.8);
     }
-
-    div.category {
-      transform: translateX(150%);
-    }
   }
 `
 

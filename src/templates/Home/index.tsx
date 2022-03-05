@@ -151,7 +151,7 @@ export function HomeTemplate() {
             </S.Search>
 
             <S.PreviouslySummoners isVisible={isVisible}>
-              {previouslySummoners.map((summoner) => {
+              {previouslySummoners?.map((summoner) => {
                 return (
                   <S.PreviouslySummoner key={summoner.id}>
                     <S.PreviouslySummonerBasicInfos

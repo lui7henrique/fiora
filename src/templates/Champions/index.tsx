@@ -2,43 +2,27 @@ import { Search } from "@styled-icons/boxicons-regular"
 import { CardList } from "components/Organisms/CardList"
 import { ChampionType, IChampionsProps } from "pages/champions"
 import { useState } from "react"
-import InfiniteScroll from "react-infinite-scroll-component"
 
 import * as S from "./styles"
 
 export function ChampionsTemplate({
-  champions: InitialChampions
+  champions: initialChampions
 }: IChampionsProps) {
-  const [champions, setChampions] = useState<ChampionType[]>(
-    InitialChampions.slice(0, 20)
-  )
+  const [champions, setChampions] = useState<ChampionType[]>(initialChampions)
   const [category, setCategory] = useState("All")
-  const [hasMore, setHasMore] = useState(true)
-
-  const getMoreChampions = async () => {
-    if (champions.length >= InitialChampions.length) {
-      setHasMore(false)
-    } else {
-      const moreChampions = InitialChampions.slice(
-        champions.length,
-        champions.length + 20
-      )
-      setChampions((champions) => [...champions, ...moreChampions])
-    }
-  }
 
   function handleFilterChampions(category: string) {
     setCategory(category)
 
     if (!(category === "All")) {
-      const filteredChampions = InitialChampions.filter(
+      const filteredChampions = initialChampions.filter(
         (champion) =>
           (champion.category[0] || champion.category[1]) === category &&
           champion
       )
       setChampions(filteredChampions)
     } else {
-      setChampions(InitialChampions)
+      setChampions(initialChampions)
     }
   }
 
@@ -46,14 +30,14 @@ export function ChampionsTemplate({
     const query = name.trim().toLowerCase()
 
     if (category !== "") {
-      const filteredChampions = InitialChampions.filter(
+      const filteredChampions = initialChampions.filter(
         (champion) =>
           champion.name.toLowerCase().startsWith(query) ||
           (champion.id.toLowerCase().startsWith(query) && champion)
       )
       setChampions(filteredChampions)
     } else {
-      setChampions(InitialChampions)
+      setChampions(initialChampions)
     }
   }
 
@@ -123,18 +107,7 @@ export function ChampionsTemplate({
         </S.Classes>
       </S.Filter>
 
-      {category === "All" ? (
-        <InfiniteScroll
-          dataLength={champions.length}
-          next={getMoreChampions}
-          hasMore={hasMore}
-          loader={<></>}
-        >
-          <CardList champions={champions} />
-        </InfiniteScroll>
-      ) : (
-        <CardList champions={champions} />
-      )}
+      <CardList champions={champions} />
     </S.Container>
   )
 }
