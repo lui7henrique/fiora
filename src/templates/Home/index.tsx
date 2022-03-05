@@ -28,9 +28,9 @@ export function HomeTemplate() {
   const [summonerNick, setSummonerNick] = useState("")
   const [isMuted, setIsMuted] = useState(true)
   const [isVisible, setIsVisible] = useState(false)
-  const [previouslySummoners, setPreviouslySummoners] = useState(
-    [] as Summoner[]
-  )
+  const [previouslySummoners, setPreviouslySummoners] = useState<
+    Summoner[] | undefined
+  >([] as Summoner[])
 
   // functions
   const handleSubmitSearch = async (e: React.FormEvent) => {
@@ -150,37 +150,39 @@ export function HomeTemplate() {
               </S.Button>
             </S.Search>
 
-            <S.PreviouslySummoners isVisible={isVisible}>
-              {previouslySummoners?.map((summoner) => {
-                return (
-                  <S.PreviouslySummoner key={summoner.id}>
-                    <S.PreviouslySummonerBasicInfos
-                      href={`/summoner/${summoner.name}`}
-                    >
-                      <S.PreviouslySummonerIconContainer>
-                        <S.PreviouslySummonerIcon
-                          src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.profileIconId}.png`}
-                          layout="fill"
-                        />
-                      </S.PreviouslySummonerIconContainer>
-                      <S.PreviouslySummonerInfos>
-                        <S.PreviouslySummonerName>
-                          {summoner.name}
-                        </S.PreviouslySummonerName>
-                        <S.PreviouslySummonerLevel>
-                          Nível {summoner.summonerLevel}
-                        </S.PreviouslySummonerLevel>
-                      </S.PreviouslySummonerInfos>
-                    </S.PreviouslySummonerBasicInfos>
+            {previouslySummoners && (
+              <S.PreviouslySummoners isVisible={isVisible}>
+                {previouslySummoners.map((summoner) => {
+                  return (
+                    <S.PreviouslySummoner key={summoner.id}>
+                      <S.PreviouslySummonerBasicInfos
+                        href={`/summoner/${summoner.name}`}
+                      >
+                        <S.PreviouslySummonerIconContainer>
+                          <S.PreviouslySummonerIcon
+                            src={`http://ddragon.leagueoflegends.com/cdn/12.5.1/img/profileicon/${summoner.profileIconId}.png`}
+                            layout="fill"
+                          />
+                        </S.PreviouslySummonerIconContainer>
+                        <S.PreviouslySummonerInfos>
+                          <S.PreviouslySummonerName>
+                            {summoner.name}
+                          </S.PreviouslySummonerName>
+                          <S.PreviouslySummonerLevel>
+                            Nível {summoner.summonerLevel}
+                          </S.PreviouslySummonerLevel>
+                        </S.PreviouslySummonerInfos>
+                      </S.PreviouslySummonerBasicInfos>
 
-                    <IoMdClose
-                      size={20}
-                      onClick={() => handleDeleteSummoner(summoner)}
-                    />
-                  </S.PreviouslySummoner>
-                )
-              })}
-            </S.PreviouslySummoners>
+                      <IoMdClose
+                        size={20}
+                        onClick={() => handleDeleteSummoner(summoner)}
+                      />
+                    </S.PreviouslySummoner>
+                  )
+                })}
+              </S.PreviouslySummoners>
+            )}
           </S.WrapperContent>
         </S.WrapperContainer>
       </S.Wrapper>
