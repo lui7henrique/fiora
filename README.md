@@ -10,3 +10,6 @@ A web-app to show data about League of Legends summoner's and champion's!
 - [Apexcharts](https://apexcharts.com/)
 - [Riot API](https://developer.riotgames.com/)
 
+---
+
+<p align="center">Made with🖤 by Luiz Henrique</p>
