@@ -1,4 +1,4 @@
-## 🔪 Zed.gg 
+## 🔪 Zed.gg (in development) 
 A web-app to show data about League of Legends summoner's and champion's!
 > Access on: https://zedgg.vercel.app/
 
