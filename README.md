@@ -12,4 +12,4 @@ A web-app to show data about League of Legends summoner's and champion's!
 
 ##
 
-<p align="center">Made with 🖤 by Luiz Henrique</p>
+<p align="center">Made with 🖤 by Luiz Henrique </p>
