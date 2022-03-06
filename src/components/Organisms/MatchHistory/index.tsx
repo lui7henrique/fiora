@@ -31,7 +31,7 @@ const Match = ({ match }: MatchProps) => {
   )
 
   return (
-    <S.Match win={match.win} href={`/match/${match.id}`}>
+    <S.Match win={match.win} href={`/match/${match.id}`} target="_blank">
       {match.mvp && <S.MVP>MVP</S.MVP>}
 
       <S.ChampionIcon>
